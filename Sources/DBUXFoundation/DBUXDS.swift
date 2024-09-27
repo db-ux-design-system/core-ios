@@ -15,12 +15,13 @@
 //
 
 import SwiftUI
+import DBUXFoundation
 
 struct ContentView: View {
     @Environment(\.adaptiveThemeDimensions) var dimensions
     @Environment(\.themeColorScheme) var themeColorScheme
     @Environment(\.activeColorScheme) var activeColorScheme
-    @State var scheme: (any AdaptiveColors)?
+    @State var scheme: AdaptiveColors?
     
     var body: some View {
         ScrollView {
@@ -48,85 +49,23 @@ struct ContentView: View {
                 Button("Button with Color Scheme") {
                     scheme = themeColorScheme.informational
                 }
-                .stylable()
+                .dbElevation1()
                 
                 Button("Button with Warning Color Scheme") {
                     scheme = themeColorScheme.warning
                 }
-                .stylable()
+                .dbElevation1()
                 .activeColorScheme(themeColorScheme.warning)
                 
-                Button("Button with Custom Color Scheme") {
+                Button("Button with Violet Color Scheme") {
                     scheme = themeColorScheme.violet
                 }
-                .stylable()
+                .dbElevation1()
                 .activeColorScheme(themeColorScheme.violet)
                 
             }
         }
-    }
-}
-
-// ViewModifier Extension
-struct StylableView: ViewModifier {
-    @Environment(\.activeColorScheme) var scheme
-    @Environment(\.adaptiveThemeDimensions) var dimensions
-    
-    func body(content: Content) -> some View {
-        content
-            .padding(dimensions.spacing.fixedMd)
-            .foregroundStyle(scheme.onBgBasicEmphasis100Default)
-            .background(scheme.bgBasicTransparentFullDefault.opacity(0))
-    }
-}
-
-struct Layer2Modifier: ViewModifier {
-    @Environment(\.activeColorScheme) var scheme: AdaptiveColors
-    @Environment(\.adaptiveThemeDimensions) var dimensions
-    
-    func body(content: Content) -> some View {
-        content
-            .padding(dimensions.spacing.fixedMd)
-            .foregroundStyle(scheme.onBgBasicEmphasis90Default)
-            .background(scheme.bgBasicLevel2Default)
-            .cornerRadius(dimensions.border.radiusXs)
-            .overlay(
-                RoundedRectangle(cornerRadius: dimensions.border.radiusXs)
-                .inset(by: 0.5)
-                .stroke(scheme.onBgBasicEmphasis90Default, lineWidth: dimensions.border.height3xs)
-            )
-    }
-}
-
-struct Layer3Modifier: ViewModifier {
-    @Environment(\.activeColorScheme) var scheme
-    @Environment(\.adaptiveThemeDimensions) var dimensions
-    
-    func body(content: Content) -> some View {
-        content
-            .padding(dimensions.spacing.fixedMd)
-            .foregroundStyle(scheme.onBgBasicEmphasis80Default)
-            .background(scheme.bgBasicLevel3Default)
-            .cornerRadius(dimensions.border.radiusXs)
-            .overlay(
-                RoundedRectangle(cornerRadius: dimensions.border.radiusXs)
-                .inset(by: 0.5)
-                .stroke(scheme.onBgBasicEmphasis80Default, lineWidth: dimensions.border.height3xs)
-            )
-    }
-}
-
-extension View {
-    public func stylable() -> some View {
-        modifier(StylableView())
-    }
-    
-    public func layer2() -> some View {
-        modifier(Layer2Modifier())
-    }
-    
-    public func layer3() -> some View {
-        modifier(Layer3Modifier())
+        .background(activeColorScheme.basic.background.level1.default)
     }
 }
 
@@ -149,11 +88,11 @@ struct AdaptiveView: View {
                 VStack(spacing: dimensions.spacing.fixedSm) {
                     Text("This View is on Layer 3")
                 }
-                .layer3()
+                .dbElevation3()
             }
-            .layer2()
+            .dbElevation2()
         }
-        .stylable()
+        .dbElevation1()
     }
 }
 

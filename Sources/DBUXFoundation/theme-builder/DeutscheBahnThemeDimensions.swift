@@ -57,7 +57,7 @@ struct DeutscheBahnThemeDimensions {
   var sizing: SizingDimensions
   var border: BorderDimensions
 }
-nonisolated(unsafe) var spacingDimensionsFunctionalMobile = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveFunctionalMobile3xs,
+let spacingDimensionsFunctionalMobile = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveFunctionalMobile3xs,
 responsive2xs: Dimensions.spacingResponsiveFunctionalMobile2xs,
 responsiveXs: Dimensions.spacingResponsiveFunctionalMobileXs,
 responsiveSm: Dimensions.spacingResponsiveFunctionalMobileSm,
@@ -76,7 +76,7 @@ fixedXl: Dimensions.spacingFixedFunctionalXl,
 fixed2xl: Dimensions.spacingFixedFunctional2xl,
 fixed3xl: Dimensions.spacingFixedFunctional3xl
 )
-nonisolated(unsafe) var sizingDimensionsFunctionalMobile = SizingDimensions(base3xs: Dimensions.sizingFunctional3xs,
+let sizingDimensionsFunctionalMobile = SizingDimensions(base3xs: Dimensions.sizingFunctional3xs,
 base2xs: Dimensions.sizingFunctional2xs,
 baseXs: Dimensions.sizingFunctionalXs,
 baseSm: Dimensions.sizingFunctionalSm,
@@ -86,7 +86,7 @@ baseXl: Dimensions.sizingFunctionalXl,
 base2xl: Dimensions.sizingFunctional2xl,
 base3xl: Dimensions.sizingFunctional3xl
 )
-nonisolated(unsafe) var borderDimensionsFunctionalMobile = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
+let borderDimensionsFunctionalMobile = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
 height2xs: Dimensions.borderHeight2xs,
 heightXs: Dimensions.borderHeightXs,
 heightSm: Dimensions.borderHeightSm,
@@ -114,7 +114,7 @@ sizing: sizing,
 border: border
 )
 }
-nonisolated(unsafe) var spacingDimensionsFunctionalTablet = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveFunctionalTablet3xs,
+let spacingDimensionsFunctionalTablet = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveFunctionalTablet3xs,
 responsive2xs: Dimensions.spacingResponsiveFunctionalTablet2xs,
 responsiveXs: Dimensions.spacingResponsiveFunctionalTabletXs,
 responsiveSm: Dimensions.spacingResponsiveFunctionalTabletSm,
@@ -133,7 +133,7 @@ fixedXl: Dimensions.spacingFixedFunctionalXl,
 fixed2xl: Dimensions.spacingFixedFunctional2xl,
 fixed3xl: Dimensions.spacingFixedFunctional3xl
 )
-nonisolated(unsafe) var sizingDimensionsFunctionalTablet = SizingDimensions(base3xs: Dimensions.sizingFunctional3xs,
+let sizingDimensionsFunctionalTablet = SizingDimensions(base3xs: Dimensions.sizingFunctional3xs,
 base2xs: Dimensions.sizingFunctional2xs,
 baseXs: Dimensions.sizingFunctionalXs,
 baseSm: Dimensions.sizingFunctionalSm,
@@ -143,7 +143,7 @@ baseXl: Dimensions.sizingFunctionalXl,
 base2xl: Dimensions.sizingFunctional2xl,
 base3xl: Dimensions.sizingFunctional3xl
 )
-nonisolated(unsafe) var borderDimensionsFunctionalTablet = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
+let borderDimensionsFunctionalTablet = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
 height2xs: Dimensions.borderHeight2xs,
 heightXs: Dimensions.borderHeightXs,
 heightSm: Dimensions.borderHeightSm,
@@ -171,7 +171,7 @@ sizing: sizing,
 border: border
 )
 }
-nonisolated(unsafe) var spacingDimensionsRegularMobile = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveRegularMobile3xs,
+let spacingDimensionsRegularMobile = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveRegularMobile3xs,
 responsive2xs: Dimensions.spacingResponsiveRegularMobile2xs,
 responsiveXs: Dimensions.spacingResponsiveRegularMobileXs,
 responsiveSm: Dimensions.spacingResponsiveRegularMobileSm,
@@ -190,7 +190,7 @@ fixedXl: Dimensions.spacingFixedRegularXl,
 fixed2xl: Dimensions.spacingFixedRegular2xl,
 fixed3xl: Dimensions.spacingFixedRegular3xl
 )
-nonisolated(unsafe) var sizingDimensionsRegularMobile = SizingDimensions(base3xs: Dimensions.sizingRegular3xs,
+let sizingDimensionsRegularMobile = SizingDimensions(base3xs: Dimensions.sizingRegular3xs,
 base2xs: Dimensions.sizingRegular2xs,
 baseXs: Dimensions.sizingRegularXs,
 baseSm: Dimensions.sizingRegularSm,
@@ -200,7 +200,7 @@ baseXl: Dimensions.sizingRegularXl,
 base2xl: Dimensions.sizingRegular2xl,
 base3xl: Dimensions.sizingRegular3xl
 )
-nonisolated(unsafe) var borderDimensionsRegularMobile = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
+let borderDimensionsRegularMobile = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
 height2xs: Dimensions.borderHeight2xs,
 heightXs: Dimensions.borderHeightXs,
 heightSm: Dimensions.borderHeightSm,
@@ -228,7 +228,7 @@ sizing: sizing,
 border: border
 )
 }
-nonisolated(unsafe) var spacingDimensionsRegularTablet = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveRegularTablet3xs,
+let spacingDimensionsRegularTablet = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveRegularTablet3xs,
 responsive2xs: Dimensions.spacingResponsiveRegularTablet2xs,
 responsiveXs: Dimensions.spacingResponsiveRegularTabletXs,
 responsiveSm: Dimensions.spacingResponsiveRegularTabletSm,
@@ -247,7 +247,7 @@ fixedXl: Dimensions.spacingFixedRegularXl,
 fixed2xl: Dimensions.spacingFixedRegular2xl,
 fixed3xl: Dimensions.spacingFixedRegular3xl
 )
-nonisolated(unsafe) var sizingDimensionsRegularTablet = SizingDimensions(base3xs: Dimensions.sizingRegular3xs,
+let sizingDimensionsRegularTablet = SizingDimensions(base3xs: Dimensions.sizingRegular3xs,
 base2xs: Dimensions.sizingRegular2xs,
 baseXs: Dimensions.sizingRegularXs,
 baseSm: Dimensions.sizingRegularSm,
@@ -257,7 +257,7 @@ baseXl: Dimensions.sizingRegularXl,
 base2xl: Dimensions.sizingRegular2xl,
 base3xl: Dimensions.sizingRegular3xl
 )
-nonisolated(unsafe) var borderDimensionsRegularTablet = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
+let borderDimensionsRegularTablet = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
 height2xs: Dimensions.borderHeight2xs,
 heightXs: Dimensions.borderHeightXs,
 heightSm: Dimensions.borderHeightSm,
@@ -285,7 +285,7 @@ sizing: sizing,
 border: border
 )
 }
-nonisolated(unsafe) var spacingDimensionsExpressiveMobile = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveExpressiveMobile3xs,
+let spacingDimensionsExpressiveMobile = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveExpressiveMobile3xs,
 responsive2xs: Dimensions.spacingResponsiveExpressiveMobile2xs,
 responsiveXs: Dimensions.spacingResponsiveExpressiveMobileXs,
 responsiveSm: Dimensions.spacingResponsiveExpressiveMobileSm,
@@ -304,7 +304,7 @@ fixedXl: Dimensions.spacingFixedExpressiveXl,
 fixed2xl: Dimensions.spacingFixedExpressive2xl,
 fixed3xl: Dimensions.spacingFixedExpressive3xl
 )
-nonisolated(unsafe) var sizingDimensionsExpressiveMobile = SizingDimensions(base3xs: Dimensions.sizingExpressive3xs,
+let sizingDimensionsExpressiveMobile = SizingDimensions(base3xs: Dimensions.sizingExpressive3xs,
 base2xs: Dimensions.sizingExpressive2xs,
 baseXs: Dimensions.sizingExpressiveXs,
 baseSm: Dimensions.sizingExpressiveSm,
@@ -314,7 +314,7 @@ baseXl: Dimensions.sizingExpressiveXl,
 base2xl: Dimensions.sizingExpressive2xl,
 base3xl: Dimensions.sizingExpressive3xl
 )
-nonisolated(unsafe) var borderDimensionsExpressiveMobile = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
+let borderDimensionsExpressiveMobile = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
 height2xs: Dimensions.borderHeight2xs,
 heightXs: Dimensions.borderHeightXs,
 heightSm: Dimensions.borderHeightSm,
@@ -342,7 +342,7 @@ sizing: sizing,
 border: border
 )
 }
-nonisolated(unsafe) var spacingDimensionsExpressiveTablet = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveExpressiveTablet3xs,
+let spacingDimensionsExpressiveTablet = SpacingDimensions(responsive3xs: Dimensions.spacingResponsiveExpressiveTablet3xs,
 responsive2xs: Dimensions.spacingResponsiveExpressiveTablet2xs,
 responsiveXs: Dimensions.spacingResponsiveExpressiveTabletXs,
 responsiveSm: Dimensions.spacingResponsiveExpressiveTabletSm,
@@ -361,7 +361,7 @@ fixedXl: Dimensions.spacingFixedExpressiveXl,
 fixed2xl: Dimensions.spacingFixedExpressive2xl,
 fixed3xl: Dimensions.spacingFixedExpressive3xl
 )
-nonisolated(unsafe) var sizingDimensionsExpressiveTablet = SizingDimensions(base3xs: Dimensions.sizingExpressive3xs,
+let sizingDimensionsExpressiveTablet = SizingDimensions(base3xs: Dimensions.sizingExpressive3xs,
 base2xs: Dimensions.sizingExpressive2xs,
 baseXs: Dimensions.sizingExpressiveXs,
 baseSm: Dimensions.sizingExpressiveSm,
@@ -371,7 +371,7 @@ baseXl: Dimensions.sizingExpressiveXl,
 base2xl: Dimensions.sizingExpressive2xl,
 base3xl: Dimensions.sizingExpressive3xl
 )
-nonisolated(unsafe) var borderDimensionsExpressiveTablet = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
+let borderDimensionsExpressiveTablet = BorderDimensions(height3xs: Dimensions.borderHeight3xs,
 height2xs: Dimensions.borderHeight2xs,
 heightXs: Dimensions.borderHeightXs,
 heightSm: Dimensions.borderHeightSm,

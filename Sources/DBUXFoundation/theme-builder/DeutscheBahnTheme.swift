@@ -43,13 +43,13 @@ struct DeutscheBahnThemeModifier: ViewModifier {
     }
     
     var adaptiveColorScheme: DeutscheBahnThemeColorScheme {
-        systemColorScheme == .light ? LightColorScheme : DarkColorScheme
+        systemColorScheme == .dark ? DarkColorScheme : LightColorScheme
     }
 }
 
 extension EnvironmentValues {
     @Entry var themeColorScheme: DeutscheBahnThemeColorScheme = getColorSchemeLight()
-    @Entry var activeColorScheme: any AdaptiveColors = getColorSchemeLight().neutral
+    @Entry var activeColorScheme: AdaptiveColors = getColorSchemeLight().neutral
     @Entry var adaptiveThemeDimensions: DeutscheBahnThemeDimensions = getDimensionsRegularMobile()
 }
 
