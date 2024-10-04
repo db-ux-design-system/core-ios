@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct SpacingDimensions {
+struct SpacingDimensions: Equatable {
   var responsive3xs: CGFloat
   var responsive2xs: CGFloat
   var responsiveXs: CGFloat
@@ -21,7 +21,7 @@ struct SpacingDimensions {
   var fixed2xl: CGFloat
   var fixed3xl: CGFloat
 }
-struct SizingDimensions {
+struct SizingDimensions: Equatable {
   var base3xs: CGFloat
   var base2xs: CGFloat
   var baseXs: CGFloat
@@ -32,7 +32,7 @@ struct SizingDimensions {
   var base2xl: CGFloat
   var base3xl: CGFloat
 }
-struct BorderDimensions {
+struct BorderDimensions: Equatable {
   var height3xs: CGFloat
   var height2xs: CGFloat
   var heightXs: CGFloat
@@ -52,7 +52,7 @@ struct BorderDimensions {
   var radius2xl: CGFloat
   var radius3xl: CGFloat
 }
-struct DeutscheBahnThemeDimensions {
+struct DeutscheBahnThemeDimensions: Equatable {
   var spacing: SpacingDimensions
   var sizing: SizingDimensions
   var border: BorderDimensions

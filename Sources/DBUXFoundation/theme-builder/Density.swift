@@ -1,5 +1,5 @@
-enum  Density {
-  case functional
-  case regular
-  case expressive
+enum  Density: String {
+  case functional = "Functional"
+  case regular = "Regular"
+  case expressive = "Expressive"
 }

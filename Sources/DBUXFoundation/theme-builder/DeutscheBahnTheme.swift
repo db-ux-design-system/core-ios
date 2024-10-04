@@ -5,45 +5,26 @@ nonisolated(unsafe) private var DarkColorScheme = getColorSchemeDark()
 
 nonisolated(unsafe) private var LightColorScheme = getColorSchemeLight()
 
-//struct DBApp<Content: View>: View {
-//    @Environment(\.colorScheme) var systemColorScheme
-//
-//    @ViewBuilder let content: Content
-//
-//    var body: some View {
-//        content
-//            .colorScheme(colorScheme)
-//            .environment(\.adaptiveThemeDimensions, dimensions)
-//            .onChange(of: systemColorScheme) { oldValue, newValue in
-//                print("Color scheme changed from \(oldValue) to \(newValue)")
-//            }
-//    }
-//
-//    var colorScheme: DeutscheBahnThemeColorScheme {
-//        systemColorScheme == .light ? getColorSchemeLight() : getColorSchemeDark()
-//    }
-//
-//    var dimensions: DeutscheBahnThemeDimensions {
-//        UIDevice.current.userInterfaceIdiom == .pad ? getDimensionsRegularTablet() : getDimensionsRegularMobile()
-//    }
-//
-////    var typographie: DeutscheBahnThemeTypographie {
-////
-////    }
-//}
-
-
 struct DeutscheBahnThemeModifier: ViewModifier {
     @Environment(\.colorScheme) var systemColorScheme
+    @Environment(\.adaptiveThemeDimensions) var dimensions
+    @Environment(\.adaptiveThemeFonts) var adaptiveThemeFonts
     
     func body(content: Content) -> some View {
         content
             .themeColorScheme(adaptiveColorScheme)
             .activeColorScheme(adaptiveColorScheme.neutral)
+            .themeFonts(adaptiveFonts)
     }
     
     var adaptiveColorScheme: DeutscheBahnThemeColorScheme {
         systemColorScheme == .dark ? DarkColorScheme : LightColorScheme
+    }
+    
+    var adaptiveFonts: DeutscheBahnThemeFonts {
+        // TODO: Use dimensions environment variable
+        let typography = UIDevice.current.userInterfaceIdiom == .pad ? getTypographyRegularTablet() : getTypographyRegularMobile()
+        return getFonts(typo: typography)
     }
 }
 
@@ -51,6 +32,7 @@ extension EnvironmentValues {
     @Entry var themeColorScheme: DeutscheBahnThemeColorScheme = getColorSchemeLight()
     @Entry var activeColorScheme: AdaptiveColors = getColorSchemeLight().neutral
     @Entry var adaptiveThemeDimensions: DeutscheBahnThemeDimensions = getDimensionsRegularMobile()
+    @Entry var adaptiveThemeFonts: DeutscheBahnThemeFonts = getFonts(typo: getTypographyFunctionalMobile())
 }
 
 extension View {
@@ -64,6 +46,10 @@ extension View {
     
     func activeColorScheme(_ colors: AdaptiveColors) -> some View {
         environment(\.activeColorScheme, colors)
+    }
+    
+    func themeFonts(_ fonts: DeutscheBahnThemeFonts) -> some View {
+        environment(\.adaptiveThemeFonts, fonts)
     }
 }
     

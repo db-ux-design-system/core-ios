@@ -72,6 +72,7 @@ struct ContentView: View {
 struct AdaptiveView: View {
     @Environment(\.adaptiveThemeDimensions) var dimensions
     @Environment(\.activeColorScheme) var colorScheme
+    @Environment(\.adaptiveThemeFonts) var fonts
     
     let headline: String
     
@@ -81,12 +82,16 @@ struct AdaptiveView: View {
                 .resizable()
                 .frame(width: dimensions.sizing.baseSm, height: dimensions.sizing.baseSm)
                 .foregroundColor(colorScheme.onBgBasicEmphasis80Default)
+
             Text(headline)
+                .font(fonts.h1)
             VStack(spacing: dimensions.spacing.fixedSm) {
                 Text("This View is on Layer 2")
+                    .font(fonts.body)
                 
                 VStack(spacing: dimensions.spacing.fixedSm) {
                     Text("This View is on Layer 3")
+                        .font(fonts.bodySm)
                 }
                 .dbElevation3()
             }
