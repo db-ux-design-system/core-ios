@@ -1,4 +1,8 @@
-# DB UX Design System iOS
+# DB UX Design System Framework for SwiftUI
+
+Welcome to the UX Design System Framework project for SwiftUI!
+
+For detailed development guidelines, please refer to our [DEVELOPMENT.md](./DEVELOPMENT.md) document.
 
 ## License
 
