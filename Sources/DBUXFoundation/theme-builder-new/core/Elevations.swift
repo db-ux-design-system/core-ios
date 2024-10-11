@@ -33,8 +33,8 @@ struct DBElevation {
         third: .init(
             x: 0, 
             y: 0, 
-            blur: 4, 
-            spread: 1, 
+            blur: 2, 
+            spread: 0, 
             color: Color(red: 0, green: 0, blue: 0, opacity: 0.14)
         )
     )
@@ -56,8 +56,8 @@ struct DBElevation {
         third: .init(
             x: 0, 
             y: 0, 
-            blur: 8, 
-            spread: 1, 
+            blur: 4, 
+            spread: 0, 
             color: Color(red: 0, green: 0, blue: 0, opacity: 0.14)
         )
     )
@@ -79,9 +79,12 @@ struct DBElevation {
         third: .init(
             x: 0, 
             y: 0, 
-            blur: 16, 
-            spread: 3, 
+            blur: 8, 
+            spread: 1, 
             color: Color(red: 0, green: 0, blue: 0, opacity: 0.14)
         )
     )
 }
+
+
+  

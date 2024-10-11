@@ -1,6 +1,8 @@
 import SwiftUI
+import UIKit
+
 struct DBFont {
-    private let name: String
+    let name: String
     private let publicName: String
     
     private init(named name: String, publicName: String) {
@@ -8,6 +10,7 @@ struct DBFont {
         self.publicName = publicName
         do {
             try registerFont(fontName: name)
+            print("Registered Font \(name)")
         } catch {
             let reason = error.localizedDescription
             fatalError("Failed to register font: \(reason)")
@@ -18,7 +21,12 @@ struct DBFont {
         Font.custom(publicName, size: size)
     }
     
-    static let flex = DBFont(named: "DBNeoScreenFlex", publicName: "DB Neo Screen Flex")
+    public func uiFont(size: CGFloat) -> UIFont {
+        UIFont(name: publicName, size: size)!
+    }
+    
+    static let dbFlex = DBFont(named: "DBNeoScreenFlex", publicName: "DB Neo Screen Flex")
+    
 }
 
 public enum FontError: Swift.Error {
@@ -40,3 +48,4 @@ func registerFont(fontName: String) throws {
         return true
     }
 }
+

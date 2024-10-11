@@ -18,8 +18,6 @@ import SwiftUI
 
 struct DropShadowModifier: ViewModifier {
     
-    @Environment(\.adaptiveThemeDimensions) var adaptiveThemeDimensions
-    
     let elevation: DBSubElevation
     
     func body(content: Content) -> some View {
@@ -27,11 +25,8 @@ struct DropShadowModifier: ViewModifier {
             .background(
                 content
                     .shadow(color: elevation.first.color, radius: elevation.first.spread, x: elevation.first.x, y: elevation.first.y)
-//                    .blur(radius: elevation.first.blur, opaque: false)
                     .shadow(color: elevation.second.color, radius: elevation.second.spread, x: elevation.second.x, y: elevation.second.y)
-//                    .blur(radius: elevation.second.blur, opaque: false)
                     .shadow(color: elevation.third.color, radius: elevation.third.spread, x: elevation.third.x, y: elevation.third.y)
-//                    .blur(radius: elevation.third.blur, opaque: false)
             )
     }
 }

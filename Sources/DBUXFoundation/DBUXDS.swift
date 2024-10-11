@@ -18,86 +18,82 @@ import SwiftUI
 import DBUXFoundation
 
 struct ContentView: View {
-    @Environment(\.adaptiveThemeDimensions) var dimensions
-    @Environment(\.themeColorScheme) var themeColorScheme
-    @Environment(\.activeColorScheme) var activeColorScheme
+    @Environment(\.theme) var theme
     @State var scheme: AdaptiveColors?
     
     var body: some View {
         ScrollView {
-            VStack(spacing: dimensions.spacing.fixed3xs) {
+            VStack {
                 HStack {
                     Spacer()
                 }
 
-                AdaptiveView(headline: "Functional")
-                    .environment(\.adaptiveThemeDimensions, getDimensionsFunctionalMobile())
-                    .activeColorScheme(scheme ?? activeColorScheme)
+                SampleView(headline: "Functional")
+//                    .environment(\.adaptiveThemeDimensions, getDimensionsFunctionalMobile())
+//                    .activeColorScheme(scheme ?? activeColorScheme)
                 
-                AdaptiveView(headline: "Regular")
-                    .environment(\.adaptiveThemeDimensions, getDimensionsRegularMobile())
-                    .activeColorScheme(themeColorScheme.warning)
+                SampleView(headline: "Regular")
+//                    .environment(\.adaptiveThemeDimensions, getDimensionsRegularMobile())
+//                    .activeColorScheme(themeColorScheme.warning)
                 
-                AdaptiveView(headline: "Expressive")
-                    .environment(\.adaptiveThemeDimensions, getDimensionsExpressiveMobile())
-                    .activeColorScheme(themeColorScheme.violet)
+                SampleView(headline: "Expressive")
+//                    .environment(\.adaptiveThemeDimensions, getDimensionsExpressiveMobile())
+//                    .activeColorScheme(themeColorScheme.violet)
                 
                 Button("Button iOS default") {
-                    scheme = themeColorScheme.neutral
+                    scheme = theme.colorScheme.neutral
                 }
                 
                 Button("Button with Color Scheme") {
-                    scheme = themeColorScheme.informational
+                    scheme = theme.colorScheme.informational
                 }
-                .dbElevation1()
+//                .dbElevation1()
                 
                 Button("Button with Warning Color Scheme") {
-                    scheme = themeColorScheme.warning
+                    scheme = theme.colorScheme.warning
                 }
-                .dbElevation1()
-                .activeColorScheme(themeColorScheme.warning)
+//                .dbElevation1()
+//                .activeColorScheme(theme.colorScheme.warning)
                 
                 Button("Button with Violet Color Scheme") {
-                    scheme = themeColorScheme.violet
+                    scheme = theme.colorScheme.violet
                 }
-                .dbElevation1()
-                .activeColorScheme(themeColorScheme.violet)
+//                .dbElevation1()
+//                .activeColorScheme(theme.colorScheme.violet)
                 
             }
         }
-        .background(activeColorScheme.basic.background.level1.default)
+        .background(theme.activeColor.basic.background.level1.default)
     }
 }
 
-struct AdaptiveView: View {
-    @Environment(\.adaptiveThemeDimensions) var dimensions
-    @Environment(\.activeColorScheme) var colorScheme
-    @Environment(\.adaptiveThemeFonts) var fonts
+struct SampleView: View {
+    @Environment(\.theme) var theme
     
     let headline: String
     
     var body: some View {
-        VStack(spacing: dimensions.spacing.fixedSm) {
+        VStack {
             Image(systemName: "globe")
                 .resizable()
-                .frame(width: dimensions.sizing.baseSm, height: dimensions.sizing.baseSm)
-                .foregroundColor(colorScheme.onBgBasicEmphasis80Default)
+                .frame(width: 20, height: 20)
+                .foregroundColor(theme.activeColor.onBgBasicEmphasis80Default)
 
             Text(headline)
-                .font(fonts.h1)
-            VStack(spacing: dimensions.spacing.fixedSm) {
+//                .font(theme.fonts.h1)
+            VStack {
                 Text("This View is on Layer 2")
-                    .font(fonts.body)
+//                    .font(theme.fonts.body)
                 
-                VStack(spacing: dimensions.spacing.fixedSm) {
+                VStack {
                     Text("This View is on Layer 3")
-                        .font(fonts.bodySm)
+//                        .font(theme.fonts.bodySm)
                 }
-                .dbElevation3()
+//                .dbElevation3()
             }
-            .dbElevation2()
+//            .dbElevation2()
         }
-        .dbElevation1()
+//        .dbElevation1()
     }
 }
 

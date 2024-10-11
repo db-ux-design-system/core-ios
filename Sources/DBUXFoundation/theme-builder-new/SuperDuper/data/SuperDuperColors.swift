@@ -1,6 +1,6 @@
 import SwiftUI
 
-let dbColors: [String: Color] = [
+let SuperDuperColors: [String: Color] = [
   "neutral0": Color(hex: 0x070709),
   "neutral1": Color(hex: 0x0d0e11),
   "neutral2": Color(hex: 0x121316),
@@ -29,34 +29,34 @@ let dbColors: [String: Color] = [
   "neutralOriginDefaultDark": Color(hex: 0x646973),
   "neutralOriginHoveredDark": Color(hex: 0x7c828e),
   "neutralOriginPressedDark": Color(hex: 0x969ca9),
-  "brand0": Color(hex: 0x1a0000),
-  "brand1": Color(hex: 0x280001),
-  "brand2": Color(hex: 0x310001),
-  "brand3": Color(hex: 0x410002),
-  "brand4": Color(hex: 0x690004),
-  "brand5": Color(hex: 0x930009),
-  "brand6": Color(hex: 0xc00010),
-  "brand7": Color(hex: 0xef0016),
-  "brand8": Color(hex: 0xff5357),
-  "brand9": Color(hex: 0xff888a),
-  "brand10": Color(hex: 0xffb3b4),
-  "brand11": Color(hex: 0xffdada),
-  "brand12": Color(hex: 0xffe9e9),
-  "brand13": Color(hex: 0xfff0f0),
-  "brand14": Color(hex: 0xfff8f8),
-  "brandOrigin": Color(hex: 0xEC0016),
-  "brandOnOriginDefaultLight": Color(hex: 0xffffff),
-  "brandOnOriginHoveredLight": Color(hex: 0xffdada),
-  "brandOnOriginPressedLight": Color(hex: 0xffb3b4),
-  "brandOriginDefaultLight": Color(hex: 0xEC0016),
-  "brandOriginHoveredLight": Color(hex: 0xbd000f),
-  "brandOriginPressedLight": Color(hex: 0x900009),
-  "brandOnOriginDefaultDark": Color(hex: 0xffffff),
-  "brandOnOriginHoveredDark": Color(hex: 0xffdada),
-  "brandOnOriginPressedDark": Color(hex: 0xffb3b4),
-  "brandOriginDefaultDark": Color(hex: 0xEC0016),
-  "brandOriginHoveredDark": Color(hex: 0xff4f53),
-  "brandOriginPressedDark": Color(hex: 0xff8587),
+  "brand0": Color(hex: 0x030902),
+  "brand1": Color(hex: 0x051104),
+  "brand2": Color(hex: 0x081706),
+  "brand3": Color(hex: 0x0d200a),
+  "brand4": Color(hex: 0x1a3717),
+  "brand5": Color(hex: 0x284f24),
+  "brand6": Color(hex: 0x386932),
+  "brand7": Color(hex: 0x488540),
+  "brand8": Color(hex: 0x58a14f),
+  "brand9": Color(hex: 0x69be5f),
+  "brand10": Color(hex: 0x7bdc6f),
+  "brand11": Color(hex: 0x9ff796),
+  "brand12": Color(hex: 0xcbfac7),
+  "brand13": Color(hex: 0xdefcdc),
+  "brand14": Color(hex: 0xeffdee),
+  "brandOrigin": Color(hex: 0x4D8E45),
+  "brandOnOriginDefaultLight": Color(hex: 0x030902),
+  "brandOnOriginHoveredLight": Color(hex: 0x12240d),
+  "brandOnOriginPressedLight": Color(hex: 0x203b19),
+  "brandOriginDefaultLight": Color(hex: 0x4D8E45),
+  "brandOriginHoveredLight": Color(hex: 0x3d7236),
+  "brandOriginPressedLight": Color(hex: 0x2d5828),
+  "brandOnOriginDefaultDark": Color(hex: 0x030902),
+  "brandOnOriginHoveredDark": Color(hex: 0x12240d),
+  "brandOnOriginPressedDark": Color(hex: 0x203b19),
+  "brandOriginDefaultDark": Color(hex: 0x4D8E45),
+  "brandOriginHoveredDark": Color(hex: 0x5eab54),
+  "brandOriginPressedDark": Color(hex: 0x6fc864),
   "informational0": Color(hex: 0x01080f),
   "informational1": Color(hex: 0x011018),
   "informational2": Color(hex: 0x021520),
@@ -422,17 +422,3 @@ let dbColors: [String: Color] = [
   "greenOriginHoveredDark": Color(hex: 0x75c31b),
   "greenOriginPressedDark": Color(hex: 0x88e221)
 ]
-  
-extension Color {
-  init(hex: Int, opacity: Double = 1) {
-      self.init(
-          .sRGB,
-          red: Double((hex >> 16) & 0xff) / 255,
-          green: Double((hex >> 08) & 0xff) / 255,
-          blue: Double((hex >> 00) & 0xff) / 255,
-          opacity: opacity
-      )
-  }
-}
-
-  
