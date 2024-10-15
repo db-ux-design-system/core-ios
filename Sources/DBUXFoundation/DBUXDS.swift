@@ -15,10 +15,10 @@
 //
 
 import SwiftUI
-import DBUXFoundation
 
 struct ContentView: View {
     @Environment(\.theme) var theme
+    
     @State var scheme: AdaptiveColors?
     
     var body: some View {
@@ -29,16 +29,15 @@ struct ContentView: View {
                 }
 
                 SampleView(headline: "Functional")
-//                    .environment(\.adaptiveThemeDimensions, getDimensionsFunctionalMobile())
-//                    .activeColorScheme(scheme ?? activeColorScheme)
+                    .activeColorScheme(theme.colorScheme.informational)
+                    .dsFunctional()
                 
                 SampleView(headline: "Regular")
-//                    .environment(\.adaptiveThemeDimensions, getDimensionsRegularMobile())
-//                    .activeColorScheme(themeColorScheme.warning)
+                    .activeColorScheme(theme.colorScheme.warning)
                 
                 SampleView(headline: "Expressive")
-//                    .environment(\.adaptiveThemeDimensions, getDimensionsExpressiveMobile())
-//                    .activeColorScheme(themeColorScheme.violet)
+                    .activeColorScheme(theme.colorScheme.violet)
+                    .dsExpressive()
                 
                 Button("Button iOS default") {
                     scheme = theme.colorScheme.neutral
@@ -47,19 +46,19 @@ struct ContentView: View {
                 Button("Button with Color Scheme") {
                     scheme = theme.colorScheme.informational
                 }
-//                .dbElevation1()
+                .dbElevation1()
                 
                 Button("Button with Warning Color Scheme") {
                     scheme = theme.colorScheme.warning
                 }
-//                .dbElevation1()
-//                .activeColorScheme(theme.colorScheme.warning)
+                .dbElevation1()
+                .activeColorScheme(theme.colorScheme.warning)
                 
                 Button("Button with Violet Color Scheme") {
                     scheme = theme.colorScheme.violet
                 }
-//                .dbElevation1()
-//                .activeColorScheme(theme.colorScheme.violet)
+                .dbElevation1()
+                .activeColorScheme(theme.colorScheme.violet)
                 
             }
         }
@@ -73,27 +72,27 @@ struct SampleView: View {
     let headline: String
     
     var body: some View {
-        VStack {
+        VStack(spacing: theme.dimensions.spacing.responsiveXs) {
             Image(systemName: "globe")
                 .resizable()
                 .frame(width: 20, height: 20)
                 .foregroundColor(theme.activeColor.onBgBasicEmphasis80Default)
 
             Text(headline)
-//                .font(theme.fonts.h1)
+                .font(theme.fonts.h1.font)
             VStack {
                 Text("This View is on Layer 2")
-//                    .font(theme.fonts.body)
+                    .font(theme.fonts.bodyLg.font)
                 
                 VStack {
                     Text("This View is on Layer 3")
-//                        .font(theme.fonts.bodySm)
+                        .font(theme.fonts.bodySm)
                 }
-//                .dbElevation3()
+                .dbElevation3()
             }
-//            .dbElevation2()
+            .dbElevation2()
         }
-//        .dbElevation1()
+        .dbElevation1()
     }
 }
 

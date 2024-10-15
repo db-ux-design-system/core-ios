@@ -18,19 +18,31 @@ import SwiftUI
 struct SampleView1: View {
     
     @Environment(\.theme) var theme
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) var systemColorScheme
     
-    @State var selectedTheme = 0
+    @State var selectedTheme = 1
     
     @State var customTheme: Theme = SuperDuperTheme(.dark)
-    let firstTheme: Theme = DeutscheBahnTheme()
-    let secondTheme: Theme = SuperDuperTheme(.dark)
+    @State var firstTheme: Theme = SuperDuperTheme(.dark)
+    @State var secondTheme: Theme = SuperDuperTheme(.dark)
+    
+    init() {
+        self.customTheme = SuperDuperTheme(systemColorScheme)
+        self.firstTheme = DeutscheBahnTheme(systemColorScheme)
+        self.secondTheme = SuperDuperTheme(systemColorScheme)
+    }
     
     var body: some View {
         VStack {
+            Text("\(systemColorScheme)")
             Spacer()
             ExtractedView()
-                .theme(customTheme)
+                .activeColorScheme(customTheme.colorScheme.brand)
+                .dsFunctional()
+            ExtractedView()
+                .activeColorScheme(customTheme.colorScheme.neutral)
+                .dsExpressive()
+
             Spacer()
             Picker(selection: $selectedTheme, content: {
                 Text("Deutsche Bahn")
@@ -41,12 +53,12 @@ struct SampleView1: View {
                 Text("Theme")
             })
             .pickerStyle(.menu)
-            .foregroundColor(customTheme.activeColor.basic.text.default.default)
+            .foregroundColor(theme.activeColor.basic.text.default.default)
             .onChange(of: selectedTheme) { oldValue, newValue in
                 if newValue == 0 {
-                    customTheme = firstTheme
+                    customTheme = DeutscheBahnTheme(systemColorScheme)
                 } else {
-                    customTheme = secondTheme
+                    customTheme = SuperDuperTheme(systemColorScheme)
                 }
             }
         }
@@ -57,19 +69,19 @@ struct SampleView1: View {
             maxHeight: .infinity,
             alignment: .center
         )
-        .background(
-            customTheme.activeColor.basic.background.level1.default
-        )
+        .background(theme.activeColor.basic.background.level1.default)
         .onAppear() {
-            customTheme = theme
+            customTheme = DeutscheBahnTheme(systemColorScheme)
+            firstTheme = DeutscheBahnTheme(systemColorScheme)
+            secondTheme = SuperDuperTheme(systemColorScheme)
         }
-        .font(customTheme.fonts.bodyMd)
+        .font(theme.fonts.bodyMd)
     }
 }
 
 #Preview() {
     SampleView1()
-        .environment(\.theme, SuperDuperTheme())
+        .dbTheme()
 }
 
 
@@ -95,7 +107,7 @@ struct ExtractedView: View {
             .padding(.horizontal, theme.dimensions.spacing.responsive3xs)
             .background(theme.activeColor.basic.background.level2.default)
         }
-        .padding(20)
+        .padding(theme.dimensions.spacing.responsive3xs)
         .background(theme.activeColor.basic.background.level1.default)
         .foregroundColor(theme.activeColor.basic.text.emphasis80.default)
     }

@@ -299,6 +299,7 @@ struct TextStyleViewModifier: ViewModifier {
             .font(font.font)
             .fontWeight(font.fontWeight)
             .lineSpacing(font.lineHeight - font.uiFont.lineHeight)
+            .padding(.vertical, (font.lineHeight - font.uiFont.lineHeight) / 2)
     }
 }
 

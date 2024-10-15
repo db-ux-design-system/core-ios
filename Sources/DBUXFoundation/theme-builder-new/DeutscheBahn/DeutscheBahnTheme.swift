@@ -9,8 +9,8 @@ struct DeutscheBahnTheme: Theme {
     
     init(_ colorScheme: ColorScheme = .light) {
         self.colorScheme = colorScheme == .light ? getColorSchemeLight(colors: DeutscheBahnColors) : getColorSchemeDark(colors: DeutscheBahnColors)
-        self.activeColor = self.colorScheme.brand
-        self.dimensions = DesignSystemDimensions.getDimensionsFunctionalMobile(dimensions: DeutscheBahnDimensions())
+        self.activeColor = self.colorScheme.neutral
+        self.dimensions = DesignSystemDimensions.getDimensionsRegularMobile(dimensions: DeutscheBahnDimensions())
         self.fonts = DesignSystemFonts.getFonts(typo: DesignSystemTypography.getTypographyFunctionalMobile(sizes: DeutscheBahnTypography))
     }
 }
