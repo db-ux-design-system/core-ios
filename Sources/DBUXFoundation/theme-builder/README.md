@@ -5,12 +5,12 @@
 3. Add your theme to the MainActivity:
 
 ```` kotlin
-import com.example.myapplication.theme.SuperDuperTheme
+import com.example.myapplication.theme.DeutscheBahnTheme
 ...
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            SuperDuperTheme {
+            DeutscheBahnTheme {
                 //... your content
             }
         }

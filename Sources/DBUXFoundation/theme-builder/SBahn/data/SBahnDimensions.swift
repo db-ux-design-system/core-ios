@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct SuperDuperDimensions: Dimensions {
+struct SBahnDimensions: DSDimensions {
   let spacingResponsiveRegularTablet3xs: CGFloat = 16
   let spacingResponsiveRegularTablet2xs: CGFloat = 20
   let spacingResponsiveRegularTabletXs: CGFloat = 28

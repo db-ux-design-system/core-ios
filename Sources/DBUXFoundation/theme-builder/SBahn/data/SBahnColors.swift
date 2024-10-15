@@ -1,6 +1,6 @@
 import SwiftUI
 
-let SuperDuperColors: [String: Color] = [
+let SBahnColors: [String: Color] = [
   "neutral0": Color(hex: 0x070709),
   "neutral1": Color(hex: 0x0d0e11),
   "neutral2": Color(hex: 0x121316),

@@ -20,7 +20,7 @@ import SwiftUI
  This extension provides ViewModifier to set the view's elevation.
  */
 struct Elevation1ViewModifier: ViewModifier {
-    @Environment(\.theme) var theme: any Theme
+    @Environment(\.theme) var theme: any DSTheme
     
     func body(content: Content) -> some View {
         content
@@ -31,7 +31,7 @@ struct Elevation1ViewModifier: ViewModifier {
 }
     
 struct Elevation2ViewModifier: ViewModifier {
-    @Environment(\.theme) var theme: any Theme
+    @Environment(\.theme) var theme: any DSTheme
     
     func body(content: Content) -> some View {
         content
@@ -48,7 +48,7 @@ struct Elevation2ViewModifier: ViewModifier {
 }
     
 struct Elevation3ViewModifier: ViewModifier {
-    @Environment(\.theme) var theme: any Theme
+    @Environment(\.theme) var theme: any DSTheme
     
     func body(content: Content) -> some View {
         content

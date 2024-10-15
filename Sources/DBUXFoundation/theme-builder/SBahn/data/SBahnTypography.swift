@@ -1,6 +1,6 @@
 import SwiftUI
   
-let SuperDuperTypography: [String: CGFloat] = [
+let SBahnTypography: [String: CGFloat] = [
     "bodyLineHeightRegularMobileLg": 28,
     "bodyFontSizeRegularMobileLg": 20,
     "bodyLineHeightRegularMobileMd": 24,

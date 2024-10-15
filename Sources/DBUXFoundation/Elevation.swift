@@ -18,7 +18,7 @@ import SwiftUI
 
 struct DropShadowModifier: ViewModifier {
     
-    let elevation: DBSubElevation
+    let elevation: DSSubElevation
     
     func body(content: Content) -> some View {
         content
@@ -32,7 +32,7 @@ struct DropShadowModifier: ViewModifier {
 }
 
 extension View {
-    func dropShadowCell(elevation: DBSubElevation = DBElevation.sm) -> some View {
+    func dropShadowCell(elevation: DSSubElevation = DSElevation.sm) -> some View {
         self.modifier(DropShadowModifier(elevation: elevation))
     }
 }
@@ -45,16 +45,16 @@ extension View {
             Text("Hallo")
         }
             .frame(width: 100, height: 100)
-            .dropShadowCell(elevation: DBElevation.sm)
+            .dropShadowCell(elevation: DSElevation.sm)
         
         Circle()
             .fill(.white)
             .frame(width: 100, height: 100)
-            .dropShadowCell(elevation: DBElevation.md)
+            .dropShadowCell(elevation: DSElevation.md)
         
         Rectangle()
             .fill(.white)
             .frame(width: 100, height: 100)
-            .dropShadowCell(elevation: DBElevation.lg)
+            .dropShadowCell(elevation: DSElevation.lg)
     }
 }

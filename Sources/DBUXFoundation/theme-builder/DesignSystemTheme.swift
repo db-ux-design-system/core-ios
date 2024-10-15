@@ -4,44 +4,50 @@ import SwiftUI
 struct ThemeModifier: ViewModifier {
     @Environment(\.colorScheme) var systemColorScheme
     
+    var theme: DSTheme
+    
     func body(content: Content) -> some View {
-        content
-            .theme(SuperDuperTheme(systemColorScheme))
+        var changedTheme = theme
+        changedTheme.fonts = adaptiveFonts
+        changedTheme.dimensions = adaptiveDimensions
+        
+        return content
+            .theme(changedTheme)
     }
     
-    var adaptiveFonts: DesignSystemFonts {
+    var adaptiveFonts: DesignSystemTextStyles {
         // TODO: Use dimensions environment variable
-        let typography = UIDevice.current.userInterfaceIdiom == .pad ? DesignSystemTypography.getTypographyRegularTablet(sizes: SuperDuperTypography) : DesignSystemTypography.getTypographyRegularMobile(sizes: SuperDuperTypography)
-        return DesignSystemFonts.getFonts(typo: typography)
+        let typography = UIDevice.current.userInterfaceIdiom == .pad ? DesignSystemTypography.getTypographyRegularTablet(sizes: DeutscheBahnTypography) : DesignSystemTypography.getTypographyRegularMobile(sizes: DeutscheBahnTypography)
+        return DesignSystemTextStyles.getFonts(typo: typography)
     }
     
     var adaptiveDimensions: DesignSystemDimensions {
-        UIDevice.current.userInterfaceIdiom == .pad ? DesignSystemDimensions.getDimensionsRegularTablet(dimensions: SuperDuperDimensions()) : DesignSystemDimensions.getDimensionsRegularMobile(dimensions: SuperDuperDimensions())
+        UIDevice.current.userInterfaceIdiom == .pad ? DesignSystemDimensions.getDimensionsRegularTablet(dimensions: DeutscheBahnDimensions()) : DesignSystemDimensions.getDimensionsRegularMobile(dimensions: DeutscheBahnDimensions())
     }
 }
 
 extension EnvironmentValues {
-    @Entry var theme: Theme = SuperDuperTheme()
+    @Entry public var theme: DSTheme = DeutscheBahnTheme()
 }
 
 extension View {
-    public func dbTheme() -> some View {
-        modifier(ThemeModifier())
+    public func dsTheme(_ theme: DSTheme = DeutscheBahnTheme()) -> some View {
+        modifier(ThemeModifier(theme: theme))
     }
     
-    func theme(_ theme: Theme) -> some View {
+    public func theme(_ theme: DSTheme) -> some View {
         environment(\.theme, theme)
     }
     
-    func activeColorScheme(_ colorScheme: AdaptiveColors) -> some View {
+    public func activeColorScheme(_ colorScheme: DSColorVariant) -> some View {
         modifier(ActiveColorViewModifier(color: colorScheme))
     }
     
-    func dsExpressive() -> some View {
+    public func dsExpressive() -> some View {
         modifier(DimensionsViewModifier(dimensions: DesignSystemDimensions.getDimensionsExpressiveMobile(dimensions: DeutscheBahnDimensions())))
     }
     
-    func dsFunctional() -> some View {
+    public func dsFunctional() -> some View {
         modifier(DimensionsViewModifier(dimensions:
                                             UIDevice.current.userInterfaceIdiom == .pad ? DesignSystemDimensions.getDimensionsFunctionalTablet(dimensions: DeutscheBahnDimensions()) :
                                             DesignSystemDimensions.getDimensionsFunctionalMobile(dimensions: DeutscheBahnDimensions())))
@@ -51,7 +57,7 @@ extension View {
 struct ActiveColorViewModifier: ViewModifier {
     @Environment(\.theme) var theme
     
-    var color: AdaptiveColors
+    var color: DSColorVariant
     
     func body(content: Content) -> some View {
         var changedTheme = theme
@@ -76,9 +82,10 @@ struct DimensionsViewModifier: ViewModifier {
     }
 }
 
-protocol Theme {
+public protocol DSTheme {
     var colorScheme: DesignSystemColorScheme { get set }
-    var activeColor: AdaptiveColors { get set }
-    var fonts: DesignSystemFonts { get set }
+    var activeColor: DSColorVariant { get set }
+    var fonts: DesignSystemTextStyles { get set }
     var dimensions: DesignSystemDimensions { get set }
 }
+

@@ -15,21 +15,21 @@
 //
 import SwiftUI
 
-struct SampleView1: View {
+struct SampleView: View {
     
     @Environment(\.theme) var theme
     @Environment(\.colorScheme) var systemColorScheme
     
     @State var selectedTheme = 1
     
-    @State var customTheme: Theme = SuperDuperTheme(.dark)
-    @State var firstTheme: Theme = SuperDuperTheme(.dark)
-    @State var secondTheme: Theme = SuperDuperTheme(.dark)
+    @State var customTheme: DSTheme = DeutscheBahnTheme(.dark)
+    @State var firstTheme: DSTheme = DeutscheBahnTheme(.dark)
+    @State var secondTheme: DSTheme = SBahnTheme(.dark)
     
     init() {
-        self.customTheme = SuperDuperTheme(systemColorScheme)
+        self.customTheme = DeutscheBahnTheme(systemColorScheme)
         self.firstTheme = DeutscheBahnTheme(systemColorScheme)
-        self.secondTheme = SuperDuperTheme(systemColorScheme)
+        self.secondTheme = SBahnTheme(systemColorScheme)
     }
     
     var body: some View {
@@ -40,7 +40,7 @@ struct SampleView1: View {
                 .activeColorScheme(customTheme.colorScheme.brand)
                 .dsFunctional()
             ExtractedView()
-                .activeColorScheme(customTheme.colorScheme.neutral)
+                .activeColorScheme(customTheme.colorScheme.informational)
                 .dsExpressive()
 
             Spacer()
@@ -58,7 +58,7 @@ struct SampleView1: View {
                 if newValue == 0 {
                     customTheme = DeutscheBahnTheme(systemColorScheme)
                 } else {
-                    customTheme = SuperDuperTheme(systemColorScheme)
+                    customTheme = SBahnTheme(systemColorScheme)
                 }
             }
         }
@@ -73,15 +73,15 @@ struct SampleView1: View {
         .onAppear() {
             customTheme = DeutscheBahnTheme(systemColorScheme)
             firstTheme = DeutscheBahnTheme(systemColorScheme)
-            secondTheme = SuperDuperTheme(systemColorScheme)
+            secondTheme = SBahnTheme(systemColorScheme)
         }
-        .font(theme.fonts.bodyMd)
+        .font(theme.fonts.bodyMd.font)
     }
 }
 
 #Preview() {
     SampleView1()
-        .dbTheme()
+        .dsTheme()
 }
 
 
@@ -89,25 +89,25 @@ struct ExtractedView: View {
     @Environment(\.theme) var theme
     
     var body: some View {
-        VStack(alignment: .leading, spacing: theme.dimensions.spacing.responsive3xs) {
+        VStack(alignment: .leading, spacing: theme.dimensions.spacing.responsiveXs) {
             Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. ")
-                .dbTextStyle(theme.fonts.h1)
+                .dsTextStyle(theme.fonts.h1)
             
             Text("Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.")
-                .dbTextStyle(theme.fonts.bodyLg)
+                .dsTextStyle(theme.fonts.bodyLg)
 
-            VStack(alignment: .leading, spacing: theme.dimensions.spacing.responsive3xs) {
+            VStack(alignment: .leading, spacing: theme.dimensions.spacing.responsiveXs) {
                 Text("Body lg\nZeile 2")
-                    .dbTextStyle(theme.fonts.bodyLg)
+                    .dsTextStyle(theme.fonts.bodyLg)
                 Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. ")
-                    .font(theme.fonts.bodySm)
+                    .font(theme.fonts.bodySm.font)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.vertical, theme.dimensions.spacing.responsive3xs)
-            .padding(.horizontal, theme.dimensions.spacing.responsive3xs)
+            .padding(.vertical, theme.dimensions.spacing.responsiveXs)
+            .padding(.horizontal, theme.dimensions.spacing.responsiveXs)
             .background(theme.activeColor.basic.background.level2.default)
         }
-        .padding(theme.dimensions.spacing.responsive3xs)
+        .padding(theme.dimensions.spacing.responsiveXs)
         .background(theme.activeColor.basic.background.level1.default)
         .foregroundColor(theme.activeColor.basic.text.emphasis80.default)
     }

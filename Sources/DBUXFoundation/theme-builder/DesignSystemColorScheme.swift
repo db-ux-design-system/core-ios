@@ -12,106 +12,58 @@ extension Color {
   }
 }
 
-struct AdaptiveColors {
-    let bgBasicLevel1Default: Color
+public struct DSColorVariant {
+    public let bgBasicLevel1Default: Color
+    public let bgBasicLevel1Hovered: Color
+    public let bgBasicLevel1Pressed: Color
+    public let bgBasicLevel2Default: Color
+    public let bgBasicLevel2Hovered: Color
+    public let bgBasicLevel2Pressed: Color
+    public let bgBasicLevel3Default: Color
+    public let bgBasicLevel3Hovered: Color
+    public let bgBasicLevel3Pressed: Color
+    public let bgBasicTransparentFullDefault: Color
+    public let bgBasicTransparentSemiDefault: Color
+    public let bgBasicTransparentHovered: Color
+    public let bgBasicTransparentPressed: Color
+    public let onBgBasicEmphasis100Default: Color
+    public let onBgBasicEmphasis100Hovered: Color
+    public let onBgBasicEmphasis100Pressed: Color
+    public let onBgBasicEmphasis90Default: Color
+    public let onBgBasicEmphasis90Hovered: Color
+    public let onBgBasicEmphasis90Pressed: Color
+    public let onBgBasicEmphasis80Default: Color
+    public let onBgBasicEmphasis80Hovered: Color
+    public let onBgBasicEmphasis80Pressed: Color
+    public let onBgBasicEmphasis70Default: Color
+    public let onBgBasicEmphasis70Hovered: Color
+    public let onBgBasicEmphasis70Pressed: Color
+    public let onBgBasicEmphasis60Default: Color
+    public let onBgBasicEmphasis60Hovered: Color
+    public let onBgBasicEmphasis60Pressed: Color
+    public let onBgBasicEmphasis50Default: Color
+    public let onBgBasicEmphasis50Hovered: Color
+    public let onBgBasicEmphasis50Pressed: Color
+    public let bgInvertedContrastMaxDefault: Color
+    public let bgInvertedContrastMaxHovered: Color
+    public let bgInvertedContrastMaxPressed: Color
+    public let bgInvertedContrastHighDefault: Color
+    public let bgInvertedContrastHighHovered: Color
+    public let bgInvertedContrastHighPressed: Color
+    public let bgInvertedContrastLowDefault: Color
+    public let bgInvertedContrastLowHovered: Color
+    public let bgInvertedContrastLowPressed: Color
+    public let onBgInvertedDefault: Color
+    public let onBgInvertedHovered: Color
+    public let onBgInvertedPressed: Color
+    public let onOriginDefault: Color
+    public let onOriginHovered: Color
+    public let onOriginPressed: Color
+    public let originDefault: Color
+    public let originHovered: Color
+    public let originPressed: Color
 
-    let bgBasicLevel1Hovered: Color
-
-    let bgBasicLevel1Pressed: Color
-
-    let bgBasicLevel2Default: Color
-
-    let bgBasicLevel2Hovered: Color
-
-    let bgBasicLevel2Pressed: Color
-
-    let bgBasicLevel3Default: Color
-
-    let bgBasicLevel3Hovered: Color
-
-    let bgBasicLevel3Pressed: Color
-
-    let bgBasicTransparentFullDefault: Color
-
-    let bgBasicTransparentSemiDefault: Color
-
-    let bgBasicTransparentHovered: Color
-
-    let bgBasicTransparentPressed: Color
-
-    let onBgBasicEmphasis100Default: Color
-
-    let onBgBasicEmphasis100Hovered: Color
-
-    let onBgBasicEmphasis100Pressed: Color
-
-    let onBgBasicEmphasis90Default: Color
-
-    let onBgBasicEmphasis90Hovered: Color
-
-    let onBgBasicEmphasis90Pressed: Color
-
-    let onBgBasicEmphasis80Default: Color
-
-    let onBgBasicEmphasis80Hovered: Color
-
-    let onBgBasicEmphasis80Pressed: Color
-
-    let onBgBasicEmphasis70Default: Color
-
-    let onBgBasicEmphasis70Hovered: Color
-
-    let onBgBasicEmphasis70Pressed: Color
-
-    let onBgBasicEmphasis60Default: Color
-
-    let onBgBasicEmphasis60Hovered: Color
-
-    let onBgBasicEmphasis60Pressed: Color
-
-    let onBgBasicEmphasis50Default: Color
-
-    let onBgBasicEmphasis50Hovered: Color
-
-    let onBgBasicEmphasis50Pressed: Color
-
-    let bgInvertedContrastMaxDefault: Color
-
-    let bgInvertedContrastMaxHovered: Color
-
-    let bgInvertedContrastMaxPressed: Color
-
-    let bgInvertedContrastHighDefault: Color
-
-    let bgInvertedContrastHighHovered: Color
-
-    let bgInvertedContrastHighPressed: Color
-
-    let bgInvertedContrastLowDefault: Color
-
-    let bgInvertedContrastLowHovered: Color
-
-    let bgInvertedContrastLowPressed: Color
-
-    let onBgInvertedDefault: Color
-
-    let onBgInvertedHovered: Color
-
-    let onBgInvertedPressed: Color
-
-    let onOriginDefault: Color
-
-    let onOriginHovered: Color
-
-    let onOriginPressed: Color
-
-    let originDefault: Color
-
-    let originHovered: Color
-
-    let originPressed: Color
-
-    init(_ scheme: DBColorScheme, colorName: String, colors: [String: Color]) {
+    init(_ scheme: DSColorScheme, colorName: String, colors: [String: Color]) {
       switch scheme {
         case .dark:
           self.bgBasicLevel1Default = colors["\(colorName)3", default: .clear]
@@ -219,217 +171,191 @@ struct AdaptiveColors {
     }
 }
 
-struct DesignSystemColorScheme {
- let neutral: AdaptiveColors
- let brand: AdaptiveColors
- let informational: AdaptiveColors
- let warning: AdaptiveColors
- let successful: AdaptiveColors
- let critical: AdaptiveColors
- let yellow: AdaptiveColors
- let orange: AdaptiveColors
- let red: AdaptiveColors
- let pink: AdaptiveColors
- let violet: AdaptiveColors
- let blue: AdaptiveColors
- let cyan: AdaptiveColors
- let turquoise: AdaptiveColors
- let green: AdaptiveColors
+public struct DesignSystemColorScheme {
+    public let neutral: DSColorVariant
+    public let brand: DSColorVariant
+    public let informational: DSColorVariant
+    public let warning: DSColorVariant
+    public let successful: DSColorVariant
+    public let critical: DSColorVariant
+    public let yellow: DSColorVariant
+    public let orange: DSColorVariant
+    public let red: DSColorVariant
+    public let pink: DSColorVariant
+    public let violet: DSColorVariant
+    public let blue: DSColorVariant
+    public let cyan: DSColorVariant
+    public let turquoise: DSColorVariant
+    public let green: DSColorVariant
+
+    static func getColorSchemeDark(colors: [String: Color]) -> DesignSystemColorScheme {
+
+        var neutralColorsDark: DSColorVariant {
+            .init(.dark, colorName: "neutral", colors: colors)
+        }
+
+        var brandColorsDark: DSColorVariant {
+            .init(.dark, colorName: "brand", colors: colors)
+        }
+
+        var informationalColorsDark: DSColorVariant {
+            .init(.dark, colorName: "informational", colors: colors)
+        }
+
+        var warningColorsDark: DSColorVariant {
+            .init(.dark, colorName: "warning", colors: colors)
+        }
+
+        var successfulColorsDark: DSColorVariant {
+            .init(.dark, colorName: "successful", colors: colors)
+        }
+
+        var criticalColorsDark: DSColorVariant {
+            .init(.dark, colorName: "critical", colors: colors)
+        }
+
+        var yellowColorsDark: DSColorVariant {
+            .init(.dark, colorName: "yellow", colors: colors)
+        }
+
+        var orangeColorsDark: DSColorVariant {
+            .init(.dark, colorName: "orange", colors: colors)
+        }
+
+        var redColorsDark: DSColorVariant {
+            .init(.dark, colorName: "red", colors: colors)
+        }
+
+        var pinkColorsDark: DSColorVariant {
+            .init(.dark, colorName: "pink", colors: colors)
+        }
+
+        var violetColorsDark: DSColorVariant {
+            .init(.dark, colorName: "violet", colors: colors)
+        }
+
+        var blueColorsDark: DSColorVariant {
+            .init(.dark, colorName: "blue", colors: colors)
+        }
+
+        var cyanColorsDark: DSColorVariant {
+            .init(.dark, colorName: "cyan", colors: colors)
+        }
+
+        var turquoiseColorsDark: DSColorVariant {
+            .init(.dark, colorName: "turquoise", colors: colors)
+        }
+
+        var greenColorsDark: DSColorVariant {
+            .init(.dark, colorName: "green", colors: colors)
+        }
+
+
+        return .init(
+            neutral: neutralColorsDark,
+            brand: brandColorsDark,
+            informational: informationalColorsDark,
+            warning: warningColorsDark,
+            successful: successfulColorsDark,
+            critical: criticalColorsDark,
+            yellow: yellowColorsDark,
+            orange: orangeColorsDark,
+            red: redColorsDark,
+            pink: pinkColorsDark,
+            violet: violetColorsDark,
+            blue: blueColorsDark,
+            cyan: cyanColorsDark,
+            turquoise: turquoiseColorsDark,
+            green: greenColorsDark
+        )
+    }
+
+    static func getColorSchemeLight(colors: [String: Color]) -> DesignSystemColorScheme {
+
+        var neutralColorsLight: DSColorVariant {
+            .init(.light, colorName: "neutral", colors: colors)
+        }
+
+        var brandColorsLight: DSColorVariant {
+            .init(.light, colorName: "brand", colors: colors)
+        }
+
+        var informationalColorsLight: DSColorVariant {
+            .init(.light, colorName: "informational", colors: colors)
+        }
+
+        var warningColorsLight: DSColorVariant {
+            .init(.light, colorName: "warning", colors: colors)
+        }
+
+        var successfulColorsLight: DSColorVariant {
+            .init(.light, colorName: "successful", colors: colors)
+        }
+
+        var criticalColorsLight: DSColorVariant {
+            .init(.light, colorName: "critical", colors: colors)
+        }
+
+        var yellowColorsLight: DSColorVariant {
+            .init(.light, colorName: "yellow", colors: colors)
+        }
+
+        var orangeColorsLight: DSColorVariant {
+            .init(.light, colorName: "orange", colors: colors)
+        }
+
+        var redColorsLight: DSColorVariant {
+            .init(.light, colorName: "red", colors: colors)
+        }
+
+        var pinkColorsLight: DSColorVariant {
+            .init(.light, colorName: "pink", colors: colors)
+        }
+
+        var violetColorsLight: DSColorVariant {
+            .init(.light, colorName: "violet", colors: colors)
+        }
+
+        var blueColorsLight: DSColorVariant {
+            .init(.light, colorName: "blue", colors: colors)
+        }
+
+        var cyanColorsLight: DSColorVariant {
+            .init(.light, colorName: "cyan", colors: colors)
+        }
+
+        var turquoiseColorsLight: DSColorVariant {
+            .init(.light, colorName: "turquoise", colors: colors)
+        }
+
+        var greenColorsLight: DSColorVariant {
+            .init(.light, colorName: "green", colors: colors)
+        }
+
+
+        return .init(
+            neutral: neutralColorsLight,
+            brand: brandColorsLight,
+            informational: informationalColorsLight,
+            warning: warningColorsLight,
+            successful: successfulColorsLight,
+            critical: criticalColorsLight,
+            yellow: yellowColorsLight,
+            orange: orangeColorsLight,
+            red: redColorsLight,
+            pink: pinkColorsLight,
+            violet: violetColorsLight,
+            blue: blueColorsLight,
+            cyan: cyanColorsLight,
+            turquoise: turquoiseColorsLight,
+            green: greenColorsLight
+        )
+    }
+
 }
 
-func getColorSchemeDark(colors: [String: Color]) -> DesignSystemColorScheme {
 
-    var neutralColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "neutral", colors: colors)
-    }
-
-
-    var brandColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "brand", colors: colors)
-    }
-
-
-    var informationalColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "informational", colors: colors)
-    }
-
-
-    var warningColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "warning", colors: colors)
-    }
-
-
-    var successfulColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "successful", colors: colors)
-    }
-
-
-    var criticalColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "critical", colors: colors)
-    }
-
-
-    var yellowColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "yellow", colors: colors)
-    }
-
-
-    var orangeColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "orange", colors: colors)
-    }
-
-
-    var redColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "red", colors: colors)
-    }
-
-
-    var pinkColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "pink", colors: colors)
-    }
-
-
-    var violetColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "violet", colors: colors)
-    }
-
-
-    var blueColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "blue", colors: colors)
-    }
-
-
-    var cyanColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "cyan", colors: colors)
-    }
-
-
-    var turquoiseColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "turquoise", colors: colors)
-    }
-
-
-    var greenColorsDark: AdaptiveColors {
-        .init(.dark, colorName: "green", colors: colors)
-    }
-
-
-    return .init(
-        neutral: neutralColorsDark,
-        brand: brandColorsDark,
-        informational: informationalColorsDark,
-        warning: warningColorsDark,
-        successful: successfulColorsDark,
-        critical: criticalColorsDark,
-        yellow: yellowColorsDark,
-        orange: orangeColorsDark,
-        red: redColorsDark,
-        pink: pinkColorsDark,
-        violet: violetColorsDark,
-        blue: blueColorsDark,
-        cyan: cyanColorsDark,
-        turquoise: turquoiseColorsDark,
-        green: greenColorsDark
-    )
-}
-
-func getColorSchemeLight(colors: [String: Color]) -> DesignSystemColorScheme {
-
-    var neutralColorsLight: AdaptiveColors {
-        .init(.light, colorName: "neutral", colors: colors)
-    }
-
-
-    var brandColorsLight: AdaptiveColors {
-        .init(.light, colorName: "brand", colors: colors)
-    }
-
-
-    var informationalColorsLight: AdaptiveColors {
-        .init(.light, colorName: "informational", colors: colors)
-    }
-
-
-    var warningColorsLight: AdaptiveColors {
-        .init(.light, colorName: "warning", colors: colors)
-    }
-
-
-    var successfulColorsLight: AdaptiveColors {
-        .init(.light, colorName: "successful", colors: colors)
-    }
-
-
-    var criticalColorsLight: AdaptiveColors {
-        .init(.light, colorName: "critical", colors: colors)
-    }
-
-
-    var yellowColorsLight: AdaptiveColors {
-        .init(.light, colorName: "yellow", colors: colors)
-    }
-
-
-    var orangeColorsLight: AdaptiveColors {
-        .init(.light, colorName: "orange", colors: colors)
-    }
-
-
-    var redColorsLight: AdaptiveColors {
-        .init(.light, colorName: "red", colors: colors)
-    }
-
-
-    var pinkColorsLight: AdaptiveColors {
-        .init(.light, colorName: "pink", colors: colors)
-    }
-
-
-    var violetColorsLight: AdaptiveColors {
-        .init(.light, colorName: "violet", colors: colors)
-    }
-
-
-    var blueColorsLight: AdaptiveColors {
-        .init(.light, colorName: "blue", colors: colors)
-    }
-
-
-    var cyanColorsLight: AdaptiveColors {
-        .init(.light, colorName: "cyan", colors: colors)
-    }
-
-
-    var turquoiseColorsLight: AdaptiveColors {
-        .init(.light, colorName: "turquoise", colors: colors)
-    }
-
-
-    var greenColorsLight: AdaptiveColors {
-        .init(.light, colorName: "green", colors: colors)
-    }
-
-
-    return .init(
-        neutral: neutralColorsLight,
-        brand: brandColorsLight,
-        informational: informationalColorsLight,
-        warning: warningColorsLight,
-        successful: successfulColorsLight,
-        critical: criticalColorsLight,
-        yellow: yellowColorsLight,
-        orange: orangeColorsLight,
-        red: redColorsLight,
-        pink: pinkColorsLight,
-        violet: violetColorsLight,
-        blue: blueColorsLight,
-        cyan: cyanColorsLight,
-        turquoise: turquoiseColorsLight,
-        green: greenColorsLight
-    )
-}
-
-enum DBColorScheme {
+enum DSColorScheme {
     case light
     case dark
 }
