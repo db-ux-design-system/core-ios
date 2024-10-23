@@ -28,5 +28,3 @@ jobs:
 
       - name: Lint Swift
         uses: norio-nomura/action-swiftlint@3.2.1
-        with:
-          args: --config_file './.swiftlint.yml'
