@@ -1,0 +1,30 @@
+---
+name: Linting
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  build:
+    name: Linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Lint markdown
+        uses: articulate/actions-markdownlint@v1.1.0
+        with:
+          config: '.markdownlint.json'
+
+      - name: Lint yaml
+        uses: ibiqlik/action-yamllint@v3.1.1
+
+      - name: Lint Swift
+        uses: actions/checkout@v1
