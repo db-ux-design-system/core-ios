@@ -180,7 +180,8 @@ implementation details for each feature.
         @Environment(\.accessibilityContrast) var accessibilityContrast
 
         var body: some View {
-            let backgroundColor = accessibilityContrast == .high ? Color.black : Color.gray
+            let backgroundColor =
+                accessibilityContrast == .high ? Color.black : Color.gray
 
             VStack {
                 Text("High Contrast")
