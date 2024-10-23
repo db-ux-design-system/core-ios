@@ -5,7 +5,7 @@
 1. [Introduction](#introduction)
 2. [Project Overview](#project-overview)
 3. [Architecture Overview](#architecture-overview)
-4. [ADR Reference](#adr-reference)
+4. [ADR Reference](#adrs)
 5. [Implementation Guidelines](#implementation-guidelines)
 6. [Code Quality](#code-quality)
 7. [Contribution Guidelines](#contribution-guidelines)

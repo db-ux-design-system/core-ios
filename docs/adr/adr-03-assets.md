@@ -54,12 +54,12 @@ codebase.
 #### Evaluation
 
 * **Pros:**
-    * Simple and straightforward.
-    * Easy to access and use.
-    * No additional steps required in the build process.
+  * Simple and straightforward.
+  * Easy to access and use.
+  * No additional steps required in the build process.
 * **Cons:**
-    * Potentially large repository size.
-    * Manual updating process for assets.
+  * Potentially large repository size.
+  * Manual updating process for assets.
 
 ### B - Asset Catalogs with Auto-Generated Extensions
 
@@ -70,13 +70,13 @@ auto-generating Swift extensions.
 #### Evaluation
 
 * **Pros:**
-    * Centralized management of assets.
-    * Supports grouping and scaling for different resolutions.
-    * Integrated into Xcode.
-    * Automatically generates Swift code for accessing assets.
+  * Centralized management of assets.
+  * Supports grouping and scaling for different resolutions.
+  * Integrated into Xcode.
+  * Automatically generates Swift code for accessing assets.
 * **Cons:**
-    * Requires Xcode-specific setup.
-    * May require additional configuration for different platforms.
+  * Requires Xcode-specific setup.
+  * May require additional configuration for different platforms.
 
 ### C - Font and Icon Management Libraries
 
@@ -85,12 +85,12 @@ Use libraries to manage fonts and icons, such as SwiftGen.
 #### Evaluation
 
 * **Pros:**
-    * Automated asset management and generation of code.
-    * Supports scalable vector graphics and different resolutions.
-    * Keeps codebase clean.
+  * Automated asset management and generation of code.
+  * Supports scalable vector graphics and different resolutions.
+  * Keeps codebase clean.
 * **Cons:**
-    * Additional dependency.
-    * Requires initial setup and configuration.
+  * Additional dependency.
+  * Requires initial setup and configuration.
 
 ## Decision
 
@@ -103,15 +103,15 @@ Swift extensions for easy asset access.
 ## Consequences
 
 * **Positive:**
-    * Centralized management of assets.
-    * Supports different resolutions and themes.
-    * Integrated with Xcode for ease of use.
-    * Auto-generates Swift extensions for easy access to assets.
-    * Easy to update and maintain.
+  * Centralized management of assets.
+  * Supports different resolutions and themes.
+  * Integrated with Xcode for ease of use.
+  * Auto-generates Swift extensions for easy access to assets.
+  * Easy to update and maintain.
 * **Negative:**
-    * Requires initial setup in Xcode.
-    * Asset catalogs are Xcode-specific and may require configuration for
-      different platforms.
+  * Requires initial setup in Xcode.
+  * Asset catalogs are Xcode-specific and may require configuration for
+    different platforms.
 
 By implementing this approach, we ensure that our assets remain well-organized,
 easy to update, and accessible across all target platforms, with the added

@@ -23,13 +23,13 @@ more.
   auditory, motor, and cognitive disabilities.
 * **Platforms Supported:** Primarily iOS and iPadOS.
 * **Native Accessibility Features to be Supported:**
-    * VoiceOver
-    * Dynamic Type
-    * Bold Text
-    * Increase Contrast
-    * Reduce Transparency
-    * Reduce Motion
-    * Monochrome
+  * VoiceOver
+  * Dynamic Type
+  * Bold Text
+  * Increase Contrast
+  * Reduce Transparency
+  * Reduce Motion
+  * Monochrome
 * **Affected Components:** Colors, spacing, and typography from the Foundation
   Package.
 * **Standards and Guidelines:** Compliant with WCAG AA standards.
@@ -69,14 +69,15 @@ implementation details for each feature.
 ### Step-by-Step Implementation
 
 1. **Define Accessibility Attributes:**
-    * Identify and define the accessibility attributes required for each
-      component in the Design System, including colors, spacing, and typography.
+  * Identify and define the accessibility attributes required for each
+    component in the Design System, including colors, spacing, and typography.
 
 2. **Dynamic Type Implementation:**
-    * For each text style (h1, h2, h3, h4, h5, h6, p, small), map the custom
-      text sizes to the appropriate Apple text styles to support Dynamic Type.
+  * For each text style (h1, h2, h3, h4, h5, h6, p, small), map the custom
+    text sizes to the appropriate Apple text styles to support Dynamic Type.
 
    **Mapping Example:**
+
    ```swift
    struct Typography {
        static func font(forTextStyle textStyle: TextStyle) -> Font {
@@ -129,11 +130,12 @@ implementation details for each feature.
    ```
 
 3. **VoiceOver Implementation:**
-    * Ensure all interactive elements have appropriate accessibilityLabel,
-      accessibilityHint, and accessibilityTraits.
-    * Group related UI elements using accessibilityContainers where necessary.
+  * Ensure all interactive elements have appropriate accessibilityLabel,
+    accessibilityHint, and accessibilityTraits.
+  * Group related UI elements using accessibilityContainers where necessary.
 
    **VoiceOver Example:**
+
    ```swift
    struct AccessibleButton: View {
        var body: some View {
@@ -150,10 +152,11 @@ implementation details for each feature.
    ```
 
 4. **Bold Text Implementation:**
-    * Ensure that all text elements respect the bold text user setting by using
-      the `.bold()` modifier or appropriate Font settings.
+  * Ensure that all text elements respect the bold text user setting by using
+    the `.bold()` modifier or appropriate Font settings.
 
    **Bold Text Example:**
+
    ```swift
    struct BoldTextExampleView: View {
        @Environment(\.isBoldTextEnabled) var isBoldTextEnabled
@@ -167,10 +170,11 @@ implementation details for each feature.
    ```
 
 5. **Increased Contrast Implementation:**
-    * Adjust colors to ensure adequate contrast using
-      SwiftUI’s `.colorMultiply()` method to dynamically adjust color contrast.
+  * Adjust colors to ensure adequate contrast using
+    SwiftUI’s `.colorMultiply()` method to dynamically adjust color contrast.
 
    **High Contrast Example:**
+
    ```swift
    struct HighContrastView: View {
        @Environment(\.accessibilityContrast) var accessibilityContrast
@@ -190,7 +194,7 @@ implementation details for each feature.
    ```
 
 6. **Validation and Compliance:**
-    * Continuously monitor and validate the accessibility compliance of
-      components using automated tests.
-    * Maintain compliance with WCAG AA standards through regular updates and
-      refinements.
+  * Continuously monitor and validate the accessibility compliance of
+    components using automated tests.
+  * Maintain compliance with WCAG AA standards through regular updates and
+    refinements.

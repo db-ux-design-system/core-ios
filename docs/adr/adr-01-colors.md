@@ -3,7 +3,7 @@
 ## Decision and justification
 
 We will integrate color tokens exported by
-the `theme-builder` (https://github.com/db-ui/theme-builder) into our Swift
+the [theme-builder](https://github.com/db-ui/theme-builder) into our Swift
 package. These tokens will be defined as `Color` instances prefixed with the
 exported theme name and used in different color schemes through adaptive themes.
 
@@ -108,7 +108,8 @@ struct DSColorVariant {
     let bgBasicLevel2Hovered: Color
     let bgBasicLevel2Pressed: Color
     
-    // Initialize the DSColorVariant struct based on the given scheme, colorName and theme colors
+    // Initialize the DSColorVariant struct based on the given scheme,
+    // colorName and theme colors
     init(_ scheme: DSColorScheme, colorName: String, colors: [String: Color]) {
         switch scheme {
         case .dark:
@@ -139,6 +140,8 @@ enum DSColorScheme {
 ### Usage of Defined Themes (Usage example)
 
 ```swift
-let neutralColorsLight: DSColorVariant = .init(.light, colorName: "neutral", colors: colors)
-let brandColorsDark: DSColorVariant = .init(.dark, colorName: "brand", colors: colors)
+let neutralColorsLight: DSColorVariant = 
+  .init(.light, colorName: "neutral", colors: colors)
+let brandColorsDark: DSColorVariant =
+  .init(.dark, colorName: "brand", colors: colors)
 ```
