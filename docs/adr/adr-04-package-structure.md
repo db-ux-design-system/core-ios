@@ -58,13 +58,13 @@ MyDesignSystem/
 ├── Package.swift
 ├── Sources/
 │   ├── Foundation/
-│   │   ├── DBColors.swift
-│   │   ├── DBTypography.swift
-│   │   ├── DBSpacing.swift
+│   │   ├── DSColors.swift
+│   │   ├── DSTypography.swift
+│   │   ├── DSSpacing.swift
 │   │   └── ...
 │   ├── Components/
-│   │   ├── DBTextField.swift
-│   │   ├── DBModalDialog.swift
+│   │   ├── DSTextField.swift
+│   │   ├── DSModalDialog.swift
 │   │   └── ...
 │   └── Utilities/
 │       └── ...
@@ -74,23 +74,23 @@ MyDesignSystem/
     └── ...
 ```
 
-### Foundation (Foundation/DBColors.swift)
+### Foundation (Foundation/DSColors.swift)
 ```swift
 import SwiftUI
 
-public enum DBColors {
+public enum DSColors {
     public static let primary = Color("PrimaryColor", bundle: .module)
     public static let secondary = Color("SecondaryColor", bundle: .module)
     // Additional colors...
 }
 ```
 
-### Component (Components/DBTextField.swift)
+### Component (Components/DSTextField.swift)
 ```swift
 import SwiftUI
 import Foundation
 
-public struct DBTextField: View {
+public struct DSTextField: View {
     @Binding var text: String
     let placeholder: String
 
@@ -101,10 +101,10 @@ public struct DBTextField: View {
 
     public var body: some View {
         TextField(placeholder, text: $text)
-            .padding(DBSpacing.medium)
-            .background(DBColors.secondary)
+            .padding(DSSpacing.medium)
+            .background(DSColors.secondary)
             .cornerRadius(8.0)
-            .font(DBTypography.body)
+            .font(DSTypography.body)
     }
 }
 ```
@@ -117,7 +117,7 @@ import PackageDescription
 let package = Package(
     name: "DB UX Design System",
     platforms: [
-        .iOS(.v14),
+        .iOS(.v18),
     ],
     products: [
         .library(

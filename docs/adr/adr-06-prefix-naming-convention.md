@@ -1,10 +1,10 @@
-# ADR-06 - Naming Convention for Components & Accessors
+# ADR-06 - Prefix Naming Convention for Components & Accessors
 
 ## Decision and justification
 To ensure clarity, consistency, and scalability, we will adopt a systematic naming convention for all components and accessors within our DB UX Design System. The names will follow specific rules to make the system intuitive and easy to use, while also preventing naming collisions and ensuring compatibility with SwiftUI standards.
 
 ## Problem description and context
-A standardized naming convention is essential for achieving clear identification and avoiding conflicts within the design system. By adopting a consistent naming strategy, we can ensure that all components are easily recognizable as part of the Deutsche Bahn design system, which aids in both development and maintenance.
+A standardized naming convention is essential for achieving clear identification and avoiding conflicts within the design system. By adopting a consistent naming strategy, we can ensure that all components are easily recognizable as part of the Design System, which aids in both development and maintenance.
 
 ## General conditions and decision criteria
 
@@ -14,8 +14,7 @@ A standardized naming convention is essential for achieving clear identification
 - The convention should support future scalability, accommodating the addition of new components without breaking established patterns.
 
 ### Decision criteria
-- **Unique Prefix (`DB`):** Use a unique prefix `DB` (Deutsche Bahn) to categorize components of our design system.
-- **Suffix with Type:** Each name should end with the type it represents, such as `View`, `Button`, or `TextField`.
+- **Unique Prefix:** Use a unique prefix to categorize components of our design system.
 - **Short Names:** Prefer shorter names for brevity and ease of use.
 - **SwiftUI Alignment:** Names should align with SwiftUI conventions to ensure familiarity and ease of integration.
 - **Modular Flexibility:** The naming convention should support modularity, ensuring that additional components can be seamlessly integrated.
@@ -49,11 +48,11 @@ A standardized naming convention is essential for achieving clear identification
 - **Cons:** Adds an extra layer of nesting, which can make usage more verbose and may affect readability.
 
 ## Decision
-We will adopt **Option A - Company-Specific Prefix (e.g., `DB` for Deutsche Bahn)**. This approach ensures unique identification, reinforces brand recognition, and provides consistency with our established web design system. It balances the need to prevent naming collisions with SwiftUI components while supporting a modular and scalable design system.
+We will adopt **Option B - Neutral Prefix (e.g., `DS` for Design System)**. This approach ensures unique identification, reinforces brand recognition, and provides consistency with our established design system. It balances the need to prevent naming collisions with SwiftUI components while supporting a modular and scalable design system.
 
 ## Consequences
-- **Positive:** The naming convention will provide clarity and consistency, ensuring easy integration and maintenance. Using a company-specific prefix reinforces brand recognition for Deutsche Bahn components. Ending names with the component type aligns with SwiftUI standards, improving the developer experience.
-- **Negative:** Initial transition to the new naming convention may require updates to existing components and documentation.
+- **Positive:** The naming convention will provide clarity and consistency, ensuring easy integration and maintenance. The use of an neutral prefix avoids naming collisions.
+- **Negative:** Initial transition to the new naming convention may require updates to existing components and documentation. Less immediate brand recognition for Deutsche Bahn.
 
 By implementing this naming convention, we ensure that our UX Design System remains clear, consistent, and scalable, providing an excellent developer experience and facilitating its adoption across various projects and organizations.
 
@@ -61,11 +60,10 @@ By implementing this naming convention, we ensure that our UX Design System rema
 
 ## Naming Convention Guidelines
 
-1. **Prefix with `DB` (Deutsche Bahn):** All components and accessors will be prefixed with `DB`.
-2. **Suffix with Type:** Names will end with the component type, such as `View`, `Button`, or `TextField`.
-3. **Short and Concise:** Names should be as short as possible while still clearly conveying the component's purpose.
-4. **Alignment with SwiftUI:** Follow SwiftUI naming conventions to enhance familiarity and ease of use.
-5. **Modular and Extensible:** Ensure the structure supports the addition of new components without breaking the established pattern.
+1. **Prefix with `DS` (Design System):** All components and accessors will be prefixed with `DS`.
+2. **Short and Concise:** Names should be as short as possible while still clearly conveying the component's purpose.
+3. **Alignment with SwiftUI:** Follow SwiftUI naming conventions to enhance familiarity and ease of use.
+4. **Modular and Extensible:** Ensure the structure supports the addition of new components without breaking the established pattern.
 
 ## Example Code
 
@@ -73,7 +71,7 @@ By implementing this naming convention, we ensure that our UX Design System rema
 ```swift
 import SwiftUI
 
-public enum DBColors {
+public enum DSColors {
     public static let primary = Color("PrimaryColor", bundle: .module)
     public static let secondary = Color("SecondaryColor", bundle: .module)
     // Additional colors...
@@ -85,7 +83,7 @@ public enum DBColors {
 import SwiftUI
 import DBUXFoundation
 
-public struct DBTextField: View {
+public struct DSTextField: View {
     @Binding var text: String
     let placeholder: String
 
@@ -96,10 +94,10 @@ public struct DBTextField: View {
 
     public var body: some View {
         SwiftUI.TextField(placeholder, text: $text)
-            .padding(DBSpacing.medium)
-            .background(DBColors.secondary)
+            .padding(DSSpacing.medium)
+            .background(DSColors.secondary)
             .cornerRadius(8.0)
-            .font(DBTypography.body)
+            .font(DSTypography.body)
     }
 }
 ```
@@ -107,21 +105,21 @@ public struct DBTextField: View {
 ### Modifiers/TextFieldModifier.swift
 ```swift
 import SwiftUI
-import DBUXFoundation
+import DSUXFoundation
 
-struct DBTextFieldModifier: ViewModifier {
+struct DSTextFieldModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .padding(DBSpacing.medium)
-            .background(DBColors.secondary)
+            .padding(DSSpacing.medium)
+            .background(DSColors.secondary)
             .cornerRadius(8.0)
-            .font(DBTypography.body)
+            .font(DSTypography.body)
     }
 }
 
 extension View {
     func dbTextFieldStyle() -> some View {
-        self.modifier(DBTextFieldModifier())
+        self.modifier(DSTextFieldModifier())
     }
 }
 ```
@@ -129,7 +127,7 @@ extension View {
 ### ContentView.swift
 ```swift
 import SwiftUI
-import DBUXFoundation
+import DSUXFoundation
 import Components
 
 struct ContentView: View {
@@ -139,7 +137,7 @@ struct ContentView: View {
         VStack {
             Text("Enter your name:")
                 .font(.headline)
-            DBTextField(text: $text, placeholder: "Name")
+            DSTextField(text: $text, placeholder: "Name")
                 .padding()
             Text("Hello, \(text)!")
                 .font(.title)
@@ -158,7 +156,7 @@ struct ContentViewWithModifier: View {
             Text("Enter your name:")
                 .font(.headline)
             SwiftUI.TextField("Name", text: $text)
-                .dbTextFieldStyle() // Using the custom ViewModifier
+                .dsTextFieldStyle() // Using the custom ViewModifier
                 .padding()
             Text("Hello, \(text)!")
                 .font(.title)

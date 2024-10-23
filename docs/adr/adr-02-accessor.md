@@ -4,15 +4,15 @@
 We need to decide on an accessor strategy for styling components, such as text color, border, shadow, font, spacing, etc., independently.
 
 ## Problem description and context
-We require a flexible and consistent method to apply styling to our SwiftUI components. The settings, including text color, border, shadow, font, spacing, etc., must be adjustable and independently set. Styling should also be inheritable and support adaptive flags (e.g., "critical") to automatically apply specific color schemes from the current theme.
+We require a flexible and consistent method to apply styling to our SwiftUI components. The settings, adaptive color and density, must be adjustable and independently set. The structure for colors and themes should be easy to understand and maintain. Apply another density results in adaptive typography and dimensions, such as sizing, spacing and border.
 
 ## General conditions and decision criteria
 
 ### General conditions
 - The styling approach must allow easy adjustment of various parameters.
-- Each styling parameter (e.g., critical, spacing, border) should be set independently.
+- The styling approach must cosider all adaptive tokens: color, typography and dimensions.
 - Styling settings should be inheritable.
-- Components should support adaptive flags that use specific color schemes based on the current theme.
+- Components should support adaptive identifier that use specific color schemes based on the current theme.
 - The solution should balance performance, scalability, flexibility, and maintainability.
 
 ### Decision criteria

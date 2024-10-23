@@ -162,40 +162,6 @@ We have decided to utilize native accessibility APIs to integrate accessibility 
    }
    ```
 
-6. **Automated Testing:**
-   - Configure the CI pipeline to include automated accessibility testing using tools such as XCTest and Accessibility Inspector.
-   - Implement tests to validate the compliance of UI components with accessibility standards (e.g., contrast ratios, text sizes).
-   
-   **Automated Testing Example:**
-   ```swift
-   import XCTest
-
-   class AccessibilityTests: XCTestCase {
-       func testTextContrastRatio() {
-           let app = XCUIApplication()
-           app.launch()
-           
-           let textElement = app.staticTexts["Accessible Text"]
-           XCTAssertTrue(textElement.exists, "The text element should exist")
-           
-           // Add assertions to validate color contrast ratios
-       }
-
-       func testDynamicTypeAdjustsCorrectly() {
-           let app = XCUIApplication()
-           app.launchArguments.append(contentsOf: ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityExtraExtraLarge"])
-           app.launch()
-
-           let textElement = app.staticTexts["Accessible Text"]
-           XCTAssertTrue(textElement.exists, "The text element should exist")
-       }
-   }
-   ```
-
-7. **Support for User Customizations:**
-   - Ensure that user customizations and settings for accessibility are respected and supported across all components.
-   - Validate user customization options through automated tests.
-
-8. **Validation and Compliance:**
+6. **Validation and Compliance:**
    - Continuously monitor and validate the accessibility compliance of components using automated tests.
    - Maintain compliance with WCAG AA standards through regular updates and refinements.

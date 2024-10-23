@@ -1,7 +1,7 @@
 # ADR-01 - Integration of Color Tokens from Theme Builder
 
 ## Decision and justification
-We will integrate color tokens exported by the `theme-builder` (https://github.com/db-ui/theme-builder) into our Swift package. These tokens will be defined as `Color` instances prefixed with `DB` and used in different color schemes through adaptive themes.
+We will integrate color tokens exported by the `theme-builder` (https://github.com/db-ui/theme-builder) into our Swift package. These tokens will be defined as `Color` instances prefixed with the exported theme name and used in different color schemes through adaptive themes.
 
 ## Problem description and context
 We want to ensure that color definitions from the `theme-builder` are efficiently integrated into our Swift package. The color tokens should be adaptable to different color schemes (e.g., light and dark modes) to be flexible in response to different themes.
@@ -51,11 +51,11 @@ By implementing this approach, we ensure that our color tokens are clear, consis
 
 ## Example Code
 
-### Color Tokens Definition (DBUXFoundation/Colors.swift)
+### Theme Colors Definition (DSUXFoundation/DeutscheBahn/DeutscheBahnColors.swift)
 ```swift
 import SwiftUI
 
-let dbColors: [String: Color] = [
+let DeutscheBahnColors: [String: Color] = [
     "neutral0": Color(hex: 0x070709),
     "neutral1": Color(hex: 0x0d0e11),
     "neutral2": Color(hex: 0x121316),
@@ -65,11 +65,11 @@ let dbColors: [String: Color] = [
 ]
 ```
 
-### AdaptiveColors Struct (DBUXFoundation/AdaptiveColors.swift)
+### DSColorVariant Struct (DSUXFoundation/DSColorVariant.swift)
 ```swift
 import SwiftUI
 
-struct DBAdaptiveColors {
+struct DSColorVariant {
     let bgBasicLevel1Default: Color
     let bgBasicLevel1Hovered: Color
     let bgBasicLevel1Pressed: Color
@@ -77,29 +77,29 @@ struct DBAdaptiveColors {
     let bgBasicLevel2Hovered: Color
     let bgBasicLevel2Pressed: Color
     
-    // Initialize the DBAdaptiveColors struct based on the given scheme and colorName
-    init(_ scheme: DBColorScheme, colorName: String) {
+    // Initialize the DSColorVariant struct based on the given scheme, colorName and theme colors
+    init(_ scheme: DSColorScheme, colorName: String, colors: [String: Color]) {
         switch scheme {
         case .dark:
-            self.bgBasicLevel1Default = dbColors["\(colorName)3", default: .clear]
-            self.bgBasicLevel1Hovered = dbColors["\(colorName)4", default: .clear]
-            self.bgBasicLevel1Pressed = dbColors["\(colorName)5", default: .clear]
-            self.bgBasicLevel2Default = dbColors["\(colorName)2", default: .clear]
-            self.bgBasicLevel2Hovered = dbColors["\(colorName)3", default: .clear]
-            self.bgBasicLevel2Pressed = dbColors["\(colorName)4", default: .clear]
+            self.bgBasicLevel1Default = colors["\(colorName)3", default: .clear]
+            self.bgBasicLevel1Hovered = colors["\(colorName)4", default: .clear]
+            self.bgBasicLevel1Pressed = colors["\(colorName)5", default: .clear]
+            self.bgBasicLevel2Default = colors["\(colorName)2", default: .clear]
+            self.bgBasicLevel2Hovered = colors["\(colorName)3", default: .clear]
+            self.bgBasicLevel2Pressed = colors["\(colorName)4", default: .clear]
           
         case .light:
-            self.bgBasicLevel1Default = dbColors["\(colorName)1", default: .clear]
-            self.bgBasicLevel1Hovered = dbColors["\(colorName)2", default: .clear]
-            self.bgBasicLevel1Pressed = dbColors["\(colorName)3", default: .clear]
-            self.bgBasicLevel2Default = dbColors["\(colorName)0", default: .clear]
-            self.bgBasicLevel2Hovered = dbColors["\(colorName)1", default: .clear]
-            self.bgBasicLevel2Pressed = dbColors["\(colorName)2", default: .clear]
+            self.bgBasicLevel1Default = colors["\(colorName)1", default: .clear]
+            self.bgBasicLevel1Hovered = colors["\(colorName)2", default: .clear]
+            self.bgBasicLevel1Pressed = colors["\(colorName)3", default: .clear]
+            self.bgBasicLevel2Default = colors["\(colorName)0", default: .clear]
+            self.bgBasicLevel2Hovered = colors["\(colorName)1", default: .clear]
+            self.bgBasicLevel2Pressed = colors["\(colorName)2", default: .clear]
         }
     }
 }
 
-enum DBColorScheme {
+enum DSColorScheme {
     case light
     case dark
 }
@@ -107,6 +107,6 @@ enum DBColorScheme {
 
 ### Usage of Defined Themes (Usage example)
 ```swift
-let neutralColorsLight: DBAdaptiveColors = .init(.light, colorName: "neutral")
-let brandColorsDark: DBAdaptiveColors = .init(.dark, colorName: "brand")
+let neutralColorsLight: DSColorVariant = .init(.light, colorName: "neutral", colors: colors)
+let brandColorsDark: DSColorVariant = .init(.dark, colorName: "brand", colors: colors)
 ```

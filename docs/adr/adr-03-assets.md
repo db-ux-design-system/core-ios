@@ -4,7 +4,7 @@
 We need to decide how to integrate assets, specifically icons and fonts, into the package. The assets include functional and illustrative icons (in SVG format) and fonts (in TTF format).
 
 ## Problem description and context
-The package must include assets from internal sources, organized in a way that allows for easy usage, maintainability, and cross-platform support. The assets consist of functional icons that can be colored, illustrative icons that are multi-colored and cannot be re-colored, and fonts. The icons are organized by functional grouping.
+The package must include assets from internal sources, organized in a way that allows for easy usage, maintainability, and cross-platform support. The assets consist of functional icons that can be colored, illustrative icons that are multi-colored and cannot be re-colored, and fonts. The icons are organized by functional grouping. The icons also have to support light and dark mode.
 
 ## General conditions and decision criteria
 
