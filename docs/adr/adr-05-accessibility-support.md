@@ -69,12 +69,12 @@ implementation details for each feature.
 ### Step-by-Step Implementation
 
 1. **Define Accessibility Attributes:**
-  * Identify and define the accessibility attributes required for each
-    component in the Design System, including colors, spacing, and typography.
+   * Identify and define the accessibility attributes required for each
+   * component in the Design System, including colors, spacing, and typography.
 
 2. **Dynamic Type Implementation:**
-  * For each text style (h1, h2, h3, h4, h5, h6, p, small), map the custom
-    text sizes to the appropriate Apple text styles to support Dynamic Type.
+   * For each text style (h1, h2, h3, h4, h5, h6, p, small), map the custom text
+     sizes to the appropriate Apple text styles to support Dynamic Type.
 
    **Mapping Example:**
 
@@ -130,71 +130,71 @@ implementation details for each feature.
    ```
 
 3. **VoiceOver Implementation:**
-  * Ensure all interactive elements have appropriate accessibilityLabel,
-    accessibilityHint, and accessibilityTraits.
-  * Group related UI elements using accessibilityContainers where necessary.
+    * Ensure all interactive elements have appropriate accessibilityLabel,
+      accessibilityHint, and accessibilityTraits.
+    * Group related UI elements using accessibilityContainers where necessary.
 
-   **VoiceOver Example:**
+    **VoiceOver Example:**
 
-   ```swift
-   struct AccessibleButton: View {
-       var body: some View {
-           Button(action: {
-               // Button action
-           }) {
-               Text("Submit")
-           }
-           .accessibility(label: Text("Submit button"))
-           .accessibility(hint: Text("Double tap to submit the form"))
-           .accessibility(addTraits: .isButton)
-       }
-   }
-   ```
+    ```swift
+    struct AccessibleButton: View {
+        var body: some View {
+            Button(action: {
+                // Button action
+            }) {
+                Text("Submit")
+            }
+            .accessibility(label: Text("Submit button"))
+            .accessibility(hint: Text("Double tap to submit the form"))
+            .accessibility(addTraits: .isButton)
+        }
+    }
+    ```
 
 4. **Bold Text Implementation:**
-  * Ensure that all text elements respect the bold text user setting by using
-    the `.bold()` modifier or appropriate Font settings.
+    * Ensure that all text elements respect the bold text user setting by using
+      the `.bold()` modifier or appropriate Font settings.
 
-   **Bold Text Example:**
+    **Bold Text Example:**
 
-   ```swift
-   struct BoldTextExampleView: View {
-       @Environment(\.isBoldTextEnabled) var isBoldTextEnabled
+    ```swift
+    struct BoldTextExampleView: View {
+        @Environment(\.isBoldTextEnabled) var isBoldTextEnabled
 
-       var body: some View {
-           Text("Bold Text Example")
-               .font(isBoldTextEnabled ? .headline.bold() : .headline)
-               .accessibility(label: Text("Example with Bold Text"))
-       }
-   }
-   ```
+        var body: some View {
+            Text("Bold Text Example")
+                .font(isBoldTextEnabled ? .headline.bold() : .headline)
+                .accessibility(label: Text("Example with Bold Text"))
+        }
+    }
+    ```
 
 5. **Increased Contrast Implementation:**
-  * Adjust colors to ensure adequate contrast using
-    SwiftUI’s `.colorMultiply()` method to dynamically adjust color contrast.
+    * Adjust colors to ensure adequate contrast using
+      SwiftUI’s `.colorMultiply()` method to dynamically adjust color contrast.
 
-   **High Contrast Example:**
+    **High Contrast Example:**
 
-   ```swift
-   struct HighContrastView: View {
-       @Environment(\.accessibilityContrast) var accessibilityContrast
+    ```swift
+    struct HighContrastView: View {
+        @Environment(\.accessibilityContrast) var accessibilityContrast
 
-       var body: some View {
-           let backgroundColor = accessibilityContrast == .high ? Color.black : Color.gray
+        var body: some View {
+            let backgroundColor = accessibilityContrast == .high ? Color.black : Color.gray
 
-           VStack {
-               Text("High Contrast")
-                   .foregroundColor(Color.white)
-                   .padding()
-                   .background(backgroundColor)
-                   .cornerRadius(8)
-           }
-       }
-   }
-   ```
+            VStack {
+                Text("High Contrast")
+                    .foregroundColor(Color.white)
+                    .padding()
+                    .background(backgroundColor)
+                    .cornerRadius(8)
+            }
+        }
+    }
+    ```
 
 6. **Validation and Compliance:**
-  * Continuously monitor and validate the accessibility compliance of
-    components using automated tests.
-  * Maintain compliance with WCAG AA standards through regular updates and
-    refinements.
+    * Continuously monitor and validate the accessibility compliance of
+      components using automated tests.
+    * Maintain compliance with WCAG AA standards through regular updates and
+      refinements.
