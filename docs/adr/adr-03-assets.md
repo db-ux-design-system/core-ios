@@ -46,7 +46,7 @@ functional grouping. The icons also have to support light and dark mode.
 
 ## Alternatives
 
-### A - Direct Inclusion in the Repo
+### A - Direct Inclusion in the repository
 
 Include the assets directly in the repository and reference them in the
 codebase.

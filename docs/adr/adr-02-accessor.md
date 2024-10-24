@@ -45,7 +45,7 @@ styling.
 #### Evaluation
 
 * **Pros:**
-  * Clear separation of styled components.
+  * Clear separation of styled-components.
   * Centralized control enforcing consistent styling.
 * **Cons:**
   * Increased complexity with additional wrapper components.
