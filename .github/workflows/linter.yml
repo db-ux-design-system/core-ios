@@ -7,10 +7,18 @@ on:  # yamllint disable-line rule:truthy
       - develop
       - main
 
+permissions: {}
+
 jobs:
   build:
     name: Linting
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
 
     steps:
       - name: Checkout code
@@ -18,13 +26,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Lint markdown
-        uses: articulate/actions-markdownlint@v1.1.0
-        with:
-          config: '.markdownlint.json'
-
-      - name: Lint yaml
-        uses: ibiqlik/action-yamllint@v3.1.1
+      - name: Super-linter
+        uses: super-linter/super-linter@v7.1.0
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Lint Swift
         uses: norio-nomura/action-swiftlint@3.2.1
