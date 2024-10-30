@@ -80,7 +80,7 @@ struct SampleView: View {
 }
 
 #Preview() {
-    SampleView1()
+    SampleView()
         .dsTheme()
 }
 
