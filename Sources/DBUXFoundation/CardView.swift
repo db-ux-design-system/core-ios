@@ -16,13 +16,14 @@
 import SwiftUI
 
 struct CardView: ViewModifier {
-	let elevation: DSSubElevation
+	let elevation: DSSubElevation?
+	let spacing: CGFloat?
 	@Environment(\.theme) var theme
 
 	func body(content: Content) -> some View {
 		content
-			.padding(.vertical, theme.dimensions.spacing.responsiveXs)
-			.padding(.horizontal, theme.dimensions.spacing.responsiveXs)
+			.padding(.vertical, spacing ?? theme.dimensions.spacing.responsiveXs)
+			.padding(.horizontal, spacing ?? theme.dimensions.spacing.responsiveXs)
 			.cornerRadius(theme.dimensions.border.radiusSm)
 			.overlay( /// use overlay to draw rounded corners as RoundedRectacle, thus avoid clipping
 				RoundedRectangle(cornerRadius: theme.dimensions.border.radiusSm)
@@ -33,8 +34,8 @@ struct CardView: ViewModifier {
 }
 
 extension View {
-	func cardView(elevation: DSSubElevation = DSElevation.sm) -> some View {
-		self.modifier(CardView(elevation: elevation))
+	func cardView(elevation: DSSubElevation? = DSElevation.sm, spacing: CGFloat? = nil) -> some View {
+		self.modifier(CardView(elevation: elevation, spacing: spacing))
 	}
 }
 
