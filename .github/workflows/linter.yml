@@ -1,0 +1,44 @@
+---
+name: Linting
+
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+    branches:
+      - develop
+      - main
+
+permissions: {}
+
+jobs:
+  build:
+    name: Linting
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Super-linter
+        uses: super-linter/super-linter@v7.1.0
+        env:
+          # To report GitHub Actions status checks
+          LINTER_RULES_PATH: /
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MARKDOWN_CONFIG_FILE: .markdownlint.json
+          VALIDATE_JSON_PRETTIER: false
+          VALIDATE_MARKDOWN_PRETTIER: false
+          VALIDATE_YAML_PRETTIER: false
+          FIX_JSON_PRETTIER: false
+          FIX_MARKDOWN_PRETTIER: false
+          FIX_YAML_PRETTIER: false
+
+      - name: Lint Swift
+        uses: norio-nomura/action-swiftlint@3.2.1
