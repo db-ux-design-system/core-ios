@@ -10,16 +10,26 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "DBUXDS",
-            targets: ["DBUXDS"]),
+            targets: ["DBUXFoundation", "DBUXComponents"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "DBUXDS"),
+            name: "DBUXFoundation",
+            resources: [
+                .process("Resources"),
+//                .process("Resources/DBNeoScreenFlex.ttf"),
+//                .process("Resources/DBNeoScreenSans-Black.ttf")
+            ]
+        ),
+        .target(
+            name: "DBUXComponents",
+            dependencies: ["DBUXFoundation"]
+        ),
         .testTarget(
             name: "DBUXDSTests",
-            dependencies: ["DBUXDS"]
+            dependencies: ["DBUXFoundation", "DBUXComponents"]
         ),
     ]
 )
