@@ -108,4 +108,24 @@ public struct DSElevation {
 }
 
 
-  
+#Preview(traits: .sizeThatFitsLayout) {
+	VStack(spacing: 40) {
+		ZStack {
+			RoundedRectangle(cornerRadius: 8)
+				.fill(.white)
+			Text("Hallo")
+		}
+			.frame(width: 100, height: 100)
+			.dsShadow(elevation: DSElevation.sm)
+		
+		Circle()
+			.fill(.white)
+			.frame(width: 100, height: 100)
+			.dsShadow(elevation: DSElevation.md)
+		
+		Rectangle()
+			.fill(.white)
+			.frame(width: 100, height: 100)
+			.dsShadow(elevation: DSElevation.lg)
+	}
+}
