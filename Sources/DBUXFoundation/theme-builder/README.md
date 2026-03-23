@@ -34,7 +34,7 @@ struct ContentView: View {
 }
 ```
 
-To use another theme, export it and copy the `theme/<theme name>` directory 
+To use another theme, export it and copy the `theme/<theme name>` directory
 to your project. Set it like this:
 
 ```swift
