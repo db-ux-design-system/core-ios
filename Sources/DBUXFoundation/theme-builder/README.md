@@ -1,7 +1,7 @@
 # How to use the theme
 
 1. Move the `theme` directory into your project
-3. Add your theme to your `ContentView`:
+2. Add your theme to your `ContentView`:
 
 ```swift
 import SwiftUI
@@ -18,6 +18,7 @@ struct YourApp: App {
 ```
 
 Use the tokens like this:
+
 ```swift
 import SwiftUI
 
@@ -33,7 +34,8 @@ struct ContentView: View {
 }
 ```
 
-To use another theme, export it and copy the `theme/<theme name>` directory to your project. Set it like this:
+To use another theme, export it and copy the `theme/<theme name>` directory 
+to your project. Set it like this:
 
 ```swift
 // Code from step 3
