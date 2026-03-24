@@ -32,23 +32,23 @@ extension DesignSystemTypography {
         density: DSDensity.functional,
         device: DSDeviceType.mobile,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     private static func headlineTypographyFunctionalMobile(sizes: [String: CGFloat]) -> DSTypography { .init(
         variant: DSTypographyVariant.headline,
         density: DSDensity.functional,
         device: DSDeviceType.mobile,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     static func getTypographyFunctionalMobile(sizes: [String: CGFloat]) -> DesignSystemTypography {
-    .init(
-        body: bodyTypographyFunctionalMobile(sizes: sizes),
-        headline: headlineTypographyFunctionalMobile(sizes: sizes)
+        .init(
+            body: bodyTypographyFunctionalMobile(sizes: sizes),
+            headline: headlineTypographyFunctionalMobile(sizes: sizes)
         )
     }
 }
@@ -59,23 +59,23 @@ extension DesignSystemTypography {
         density: DSDensity.functional,
         device: DSDeviceType.tablet,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     private static func headlineTypographyFunctionalTablet(sizes: [String: CGFloat]) -> DSTypography { .init(
         variant: DSTypographyVariant.headline,
         density: DSDensity.functional,
         device: DSDeviceType.tablet,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     static func getTypographyFunctionalTablet(sizes: [String: CGFloat]) -> DesignSystemTypography {
-    .init(
-        body: bodyTypographyFunctionalTablet(sizes: sizes),
-        headline: headlineTypographyFunctionalTablet(sizes: sizes)
+        .init(
+            body: bodyTypographyFunctionalTablet(sizes: sizes),
+            headline: headlineTypographyFunctionalTablet(sizes: sizes)
         )
     }
 }
@@ -86,23 +86,23 @@ extension DesignSystemTypography {
         density: DSDensity.regular,
         device: DSDeviceType.mobile,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     private static func headlineTypographyRegularMobile(sizes: [String: CGFloat]) -> DSTypography { .init(
         variant: DSTypographyVariant.headline,
         density: DSDensity.regular,
         device: DSDeviceType.mobile,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     static func getTypographyRegularMobile(sizes: [String: CGFloat]) -> DesignSystemTypography {
-    .init(
-        body: bodyTypographyRegularMobile(sizes: sizes),
-        headline: headlineTypographyRegularMobile(sizes: sizes)
+        .init(
+            body: bodyTypographyRegularMobile(sizes: sizes),
+            headline: headlineTypographyRegularMobile(sizes: sizes)
         )
     }
 }
@@ -113,23 +113,23 @@ extension DesignSystemTypography {
         density: DSDensity.regular,
         device: DSDeviceType.tablet,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     private static func headlineTypographyRegularTablet(sizes: [String: CGFloat]) -> DSTypography { .init(
         variant: DSTypographyVariant.headline,
         density: DSDensity.regular,
         device: DSDeviceType.tablet,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     static func getTypographyRegularTablet(sizes: [String: CGFloat]) -> DesignSystemTypography {
-    .init(
-        body: bodyTypographyRegularTablet(sizes: sizes),
-        headline: headlineTypographyRegularTablet(sizes: sizes)
+        .init(
+            body: bodyTypographyRegularTablet(sizes: sizes),
+            headline: headlineTypographyRegularTablet(sizes: sizes)
         )
     }
 }
@@ -140,23 +140,23 @@ extension DesignSystemTypography {
         density: DSDensity.expressive,
         device: DSDeviceType.mobile,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     private static func headlineTypographyExpressiveMobile(sizes: [String: CGFloat]) -> DSTypography { .init(
         variant: DSTypographyVariant.headline,
         density: DSDensity.expressive,
         device: DSDeviceType.mobile,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     static func getTypographyExpressiveMobile(sizes: [String: CGFloat]) -> DesignSystemTypography {
-    .init(
-        body: bodyTypographyExpressiveMobile(sizes: sizes),
-        headline: headlineTypographyExpressiveMobile(sizes: sizes)
+        .init(
+            body: bodyTypographyExpressiveMobile(sizes: sizes),
+            headline: headlineTypographyExpressiveMobile(sizes: sizes)
         )
     }
 }
@@ -167,27 +167,26 @@ extension DesignSystemTypography {
         density: DSDensity.expressive,
         device: DSDeviceType.tablet,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     private static func headlineTypographyExpressiveTablet(sizes: [String: CGFloat]) -> DSTypography { .init(
         variant: DSTypographyVariant.headline,
         density: DSDensity.expressive,
         device: DSDeviceType.tablet,
         sizes: sizes
-
-      )
+        
+    )
     }
-
+    
     static func getTypographyExpressiveTablet(sizes: [String: CGFloat]) -> DesignSystemTypography {
-    .init(
-        body: bodyTypographyExpressiveTablet(sizes: sizes),
-        headline: headlineTypographyExpressiveTablet(sizes: sizes)
+        .init(
+            body: bodyTypographyExpressiveTablet(sizes: sizes),
+            headline: headlineTypographyExpressiveTablet(sizes: sizes)
         )
     }
 }
-
 
 enum DSDeviceType: String {
     case mobile = "Mobile"
@@ -228,6 +227,11 @@ public struct DSTextStyle {
     let uiFont: UIFont
     public let lineHeight: CGFloat
     public let fontWeight: Font.Weight
+    
+    public func copy(height: CGFloat? = nil, weight: Font.Weight? = nil) -> DSTextStyle {
+        let copy = DSTextStyle(font: font, uiFont: uiFont, lineHeight: height ?? lineHeight, fontWeight: weight ?? fontWeight)
+        return copy
+    }
 }
 
 public struct DesignSystemTextStyles{
@@ -247,10 +251,9 @@ public struct DesignSystemTextStyles{
     public let bodyXs: DSTextStyle
     public let body2xs: DSTextStyle
     public let body3xs: DSTextStyle
-
-
-    static func getFonts(typo: DesignSystemTypography) -> DesignSystemTextStyles { 
-      .init(
+    
+    static func getFonts(typo: DesignSystemTypography) -> DesignSystemTextStyles {
+        .init(
             h1: .init(font: DSFont.dbNeoScreenFlex.font(size: typo.headline.fontSizeXl), uiFont: DSFont.dbNeoScreenFlex.uiFont(size: typo.headline.fontSizeXl), lineHeight: typo.headline.lineHeightXl, fontWeight: .black),
             h2: .init(font: DSFont.dbNeoScreenFlex.font(size: typo.headline.fontSizeLg), uiFont: DSFont.dbNeoScreenFlex.uiFont(size: typo.headline.fontSizeLg), lineHeight: typo.headline.lineHeightLg, fontWeight: .black),
             h3: .init(font: DSFont.dbNeoScreenFlex.font(size: typo.headline.fontSizeMd), uiFont: DSFont.dbNeoScreenFlex.uiFont(size: typo.headline.fontSizeMd), lineHeight: typo.headline.lineHeightMd, fontWeight: .black),

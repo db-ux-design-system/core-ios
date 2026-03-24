@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 protocol DSDimensions {
@@ -188,425 +187,201 @@ public struct DSBorderDimensions {
 
 public struct DesignSystemDimensions {
     public var spacing: DSSpacingDimensions
-
+    
     public var sizing: DSSizingDimensions
-
+    
     public var border: DSBorderDimensions
-
-
+    
+    enum DeviceType {
+        case mobile
+        case tablet
+    }
+    
     init(spacing: DSSpacingDimensions, sizing: DSSizingDimensions, border: DSBorderDimensions) {
         self.spacing = spacing
         self.sizing = sizing
         self.border = border
     }
-
-    private static func getSpacingDimensionsFunctionalMobile(dimensions: DSDimensions) -> DSSpacingDimensions {
-      .init(
-          responsive3xs: dimensions.spacingResponsiveFunctionalMobile3xs,
-          responsive2xs: dimensions.spacingResponsiveFunctionalMobile2xs,
-          responsiveXs: dimensions.spacingResponsiveFunctionalMobileXs,
-          responsiveSm: dimensions.spacingResponsiveFunctionalMobileSm,
-          responsiveMd: dimensions.spacingResponsiveFunctionalMobileMd,
-          responsiveLg: dimensions.spacingResponsiveFunctionalMobileLg,
-          responsiveXl: dimensions.spacingResponsiveFunctionalMobileXl,
-          responsive2xl: dimensions.spacingResponsiveFunctionalMobile2xl,
-          responsive3xl: dimensions.spacingResponsiveFunctionalMobile3xl,
-          fixed3xs: dimensions.spacingFixedFunctional3xs,
-          fixed2xs: dimensions.spacingFixedFunctional2xs,
-          fixedXs: dimensions.spacingFixedFunctionalXs,
-          fixedSm: dimensions.spacingFixedFunctionalSm,
-          fixedMd: dimensions.spacingFixedFunctionalMd,
-          fixedLg: dimensions.spacingFixedFunctionalLg,
-          fixedXl: dimensions.spacingFixedFunctionalXl,
-          fixed2xl: dimensions.spacingFixedFunctional2xl,
-          fixed3xl: dimensions.spacingFixedFunctional3xl
-        )
-     }
-
-    private static func getSizingDimensionsFunctionalMobile(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingFunctional3xs,
-          base2xs: dimensions.sizingFunctional2xs,
-          baseXs: dimensions.sizingFunctionalXs,
-          baseSm: dimensions.sizingFunctionalSm,
-          baseMd: dimensions.sizingFunctionalMd,
-          baseLg: dimensions.sizingFunctionalLg,
-          baseXl: dimensions.sizingFunctionalXl,
-          base2xl: dimensions.sizingFunctional2xl,
-          base3xl: dimensions.sizingFunctional3xl
-        )
-     }
-
-    private static func getBorderDimensionsFunctionalMobile(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
-     }
-
+    
     static func getDimensionsFunctionalMobile(dimensions: DSDimensions) -> DesignSystemDimensions {
-      .init(
-        spacing: getSpacingDimensionsFunctionalMobile(dimensions: dimensions),
-        sizing: getSizingDimensionsFunctionalMobile(dimensions: dimensions),
-        border: getBorderDimensionsFunctionalMobile(dimensions: dimensions)
-      )
+        .init(
+            spacing: getSpacingDimensionsFunctional(device: .mobile, dimensions: dimensions),
+            sizing: getSizingDimensionsFunctional(dimensions: dimensions),
+            border: getBorderDimensions(dimensions: dimensions)
+        )
     }
-
-    private static func getSpacingDimensionsFunctionalTablet(dimensions: DSDimensions) -> DSSpacingDimensions {
-      .init(
-          responsive3xs: dimensions.spacingResponsiveFunctionalTablet3xs,
-          responsive2xs: dimensions.spacingResponsiveFunctionalTablet2xs,
-          responsiveXs: dimensions.spacingResponsiveFunctionalTabletXs,
-          responsiveSm: dimensions.spacingResponsiveFunctionalTabletSm,
-          responsiveMd: dimensions.spacingResponsiveFunctionalTabletMd,
-          responsiveLg: dimensions.spacingResponsiveFunctionalTabletLg,
-          responsiveXl: dimensions.spacingResponsiveFunctionalTabletXl,
-          responsive2xl: dimensions.spacingResponsiveFunctionalTablet2xl,
-          responsive3xl: dimensions.spacingResponsiveFunctionalTablet3xl,
-          fixed3xs: dimensions.spacingFixedFunctional3xs,
-          fixed2xs: dimensions.spacingFixedFunctional2xs,
-          fixedXs: dimensions.spacingFixedFunctionalXs,
-          fixedSm: dimensions.spacingFixedFunctionalSm,
-          fixedMd: dimensions.spacingFixedFunctionalMd,
-          fixedLg: dimensions.spacingFixedFunctionalLg,
-          fixedXl: dimensions.spacingFixedFunctionalXl,
-          fixed2xl: dimensions.spacingFixedFunctional2xl,
-          fixed3xl: dimensions.spacingFixedFunctional3xl
-        )
-     }
-
-    private static func getSizingDimensionsFunctionalTablet(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingFunctional3xs,
-          base2xs: dimensions.sizingFunctional2xs,
-          baseXs: dimensions.sizingFunctionalXs,
-          baseSm: dimensions.sizingFunctionalSm,
-          baseMd: dimensions.sizingFunctionalMd,
-          baseLg: dimensions.sizingFunctionalLg,
-          baseXl: dimensions.sizingFunctionalXl,
-          base2xl: dimensions.sizingFunctional2xl,
-          base3xl: dimensions.sizingFunctional3xl
-        )
-     }
-
-    private static func getBorderDimensionsFunctionalTablet(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
-     }
-
+    
     static func getDimensionsFunctionalTablet(dimensions: DSDimensions) -> DesignSystemDimensions {
-      .init(
-        spacing: getSpacingDimensionsFunctionalTablet(dimensions: dimensions),
-        sizing: getSizingDimensionsFunctionalTablet(dimensions: dimensions),
-        border: getBorderDimensionsFunctionalTablet(dimensions: dimensions)
-      )
+        .init(
+            spacing: getSpacingDimensionsFunctional(device: .tablet, dimensions: dimensions),
+            sizing: getSizingDimensionsFunctional(dimensions: dimensions),
+            border: getBorderDimensions(dimensions: dimensions)
+        )
     }
-
-    private static func getSpacingDimensionsRegularMobile(dimensions: DSDimensions) -> DSSpacingDimensions {
-      .init(
-          responsive3xs: dimensions.spacingResponsiveRegularMobile3xs,
-          responsive2xs: dimensions.spacingResponsiveRegularMobile2xs,
-          responsiveXs: dimensions.spacingResponsiveRegularMobileXs,
-          responsiveSm: dimensions.spacingResponsiveRegularMobileSm,
-          responsiveMd: dimensions.spacingResponsiveRegularMobileMd,
-          responsiveLg: dimensions.spacingResponsiveRegularMobileLg,
-          responsiveXl: dimensions.spacingResponsiveRegularMobileXl,
-          responsive2xl: dimensions.spacingResponsiveRegularMobile2xl,
-          responsive3xl: dimensions.spacingResponsiveRegularMobile3xl,
-          fixed3xs: dimensions.spacingFixedRegular3xs,
-          fixed2xs: dimensions.spacingFixedRegular2xs,
-          fixedXs: dimensions.spacingFixedRegularXs,
-          fixedSm: dimensions.spacingFixedRegularSm,
-          fixedMd: dimensions.spacingFixedRegularMd,
-          fixedLg: dimensions.spacingFixedRegularLg,
-          fixedXl: dimensions.spacingFixedRegularXl,
-          fixed2xl: dimensions.spacingFixedRegular2xl,
-          fixed3xl: dimensions.spacingFixedRegular3xl
-        )
-     }
-
-    private static func getSizingDimensionsRegularMobile(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingRegular3xs,
-          base2xs: dimensions.sizingRegular2xs,
-          baseXs: dimensions.sizingRegularXs,
-          baseSm: dimensions.sizingRegularSm,
-          baseMd: dimensions.sizingRegularMd,
-          baseLg: dimensions.sizingRegularLg,
-          baseXl: dimensions.sizingRegularXl,
-          base2xl: dimensions.sizingRegular2xl,
-          base3xl: dimensions.sizingRegular3xl
-        )
-     }
-
-    private static func getBorderDimensionsRegularMobile(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
-     }
-
+    
     static func getDimensionsRegularMobile(dimensions: DSDimensions) -> DesignSystemDimensions {
-      .init(
-        spacing: getSpacingDimensionsRegularMobile(dimensions: dimensions),
-        sizing: getSizingDimensionsRegularMobile(dimensions: dimensions),
-        border: getBorderDimensionsRegularMobile(dimensions: dimensions)
-      )
+        .init(
+            spacing: getSpacingDimensionsRegular(device: .mobile, dimensions: dimensions),
+            sizing: getSizingDimensionsRegular(dimensions: dimensions),
+            border: getBorderDimensions(dimensions: dimensions)
+        )
     }
-
-    private static func getSpacingDimensionsRegularTablet(dimensions: DSDimensions) -> DSSpacingDimensions {
-      .init(
-          responsive3xs: dimensions.spacingResponsiveRegularTablet3xs,
-          responsive2xs: dimensions.spacingResponsiveRegularTablet2xs,
-          responsiveXs: dimensions.spacingResponsiveRegularTabletXs,
-          responsiveSm: dimensions.spacingResponsiveRegularTabletSm,
-          responsiveMd: dimensions.spacingResponsiveRegularTabletMd,
-          responsiveLg: dimensions.spacingResponsiveRegularTabletLg,
-          responsiveXl: dimensions.spacingResponsiveRegularTabletXl,
-          responsive2xl: dimensions.spacingResponsiveRegularTablet2xl,
-          responsive3xl: dimensions.spacingResponsiveRegularTablet3xl,
-          fixed3xs: dimensions.spacingFixedRegular3xs,
-          fixed2xs: dimensions.spacingFixedRegular2xs,
-          fixedXs: dimensions.spacingFixedRegularXs,
-          fixedSm: dimensions.spacingFixedRegularSm,
-          fixedMd: dimensions.spacingFixedRegularMd,
-          fixedLg: dimensions.spacingFixedRegularLg,
-          fixedXl: dimensions.spacingFixedRegularXl,
-          fixed2xl: dimensions.spacingFixedRegular2xl,
-          fixed3xl: dimensions.spacingFixedRegular3xl
-        )
-     }
-
-    private static func getSizingDimensionsRegularTablet(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingRegular3xs,
-          base2xs: dimensions.sizingRegular2xs,
-          baseXs: dimensions.sizingRegularXs,
-          baseSm: dimensions.sizingRegularSm,
-          baseMd: dimensions.sizingRegularMd,
-          baseLg: dimensions.sizingRegularLg,
-          baseXl: dimensions.sizingRegularXl,
-          base2xl: dimensions.sizingRegular2xl,
-          base3xl: dimensions.sizingRegular3xl
-        )
-     }
-
-    private static func getBorderDimensionsRegularTablet(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
-     }
-
+    
     static func getDimensionsRegularTablet(dimensions: DSDimensions) -> DesignSystemDimensions {
-      .init(
-        spacing: getSpacingDimensionsRegularTablet(dimensions: dimensions),
-        sizing: getSizingDimensionsRegularTablet(dimensions: dimensions),
-        border: getBorderDimensionsRegularTablet(dimensions: dimensions)
-      )
+        .init(
+            spacing: getSpacingDimensionsRegular(device: .tablet, dimensions: dimensions),
+            sizing: getSizingDimensionsRegular(dimensions: dimensions),
+            border: getBorderDimensions(dimensions: dimensions)
+        )
     }
-
-    private static func getSpacingDimensionsExpressiveMobile(dimensions: DSDimensions) -> DSSpacingDimensions {
-      .init(
-          responsive3xs: dimensions.spacingResponsiveExpressiveMobile3xs,
-          responsive2xs: dimensions.spacingResponsiveExpressiveMobile2xs,
-          responsiveXs: dimensions.spacingResponsiveExpressiveMobileXs,
-          responsiveSm: dimensions.spacingResponsiveExpressiveMobileSm,
-          responsiveMd: dimensions.spacingResponsiveExpressiveMobileMd,
-          responsiveLg: dimensions.spacingResponsiveExpressiveMobileLg,
-          responsiveXl: dimensions.spacingResponsiveExpressiveMobileXl,
-          responsive2xl: dimensions.spacingResponsiveExpressiveMobile2xl,
-          responsive3xl: dimensions.spacingResponsiveExpressiveMobile3xl,
-          fixed3xs: dimensions.spacingFixedExpressive3xs,
-          fixed2xs: dimensions.spacingFixedExpressive2xs,
-          fixedXs: dimensions.spacingFixedExpressiveXs,
-          fixedSm: dimensions.spacingFixedExpressiveSm,
-          fixedMd: dimensions.spacingFixedExpressiveMd,
-          fixedLg: dimensions.spacingFixedExpressiveLg,
-          fixedXl: dimensions.spacingFixedExpressiveXl,
-          fixed2xl: dimensions.spacingFixedExpressive2xl,
-          fixed3xl: dimensions.spacingFixedExpressive3xl
-        )
-     }
-
-    private static func getSizingDimensionsExpressiveMobile(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingExpressive3xs,
-          base2xs: dimensions.sizingExpressive2xs,
-          baseXs: dimensions.sizingExpressiveXs,
-          baseSm: dimensions.sizingExpressiveSm,
-          baseMd: dimensions.sizingExpressiveMd,
-          baseLg: dimensions.sizingExpressiveLg,
-          baseXl: dimensions.sizingExpressiveXl,
-          base2xl: dimensions.sizingExpressive2xl,
-          base3xl: dimensions.sizingExpressive3xl
-        )
-     }
-
-    private static func getBorderDimensionsExpressiveMobile(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
-     }
-
+    
     static func getDimensionsExpressiveMobile(dimensions: DSDimensions) -> DesignSystemDimensions {
-      .init(
-        spacing: getSpacingDimensionsExpressiveMobile(dimensions: dimensions),
-        sizing: getSizingDimensionsExpressiveMobile(dimensions: dimensions),
-        border: getBorderDimensionsExpressiveMobile(dimensions: dimensions)
-      )
+        .init(
+            spacing: getSpacingDimensionsExpressive(device: .mobile, dimensions: dimensions),
+            sizing: getSizingDimensionsExpressive(dimensions: dimensions),
+            border: getBorderDimensions(dimensions: dimensions)
+        )
     }
-
-    private static func getSpacingDimensionsExpressiveTablet(dimensions: DSDimensions) -> DSSpacingDimensions {
-      .init(
-          responsive3xs: dimensions.spacingResponsiveExpressiveTablet3xs,
-          responsive2xs: dimensions.spacingResponsiveExpressiveTablet2xs,
-          responsiveXs: dimensions.spacingResponsiveExpressiveTabletXs,
-          responsiveSm: dimensions.spacingResponsiveExpressiveTabletSm,
-          responsiveMd: dimensions.spacingResponsiveExpressiveTabletMd,
-          responsiveLg: dimensions.spacingResponsiveExpressiveTabletLg,
-          responsiveXl: dimensions.spacingResponsiveExpressiveTabletXl,
-          responsive2xl: dimensions.spacingResponsiveExpressiveTablet2xl,
-          responsive3xl: dimensions.spacingResponsiveExpressiveTablet3xl,
-          fixed3xs: dimensions.spacingFixedExpressive3xs,
-          fixed2xs: dimensions.spacingFixedExpressive2xs,
-          fixedXs: dimensions.spacingFixedExpressiveXs,
-          fixedSm: dimensions.spacingFixedExpressiveSm,
-          fixedMd: dimensions.spacingFixedExpressiveMd,
-          fixedLg: dimensions.spacingFixedExpressiveLg,
-          fixedXl: dimensions.spacingFixedExpressiveXl,
-          fixed2xl: dimensions.spacingFixedExpressive2xl,
-          fixed3xl: dimensions.spacingFixedExpressive3xl
-        )
-     }
-
-    private static func getSizingDimensionsExpressiveTablet(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingExpressive3xs,
-          base2xs: dimensions.sizingExpressive2xs,
-          baseXs: dimensions.sizingExpressiveXs,
-          baseSm: dimensions.sizingExpressiveSm,
-          baseMd: dimensions.sizingExpressiveMd,
-          baseLg: dimensions.sizingExpressiveLg,
-          baseXl: dimensions.sizingExpressiveXl,
-          base2xl: dimensions.sizingExpressive2xl,
-          base3xl: dimensions.sizingExpressive3xl
-        )
-     }
-
-    private static func getBorderDimensionsExpressiveTablet(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
-     }
-
+    
     static func getDimensionsExpressiveTablet(dimensions: DSDimensions) -> DesignSystemDimensions {
-      .init(
-        spacing: getSpacingDimensionsExpressiveTablet(dimensions: dimensions),
-        sizing: getSizingDimensionsExpressiveTablet(dimensions: dimensions),
-        border: getBorderDimensionsExpressiveTablet(dimensions: dimensions)
-      )
+        .init(
+            spacing: getSpacingDimensionsExpressive(device: .tablet, dimensions: dimensions),
+            sizing: getSizingDimensionsExpressive(dimensions: dimensions),
+            border: getBorderDimensions(dimensions: dimensions)
+        )
     }
-
-
+    
+    private static func getSpacingDimensionsFunctional(device: DeviceType, dimensions: DSDimensions) -> DSSpacingDimensions {
+        .init(
+            responsive3xs: device == .mobile ? dimensions.spacingResponsiveFunctionalMobile3xs : dimensions.spacingResponsiveFunctionalTablet3xs,
+            responsive2xs: device == .mobile ? dimensions.spacingResponsiveFunctionalMobile2xs : dimensions.spacingResponsiveFunctionalTablet2xs,
+            responsiveXs: device == .mobile ? dimensions.spacingResponsiveFunctionalMobileXs : dimensions.spacingResponsiveFunctionalTabletXs,
+            responsiveSm: device == .mobile ? dimensions.spacingResponsiveFunctionalMobileSm : dimensions.spacingResponsiveFunctionalTabletSm,
+            responsiveMd: device == .mobile ? dimensions.spacingResponsiveFunctionalMobileMd : dimensions.spacingResponsiveFunctionalTabletMd,
+            responsiveLg: device == .mobile ? dimensions.spacingResponsiveFunctionalMobileLg : dimensions.spacingResponsiveFunctionalTabletLg,
+            responsiveXl: device == .mobile ? dimensions.spacingResponsiveFunctionalMobileXl : dimensions.spacingResponsiveFunctionalTabletXl,
+            responsive2xl: device == .mobile ? dimensions.spacingResponsiveFunctionalMobile2xl : dimensions.spacingResponsiveFunctionalTablet2xl,
+            responsive3xl: device == .mobile ? dimensions.spacingResponsiveFunctionalMobile3xl : dimensions.spacingResponsiveFunctionalTablet3xl,
+            fixed3xs: dimensions.spacingFixedFunctional3xs,
+            fixed2xs: dimensions.spacingFixedFunctional2xs,
+            fixedXs: dimensions.spacingFixedFunctionalXs,
+            fixedSm: dimensions.spacingFixedFunctionalSm,
+            fixedMd: dimensions.spacingFixedFunctionalMd,
+            fixedLg: dimensions.spacingFixedFunctionalLg,
+            fixedXl: dimensions.spacingFixedFunctionalXl,
+            fixed2xl: dimensions.spacingFixedFunctional2xl,
+            fixed3xl: dimensions.spacingFixedFunctional3xl
+        )
+    }
+    
+    private static func getSpacingDimensionsRegular(device: DeviceType, dimensions: DSDimensions) -> DSSpacingDimensions {
+        .init(
+            responsive3xs: device == .mobile ? dimensions.spacingResponsiveRegularMobile3xs : dimensions.spacingResponsiveRegularTablet3xs,
+            responsive2xs: device == .mobile ? dimensions.spacingResponsiveRegularMobile2xs : dimensions.spacingResponsiveRegularTablet2xs,
+            responsiveXs: device == .mobile ? dimensions.spacingResponsiveRegularMobileXs : dimensions.spacingResponsiveRegularTabletXs,
+            responsiveSm: device == .mobile ? dimensions.spacingResponsiveRegularMobileSm : dimensions.spacingResponsiveRegularTabletSm,
+            responsiveMd: device == .mobile ? dimensions.spacingResponsiveRegularMobileMd : dimensions.spacingResponsiveRegularTabletMd,
+            responsiveLg: device == .mobile ? dimensions.spacingResponsiveRegularMobileLg : dimensions.spacingResponsiveRegularTabletLg,
+            responsiveXl: device == .mobile ? dimensions.spacingResponsiveRegularMobileXl : dimensions.spacingResponsiveRegularTabletXl,
+            responsive2xl: device == .mobile ? dimensions.spacingResponsiveRegularMobile2xl : dimensions.spacingResponsiveRegularTablet2xl,
+            responsive3xl: device == .mobile ? dimensions.spacingResponsiveRegularMobile3xl : dimensions.spacingResponsiveRegularTablet3xl,
+            fixed3xs: dimensions.spacingFixedRegular3xs,
+            fixed2xs: dimensions.spacingFixedRegular2xs,
+            fixedXs: dimensions.spacingFixedRegularXs,
+            fixedSm: dimensions.spacingFixedRegularSm,
+            fixedMd: dimensions.spacingFixedRegularMd,
+            fixedLg: dimensions.spacingFixedRegularLg,
+            fixedXl: dimensions.spacingFixedRegularXl,
+            fixed2xl: dimensions.spacingFixedRegular2xl,
+            fixed3xl: dimensions.spacingFixedRegular3xl
+        )
+    }
+    
+    private static func getSpacingDimensionsExpressive(device: DeviceType, dimensions: DSDimensions) -> DSSpacingDimensions {
+        .init(
+            responsive3xs: device == .mobile ? dimensions.spacingResponsiveExpressiveMobile3xs : dimensions.spacingResponsiveExpressiveTablet3xs,
+            responsive2xs: device == .mobile ? dimensions.spacingResponsiveExpressiveMobile2xs : dimensions.spacingResponsiveExpressiveTablet2xs,
+            responsiveXs: device == .mobile ? dimensions.spacingResponsiveExpressiveMobileXs : dimensions.spacingResponsiveExpressiveTabletXs,
+            responsiveSm: device == .mobile ? dimensions.spacingResponsiveExpressiveMobileSm : dimensions.spacingResponsiveExpressiveTabletSm,
+            responsiveMd: device == .mobile ? dimensions.spacingResponsiveExpressiveMobileMd : dimensions.spacingResponsiveExpressiveTabletMd,
+            responsiveLg: device == .mobile ? dimensions.spacingResponsiveExpressiveMobileLg : dimensions.spacingResponsiveExpressiveTabletLg,
+            responsiveXl: device == .mobile ? dimensions.spacingResponsiveExpressiveMobileXl : dimensions.spacingResponsiveExpressiveTabletXl,
+            responsive2xl: device == .mobile ? dimensions.spacingResponsiveExpressiveMobile2xl : dimensions.spacingResponsiveExpressiveTablet3xl,
+            responsive3xl: device == .mobile ? dimensions.spacingResponsiveExpressiveMobile3xl : dimensions.spacingResponsiveExpressiveTablet3xl,
+            fixed3xs: dimensions.spacingFixedExpressive3xs,
+            fixed2xs: dimensions.spacingFixedExpressive2xs,
+            fixedXs: dimensions.spacingFixedExpressiveXs,
+            fixedSm: dimensions.spacingFixedExpressiveSm,
+            fixedMd: dimensions.spacingFixedExpressiveMd,
+            fixedLg: dimensions.spacingFixedExpressiveLg,
+            fixedXl: dimensions.spacingFixedExpressiveXl,
+            fixed2xl: dimensions.spacingFixedExpressive2xl,
+            fixed3xl: dimensions.spacingFixedExpressive3xl
+        )
+    }
+    
+    private static func getSizingDimensionsFunctional(dimensions: DSDimensions) -> DSSizingDimensions {
+        .init(
+            base3xs: dimensions.sizingFunctional3xs,
+            base2xs: dimensions.sizingFunctional2xs,
+            baseXs: dimensions.sizingFunctionalXs,
+            baseSm: dimensions.sizingFunctionalSm,
+            baseMd: dimensions.sizingFunctionalMd,
+            baseLg: dimensions.sizingFunctionalLg,
+            baseXl: dimensions.sizingFunctionalXl,
+            base2xl: dimensions.sizingFunctional2xl,
+            base3xl: dimensions.sizingFunctional3xl
+        )
+    }
+    
+    private static func getSizingDimensionsRegular(dimensions: DSDimensions) -> DSSizingDimensions {
+        .init(
+            base3xs: dimensions.sizingRegular3xs,
+            base2xs: dimensions.sizingRegular2xs,
+            baseXs: dimensions.sizingRegularXs,
+            baseSm: dimensions.sizingRegularSm,
+            baseMd: dimensions.sizingRegularMd,
+            baseLg: dimensions.sizingRegularLg,
+            baseXl: dimensions.sizingRegularXl,
+            base2xl: dimensions.sizingRegular2xl,
+            base3xl: dimensions.sizingRegular3xl
+        )
+    }
+    
+    private static func getSizingDimensionsExpressive(dimensions: DSDimensions) -> DSSizingDimensions {
+        .init(
+            base3xs: dimensions.sizingExpressive3xs,
+            base2xs: dimensions.sizingExpressive2xs,
+            baseXs: dimensions.sizingExpressiveXs,
+            baseSm: dimensions.sizingExpressiveSm,
+            baseMd: dimensions.sizingExpressiveMd,
+            baseLg: dimensions.sizingExpressiveLg,
+            baseXl: dimensions.sizingExpressiveXl,
+            base2xl: dimensions.sizingExpressive2xl,
+            base3xl: dimensions.sizingExpressive3xl
+        )
+    }
+    
+    private static func getBorderDimensions(dimensions: DSDimensions) -> DSBorderDimensions {
+        .init(
+            height3xs: dimensions.borderHeight3xs,
+            height2xs: dimensions.borderHeight2xs,
+            heightXs: dimensions.borderHeightXs,
+            heightSm: dimensions.borderHeightSm,
+            heightMd: dimensions.borderHeightMd,
+            heightLg: dimensions.borderHeightLg,
+            heightXl: dimensions.borderHeightXl,
+            height2xl: dimensions.borderHeight2xl,
+            height3xl: dimensions.borderHeight3xl,
+            radius3xs: dimensions.borderRadius3xs,
+            radius2xs: dimensions.borderRadius2xs,
+            radiusXs: dimensions.borderRadiusXs,
+            radiusSm: dimensions.borderRadiusSm,
+            radiusMd: dimensions.borderRadiusMd,
+            radiusLg: dimensions.borderRadiusLg,
+            radiusXl: dimensions.borderRadiusXl,
+            radius2xl: dimensions.borderRadius2xl,
+            radius3xl: dimensions.borderRadius3xl
+        )
+    }
 }

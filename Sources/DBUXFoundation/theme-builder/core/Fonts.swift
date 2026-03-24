@@ -20,7 +20,7 @@ struct DSFont {
     private enum FontError: Swift.Error {
         case failedToRegisterFont
     }
-
+    
     private func registerFont(fontName: String) throws {
         guard let fontURL = Bundle.module.url(forResource: "\(fontName)", withExtension: "ttf") else {
             throw FontError.failedToRegisterFont

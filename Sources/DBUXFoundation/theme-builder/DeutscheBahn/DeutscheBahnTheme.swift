@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 public struct DeutscheBahnTheme: DSTheme {
@@ -9,7 +8,7 @@ public struct DeutscheBahnTheme: DSTheme {
     
     public init(_ colorScheme: ColorScheme = .light) {
         self.colorScheme = colorScheme == .light ? DesignSystemColorScheme.getColorSchemeLight(colors: DeutscheBahnColors) : DesignSystemColorScheme.getColorSchemeDark(colors: DeutscheBahnColors)
-        self.activeColor = self.colorScheme.brand
+        self.activeColor = self.colorScheme.neutral
         self.dimensions = DesignSystemDimensions.getDimensionsFunctionalMobile(dimensions: DeutscheBahnDimensions())
         self.fonts = DesignSystemTextStyles.getFonts(typo: DesignSystemTypography.getTypographyFunctionalMobile(sizes: DeutscheBahnTypography))
     }
