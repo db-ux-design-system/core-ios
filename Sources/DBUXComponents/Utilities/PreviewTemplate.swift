@@ -24,7 +24,7 @@ struct PreviewPropertiesSection {
 
 struct PreviewPropertiesElement {
     var description: String
-    var content: AnyView
+    var content: () -> any View
 }
 
 struct PreviewTemplate: View {
@@ -141,7 +141,7 @@ struct PreviewPropertiesElementView: View {
             Text(element.description)
                 .dsTextStyle(theme.fonts.bodyXs)
             HStack(alignment: .center) {
-                element.content
+                AnyView(element.content())
             }
             .frame(maxHeight: .infinity)
         }
@@ -161,14 +161,14 @@ struct PreviewPropertiesElementView: View {
             PreviewPropertiesSection(name: "Section", content: [
                 PreviewPropertiesElement(
                     description: "Description",
-                    content: AnyView(Text("Element"))
+                    content: { Text("Element") }
                 )
             ])
         ],
         previewSemantics: [
             PreviewPropertiesElement(
                 description: ("Description"),
-                content: AnyView(Text("Element"))
+                content: { Text("Element") }
             )
         ]
     )

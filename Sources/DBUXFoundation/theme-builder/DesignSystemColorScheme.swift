@@ -57,8 +57,6 @@ public struct DSColorVariant {
     public let onBgInvertedHovered: Color
     public let onBgInvertedPressed: Color
     public let onOriginDefault: Color
-    public let onOriginHovered: Color
-    public let onOriginPressed: Color
     public let originDefault: Color
     public let originHovered: Color
     public let originPressed: Color
@@ -113,9 +111,7 @@ public struct DSColorVariant {
         self.onBgInvertedDefault = colors["\(colorName)\(scheme == .dark ? "3" : "14")", default: .clear]
         self.onBgInvertedHovered = colors["\(colorName)\(scheme == .dark ? "4" : "13")", default: .clear]
         self.onBgInvertedPressed = colors["\(colorName)\(scheme == .dark ? "5" : "12")", default: .clear]
-        self.onOriginDefault = colors["\(colorName)\(scheme == .dark ? "Dark" : "Light")", default: .clear]
-        self.onOriginHovered = colors["\(colorName)OnOriginHovered\(scheme == .dark ? "Dark" : "Light")", default: .clear]
-        self.onOriginPressed = colors["\(colorName)OnOriginPressed\(scheme == .dark ? "Dark" : "Light")", default: .clear]
+        self.onOriginDefault = colors["\(colorName)OnOriginDefault\(scheme == .dark ? "Dark" : "Light")", default: .clear]
         self.originDefault = colors["\(colorName)OriginDefault\(scheme == .dark ? "Dark" : "Light")", default: .clear]
         self.originHovered = colors["\(colorName)OriginHovered\(scheme == .dark ? "Dark" : "Light")", default: .clear]
         self.originPressed = colors["\(colorName)OriginPressed\(scheme == .dark ? "Dark" : "Light")", default: .clear]

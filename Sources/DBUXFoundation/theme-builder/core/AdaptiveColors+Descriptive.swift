@@ -20,7 +20,7 @@ public struct InvertedColor {
 
 public struct OriginColor {
     public var origin: StateColor
-    public var onOrigin: StateColor
+    public var onOrigin: Color
 }
 
 public struct TextColor {
@@ -206,11 +206,7 @@ extension DSColorVariant {
                 hovered: originHovered,
                 pressed: originPressed
             ),
-            onOrigin: .init(
-                default: onOriginDefault,
-                hovered: onOriginHovered,
-                pressed: onOriginPressed
-            )
+            onOrigin: onOriginDefault
         )
     }
 }

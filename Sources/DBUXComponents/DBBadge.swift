@@ -19,15 +19,32 @@ import DBUXFoundation
 
 struct DBBadge: View {
     enum DBBadgeVariant {
-        case dot
         case text(_ content: String)
+        case dot
         case icon(_ content: ImageResource)
+        
+        static let previewCases: [DBBadgeVariant] = [
+            .text("Text"),
+            .dot,
+            .icon(.xPlaceholder)
+        ]
+        
+        var previewName: String {
+            switch self {
+            case .text:
+                return "(Def) Text"
+            case .dot:
+                return "Dot"
+            case .icon:
+                return "Icon"
+            }
+        }
     }
     
     @Environment(\.theme) var theme
     
     var size: DBSize = .small
-    var content: DBBadgeVariant
+    var content: DBBadgeVariant = .text("")
     var emphasis: DBEmphasis = .weak
     var semantic: DBSemantic = .adaptive
     
@@ -95,93 +112,51 @@ struct DBBadge: View {
 #Preview(traits: .sizeThatFitsLayout) {
     PreviewTemplate(
         title: "DB Badge",
-        previewVariants: [
-            [
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .weak, semantic: .adaptive)),
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .strong, semantic: .adaptive))
-            ],
-            [
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .weak, semantic: .critical)),
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .strong, semantic: .critical))
-            ],
-            [
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .weak, semantic: .informational)),
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .strong, semantic: .informational))
-            ],
-            [
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .weak, semantic: .neutral)),
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .strong, semantic: .neutral))
-            ],
-            [
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .weak, semantic: .successful)),
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .strong, semantic: .successful))
-            ],
-            [
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .weak, semantic: .warning)),
-                AnyView(DBBadge(content: .text("Badge"), emphasis: .strong, semantic: .warning))
-            ],
-        ],
+        previewVariants: DBSemantic.allCases.map({ semantic in
+            DBEmphasis.allCases.map({ emphasis in
+                AnyView(DBBadge(content: .text("Badge"), emphasis: emphasis, semantic: semantic))
+            })
+        }),
         previewProperties: [
-            PreviewPropertiesSection(name: "Size", content: [
-                PreviewPropertiesElement(
-                    description: "(Def) Small",
-                    content: AnyView(DBBadge(size: .small, content: .text("Text")))
-                ),
-                PreviewPropertiesElement(
-                    description: "Medium",
-                    content: AnyView(DBBadge(size: .medium, content: .text("Text")))
-                )
-            ]),
-            PreviewPropertiesSection(name: "Content", content: [
-                PreviewPropertiesElement(
-                    description: "(Def) Text",
-                    content: AnyView(DBBadge(content: .text("Text")))
-                ),
-                PreviewPropertiesElement(
-                    description: "Dot",
-                    content: AnyView(DBBadge(content: .dot))
-                ),
-                PreviewPropertiesElement(
-                    description: "Icon",
-                    content: AnyView(DBBadge(content: .icon(.xPlaceholder)))
-                )
-            ]),
-            PreviewPropertiesSection(name: "Emphasis", content: [
-                PreviewPropertiesElement(
-                    description: "(Def) Weak", content:
-                        AnyView(DBBadge(content: .text("Text"), emphasis: .weak))
-                ),
-                PreviewPropertiesElement(
-                    description: "Strong", content:
-                        AnyView(DBBadge(content: .text("Text"), emphasis: .strong))
-                )
-            ])
-        ],
-        previewSemantics: [
-            PreviewPropertiesElement(
-                description: ("(Def) Adaptive"),
-                content: AnyView(HStack { DBBadge(content: .text("Text"), emphasis: .weak, semantic: .adaptive); DBBadge(content: .text("Text"), emphasis: .strong, semantic: .adaptive) })
+            PreviewPropertiesSection(
+                name: "Size",
+                content: DBSize.allCases.map({ size in
+                    PreviewPropertiesElement(
+                        description: size.previewName,
+                        content: { DBBadge(size: size, content: .text("Text")) }
+                    )
+                })
             ),
-            PreviewPropertiesElement(
-                description:"Critical", content:
-                    AnyView(HStack { DBBadge(content: .text("Text"), emphasis: .weak, semantic: .critical); DBBadge(content: .text("Text"), emphasis: .strong, semantic: .critical) })
+            PreviewPropertiesSection(
+                name: "Content",
+                content: DBBadge.DBBadgeVariant.previewCases.map({ variant in
+                    PreviewPropertiesElement(
+                        description: variant.previewName,
+                        content: { DBBadge(content: variant) }
+                    )
+                })
             ),
-            PreviewPropertiesElement(
-                description: "Informational",
-                content: AnyView(HStack { DBBadge(content: .text("Text"), emphasis: .weak, semantic: .informational); DBBadge(content: .text("Text"), emphasis: .strong, semantic: .informational) })
-            ),
-            PreviewPropertiesElement(
-                description: "Neutral",
-                content: AnyView(HStack { DBBadge(content: .text("Text"), emphasis: .weak, semantic: .neutral); DBBadge(content: .text("Text"), emphasis: .strong, semantic: .neutral) })
-            ),
-            PreviewPropertiesElement(
-                description: "Successful",
-                content: AnyView(HStack { DBBadge(content: .text("Text"), emphasis: .weak, semantic: .successful); DBBadge(content: .text("Text"), emphasis: .strong, semantic: .successful) })
-            ),
-            PreviewPropertiesElement(
-                description: "Warning",
-                content: AnyView(HStack { DBBadge(content: .text("Text"), emphasis: .weak, semantic: .warning); DBBadge(content: .text("Text"), emphasis: .strong, semantic: .warning) })
+            PreviewPropertiesSection(
+                name: "Emphasis",
+                content: DBEmphasis.allCases.map({ emphasis in
+                    PreviewPropertiesElement(
+                        description: emphasis.previewName,
+                        content: { DBBadge(content: .text("Text"), emphasis: emphasis) }
+                    )
+                })
             )
-        ]
+        ],
+        previewSemantics:
+            DBSemantic.allCases.map({ semantic in
+                PreviewPropertiesElement(
+                    description: semantic.previewName,
+                    content: {
+                        HStack {
+                            DBBadge(content: .text("Text"), emphasis: .weak, semantic: semantic)
+                            DBBadge(content: .text("Text"), emphasis: .strong, semantic: semantic)
+                        }
+                    }
+                )
+            })
     )
 }

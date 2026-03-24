@@ -14,21 +14,56 @@
 //  limitations under the License.
 //
 
-enum DBSize {
+enum DBSize: CaseIterable {
     case small
     case medium
+    
+    var previewName: String {
+        switch self {
+        case .small:
+            return "(Def) Small"
+        case .medium:
+            return "Medium"
+        }
+    }
 }
 
-enum DBEmphasis {
+enum DBEmphasis: CaseIterable {
     case weak
     case strong
+    
+    var previewName: String {
+        switch self {
+        case .weak:
+            return "(Def) Weak"
+        case .strong:
+            return "Strong"
+        }
+    }
 }
 
-enum DBSemantic {
+enum DBSemantic: CaseIterable {
     case adaptive
     case critical
     case informational
     case neutral
     case successful
     case warning
+    
+    var previewName: String {
+        switch self {
+        case .adaptive:
+            return "(Def) Adaptive"
+        case .critical:
+            return "Critical"
+        case .informational:
+            return "Informational"
+        case .neutral:
+            return "Neutral"
+        case .successful:
+            return "Successful"
+        case .warning:
+            return "Warning"
+        }
+    }
 }
