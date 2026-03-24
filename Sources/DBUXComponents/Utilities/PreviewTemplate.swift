@@ -76,9 +76,12 @@ struct PreviewTemplate: View {
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
                 
-                if !previewProperties.isEmpty {
+                if !previewProperties.isEmpty || !previewSemantics.isEmpty {
                     Text("🛠️ Properties")
                         .dsTextStyle(theme.fonts.h3)
+                }
+                
+                if !previewProperties.isEmpty {
                     ForEach(previewProperties.indices, id: \.self) { i in
                         let section = previewProperties[i]
                         VStack(alignment: .leading) {

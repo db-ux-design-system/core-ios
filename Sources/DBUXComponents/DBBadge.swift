@@ -85,12 +85,9 @@ struct DBBadge: View {
             }
         }
         .background(
-            ZStack {
-                Capsule().fill(semantic.backgroundColor(theme: theme, emphasis: emphasis))
-                Capsule()
-                    .stroke(style: .init(lineWidth: theme.dimensions.border.height3xs))
-                    .foregroundStyle(semantic.borderColor(theme: theme, emphasis: emphasis))
-            }
+            Capsule()
+                .fill(semantic.backgroundColor(theme: theme, emphasis: emphasis))
+                .stroke(semantic.borderColor(theme: theme, emphasis: emphasis), lineWidth: theme.dimensions.border.height3xs)
         )
     }
 }
@@ -155,7 +152,7 @@ struct DBBadge: View {
                         AnyView(DBBadge(content: .text("Text"), emphasis: .weak))
                 ),
                 PreviewPropertiesElement(
-                    description: "String", content:
+                    description: "Strong", content:
                         AnyView(DBBadge(content: .text("Text"), emphasis: .strong))
                 )
             ])
