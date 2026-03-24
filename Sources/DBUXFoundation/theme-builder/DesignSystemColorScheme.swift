@@ -121,12 +121,6 @@ public struct DSColorVariant {
           self.originDefault = colors["\(colorName)OriginDefaultDark", default: .clear]
           self.originHovered = colors["\(colorName)OriginHoveredDark", default: .clear]
           self.originPressed = colors["\(colorName)OriginPressedDark", default: .clear]
-          self.bgVibrantDefault = colors["\(colorName)9", default: .clear]
-          self.bgVibrantHovered = colors["\(colorName)12", default: .clear]
-          self.bgVibrantPressed = colors["\(colorName)10", default: .clear]
-          self.onBgVibrantDefault = colors["\(colorName)1", default: .clear]
-          self.onBgVibrantHovered = colors["\(colorName)4", default: .clear]
-          self.onBgVibrantPressed = colors["\(colorName)2", default: .clear]
 
         case .light:
           self.bgBasicLevel1Default = colors["\(colorName)14", default: .clear]
@@ -178,14 +172,15 @@ public struct DSColorVariant {
           self.originDefault = colors["\(colorName)OriginDefaultLight", default: .clear]
           self.originHovered = colors["\(colorName)OriginHoveredLight", default: .clear]
           self.originPressed = colors["\(colorName)OriginPressedLight", default: .clear]
-          self.bgVibrantDefault = colors["\(colorName)9", default: .clear]
-          self.bgVibrantHovered = colors["\(colorName)12", default: .clear]
-          self.bgVibrantPressed = colors["\(colorName)10", default: .clear]
-          self.onBgVibrantDefault = colors["\(colorName)1", default: .clear]
-          self.onBgVibrantHovered = colors["\(colorName)4", default: .clear]
-          self.onBgVibrantPressed = colors["\(colorName)2", default: .clear]
-
         }
+
+        // These colors are the same for light and dark mode
+        self.bgVibrantDefault = colors["\(colorName)9", default: .clear]
+        self.bgVibrantHovered = colors["\(colorName)12", default: .clear]
+        self.bgVibrantPressed = colors["\(colorName)10", default: .clear]
+        self.onBgVibrantDefault = colors["\(colorName)1", default: .clear]
+        self.onBgVibrantHovered = colors["\(colorName)4", default: .clear]
+        self.onBgVibrantPressed = colors["\(colorName)2", default: .clear]
     }
 }
 

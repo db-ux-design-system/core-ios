@@ -224,40 +224,11 @@ public struct DesignSystemDimensions {
      }
 
     private static func getSizingDimensionsFunctionalMobile(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingFunctional3xs,
-          base2xs: dimensions.sizingFunctional2xs,
-          baseXs: dimensions.sizingFunctionalXs,
-          baseSm: dimensions.sizingFunctionalSm,
-          baseMd: dimensions.sizingFunctionalMd,
-          baseLg: dimensions.sizingFunctionalLg,
-          baseXl: dimensions.sizingFunctionalXl,
-          base2xl: dimensions.sizingFunctional2xl,
-          base3xl: dimensions.sizingFunctional3xl
-        )
+        getDefaultSizingDimensionsFunctional(dimensions: dimensions)
      }
 
     private static func getBorderDimensionsFunctionalMobile(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
+        getDefaultBorderDimensions(dimensions: dimensions)
      }
 
     static func getDimensionsFunctionalMobile(dimensions: DSDimensions) -> DesignSystemDimensions {
@@ -292,40 +263,11 @@ public struct DesignSystemDimensions {
      }
 
     private static func getSizingDimensionsFunctionalTablet(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingFunctional3xs,
-          base2xs: dimensions.sizingFunctional2xs,
-          baseXs: dimensions.sizingFunctionalXs,
-          baseSm: dimensions.sizingFunctionalSm,
-          baseMd: dimensions.sizingFunctionalMd,
-          baseLg: dimensions.sizingFunctionalLg,
-          baseXl: dimensions.sizingFunctionalXl,
-          base2xl: dimensions.sizingFunctional2xl,
-          base3xl: dimensions.sizingFunctional3xl
-        )
+        getDefaultSizingDimensionsFunctional(dimensions: dimensions)
      }
 
     private static func getBorderDimensionsFunctionalTablet(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
+        getDefaultBorderDimensions(dimensions: dimensions)
      }
 
     static func getDimensionsFunctionalTablet(dimensions: DSDimensions) -> DesignSystemDimensions {
@@ -360,40 +302,11 @@ public struct DesignSystemDimensions {
      }
 
     private static func getSizingDimensionsRegularMobile(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingRegular3xs,
-          base2xs: dimensions.sizingRegular2xs,
-          baseXs: dimensions.sizingRegularXs,
-          baseSm: dimensions.sizingRegularSm,
-          baseMd: dimensions.sizingRegularMd,
-          baseLg: dimensions.sizingRegularLg,
-          baseXl: dimensions.sizingRegularXl,
-          base2xl: dimensions.sizingRegular2xl,
-          base3xl: dimensions.sizingRegular3xl
-        )
+        getDefaultSizingDimensionsRegular(dimensions: dimensions)
      }
 
     private static func getBorderDimensionsRegularMobile(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
+        getDefaultBorderDimensions(dimensions: dimensions)
      }
 
     static func getDimensionsRegularMobile(dimensions: DSDimensions) -> DesignSystemDimensions {
@@ -428,40 +341,11 @@ public struct DesignSystemDimensions {
      }
 
     private static func getSizingDimensionsRegularTablet(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingRegular3xs,
-          base2xs: dimensions.sizingRegular2xs,
-          baseXs: dimensions.sizingRegularXs,
-          baseSm: dimensions.sizingRegularSm,
-          baseMd: dimensions.sizingRegularMd,
-          baseLg: dimensions.sizingRegularLg,
-          baseXl: dimensions.sizingRegularXl,
-          base2xl: dimensions.sizingRegular2xl,
-          base3xl: dimensions.sizingRegular3xl
-        )
+        getDefaultSizingDimensionsRegular(dimensions: dimensions)
      }
 
     private static func getBorderDimensionsRegularTablet(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
+        getDefaultBorderDimensions(dimensions: dimensions)
      }
 
     static func getDimensionsRegularTablet(dimensions: DSDimensions) -> DesignSystemDimensions {
@@ -496,40 +380,11 @@ public struct DesignSystemDimensions {
      }
 
     private static func getSizingDimensionsExpressiveMobile(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingExpressive3xs,
-          base2xs: dimensions.sizingExpressive2xs,
-          baseXs: dimensions.sizingExpressiveXs,
-          baseSm: dimensions.sizingExpressiveSm,
-          baseMd: dimensions.sizingExpressiveMd,
-          baseLg: dimensions.sizingExpressiveLg,
-          baseXl: dimensions.sizingExpressiveXl,
-          base2xl: dimensions.sizingExpressive2xl,
-          base3xl: dimensions.sizingExpressive3xl
-        )
+        getDefaultSizingDimensionsExpressive(dimensions: dimensions)
      }
 
     private static func getBorderDimensionsExpressiveMobile(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
+        getDefaultBorderDimensions(dimensions: dimensions)
      }
 
     static func getDimensionsExpressiveMobile(dimensions: DSDimensions) -> DesignSystemDimensions {
@@ -564,42 +419,78 @@ public struct DesignSystemDimensions {
      }
 
     private static func getSizingDimensionsExpressiveTablet(dimensions: DSDimensions) -> DSSizingDimensions {
-      .init(
-          base3xs: dimensions.sizingExpressive3xs,
-          base2xs: dimensions.sizingExpressive2xs,
-          baseXs: dimensions.sizingExpressiveXs,
-          baseSm: dimensions.sizingExpressiveSm,
-          baseMd: dimensions.sizingExpressiveMd,
-          baseLg: dimensions.sizingExpressiveLg,
-          baseXl: dimensions.sizingExpressiveXl,
-          base2xl: dimensions.sizingExpressive2xl,
-          base3xl: dimensions.sizingExpressive3xl
-        )
+        getDefaultSizingDimensionsExpressive(dimensions: dimensions)
      }
 
     private static func getBorderDimensionsExpressiveTablet(dimensions: DSDimensions) -> DSBorderDimensions {
-      .init(
-          height3xs: dimensions.borderHeight3xs,
-          height2xs: dimensions.borderHeight2xs,
-          heightXs: dimensions.borderHeightXs,
-          heightSm: dimensions.borderHeightSm,
-          heightMd: dimensions.borderHeightMd,
-          heightLg: dimensions.borderHeightLg,
-          heightXl: dimensions.borderHeightXl,
-          height2xl: dimensions.borderHeight2xl,
-          height3xl: dimensions.borderHeight3xl,
-          radius3xs: dimensions.borderRadius3xs,
-          radius2xs: dimensions.borderRadius2xs,
-          radiusXs: dimensions.borderRadiusXs,
-          radiusSm: dimensions.borderRadiusSm,
-          radiusMd: dimensions.borderRadiusMd,
-          radiusLg: dimensions.borderRadiusLg,
-          radiusXl: dimensions.borderRadiusXl,
-          radius2xl: dimensions.borderRadius2xl,
-          radius3xl: dimensions.borderRadius3xl
-        )
+        getDefaultBorderDimensions(dimensions: dimensions)
      }
+    
+    private static func getDefaultBorderDimensions(dimensions: DSDimensions) -> DSBorderDimensions {
+        .init(
+            height3xs: dimensions.borderHeight3xs,
+            height2xs: dimensions.borderHeight2xs,
+            heightXs: dimensions.borderHeightXs,
+            heightSm: dimensions.borderHeightSm,
+            heightMd: dimensions.borderHeightMd,
+            heightLg: dimensions.borderHeightLg,
+            heightXl: dimensions.borderHeightXl,
+            height2xl: dimensions.borderHeight2xl,
+            height3xl: dimensions.borderHeight3xl,
+            radius3xs: dimensions.borderRadius3xs,
+            radius2xs: dimensions.borderRadius2xs,
+            radiusXs: dimensions.borderRadiusXs,
+            radiusSm: dimensions.borderRadiusSm,
+            radiusMd: dimensions.borderRadiusMd,
+            radiusLg: dimensions.borderRadiusLg,
+            radiusXl: dimensions.borderRadiusXl,
+            radius2xl: dimensions.borderRadius2xl,
+            radius3xl: dimensions.borderRadius3xl
+          )
+    }
+        
+    private static func getDefaultSizingDimensionsFunctional(dimensions: DSDimensions) -> DSSizingDimensions {
+        .init(
+            base3xs: dimensions.sizingFunctional3xs,
+            base2xs: dimensions.sizingFunctional2xs,
+            baseXs: dimensions.sizingFunctionalXs,
+            baseSm: dimensions.sizingFunctionalSm,
+            baseMd: dimensions.sizingFunctionalMd,
+            baseLg: dimensions.sizingFunctionalLg,
+            baseXl: dimensions.sizingFunctionalXl,
+            base2xl: dimensions.sizingFunctional2xl,
+            base3xl: dimensions.sizingFunctional3xl
+          )
+    }
 
+    private static func getDefaultSizingDimensionsRegular(dimensions: DSDimensions) -> DSSizingDimensions {
+        .init(
+            base3xs: dimensions.sizingRegular3xs,
+            base2xs: dimensions.sizingRegular2xs,
+            baseXs: dimensions.sizingRegularXs,
+            baseSm: dimensions.sizingRegularSm,
+            baseMd: dimensions.sizingRegularMd,
+            baseLg: dimensions.sizingRegularLg,
+            baseXl: dimensions.sizingRegularXl,
+            base2xl: dimensions.sizingRegular2xl,
+            base3xl: dimensions.sizingRegular3xl
+          )
+    }
+    
+    private static func getDefaultSizingDimensionsExpressive(dimensions: DSDimensions) -> DSSizingDimensions {
+        .init(
+            base3xs: dimensions.sizingExpressive3xs,
+            base2xs: dimensions.sizingExpressive2xs,
+            baseXs: dimensions.sizingExpressiveXs,
+            baseSm: dimensions.sizingExpressiveSm,
+            baseMd: dimensions.sizingExpressiveMd,
+            baseLg: dimensions.sizingExpressiveLg,
+            baseXl: dimensions.sizingExpressiveXl,
+            base2xl: dimensions.sizingExpressive2xl,
+            base3xl: dimensions.sizingExpressive3xl
+          )
+    }
+    
     static func getDimensionsExpressiveTablet(dimensions: DSDimensions) -> DesignSystemDimensions {
       .init(
         spacing: getSpacingDimensionsExpressiveTablet(dimensions: dimensions),

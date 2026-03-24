@@ -24,9 +24,9 @@ struct Elevation1ViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .foregroundStyle(theme.activeColor.basic.text.default.default)
             .padding(theme.dimensions.spacing.fixedMd)
             .background(theme.activeColor.basic.background.level1.default)
-            .foregroundStyle(theme.activeColor.basic.text.default.default)
     }
 }
     
@@ -35,8 +35,8 @@ struct Elevation2ViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .padding(theme.dimensions.spacing.fixedMd)
             .foregroundStyle(theme.activeColor.basic.text.emphasis90.default)
+            .padding(theme.dimensions.spacing.fixedMd)
             .background(theme.activeColor.basic.background.level2.default)
             .cornerRadius(theme.dimensions.border.radiusXs)
             .overlay(
@@ -52,8 +52,8 @@ struct Elevation3ViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .padding(theme.dimensions.spacing.fixedMd)
             .foregroundStyle(theme.activeColor.basic.text.emphasis80.default)
+            .padding(theme.dimensions.spacing.fixedMd)
             .background(theme.activeColor.basic.background.level3.default)
             .cornerRadius(theme.dimensions.border.radiusXs)
             .overlay(
