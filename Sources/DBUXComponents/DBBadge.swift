@@ -49,11 +49,11 @@ struct DBBadge: View {
         }
     }
     
-    private var font: Font {
+    private var font: DSTextStyle {
         if size == .small {
-            return theme.fonts.body2xs.font.bold()
+            return theme.fonts.body2xs
         } else {
-            return theme.fonts.bodySm.font.bold()
+            return theme.fonts.bodySm
         }
     }
     
@@ -73,7 +73,7 @@ struct DBBadge: View {
                     .frame(width: dotSize, height: dotSize)
             case .text(let content):
                 Text(content)
-                    .font(font)
+                    .dsTextStyle(font.copy(weight: .bold))
                     .foregroundColor(semantic.textColor(theme: theme, emphasis: emphasis))
                     .padding(.horizontal, textPadding)
             case .icon(let content):

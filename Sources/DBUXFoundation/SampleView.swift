@@ -20,17 +20,9 @@ struct SampleView: View {
     @Environment(\.theme) var theme
     @Environment(\.colorScheme) var systemColorScheme
     
-    @State var selectedTheme = 1
+    @State var selectedTheme = 2
     
-    @State var customTheme: DSTheme = DeutscheBahnTheme(.dark)
-    @State var firstTheme: DSTheme = DeutscheBahnTheme(.dark)
-    @State var secondTheme: DSTheme = SBahnTheme(.dark)
-    
-    init() {
-        self.customTheme = DeutscheBahnTheme(systemColorScheme)
-        self.firstTheme = DeutscheBahnTheme(systemColorScheme)
-        self.secondTheme = SBahnTheme(systemColorScheme)
-    }
+    @State var customTheme: DSTheme = DeutscheBahnTheme(.light)
     
     var body: some View {
         VStack {
@@ -45,20 +37,27 @@ struct SampleView: View {
 
             Spacer()
             Picker(selection: $selectedTheme, content: {
-                Text("Deutsche Bahn")
+                Text("Deutsche Bahn (System)")
                     .tag(0)
-                Text("S-Bahn")
+                Text("Deutsche Bahn (Dark)")
                     .tag(1)
+                Text("Deutsche Bahn (Light)")
+                    .tag(2)
             }, label: {
                 Text("Theme")
             })
             .pickerStyle(.menu)
             .foregroundColor(theme.activeColor.basic.text.default.default)
             .onChange(of: selectedTheme) { oldValue, newValue in
-                if newValue == 0 {
+                switch newValue {
+                case 0:
                     customTheme = DeutscheBahnTheme(systemColorScheme)
-                } else {
-                    customTheme = SBahnTheme(systemColorScheme)
+                case 1:
+                    customTheme = DeutscheBahnTheme(.dark)
+                case 2:
+                    customTheme = DeutscheBahnTheme(.light)
+                default:
+                    customTheme = DeutscheBahnTheme(systemColorScheme)
                 }
             }
         }
@@ -70,11 +69,6 @@ struct SampleView: View {
             alignment: .center
         )
         .background(theme.activeColor.basic.background.level1.default)
-        .onAppear() {
-            customTheme = DeutscheBahnTheme(systemColorScheme)
-            firstTheme = DeutscheBahnTheme(systemColorScheme)
-            secondTheme = SBahnTheme(systemColorScheme)
-        }
         .font(theme.fonts.bodyMd.font)
     }
 }
