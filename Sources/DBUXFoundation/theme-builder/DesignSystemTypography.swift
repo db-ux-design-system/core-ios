@@ -225,8 +225,8 @@ extension DSTypography {
 public struct DSTextStyle {
     public let font: Font
     let uiFont: UIFont
-    public var lineHeight: CGFloat
-    public var fontWeight: Font.Weight
+    public let lineHeight: CGFloat
+    public let fontWeight: Font.Weight
     
     public func copy(height: CGFloat? = nil, weight: Font.Weight? = nil) -> DSTextStyle {
         let copy = DSTextStyle(font: font, uiFont: uiFont, lineHeight: height ?? lineHeight, fontWeight: weight ?? fontWeight)
