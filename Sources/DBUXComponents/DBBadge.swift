@@ -23,13 +23,13 @@ struct DBBadge: View {
         case dot
         case icon(_ content: ImageResource)
         
-        static let previewCases: [DBBadgeVariant] = [
+        internal static let previewCases: [DBBadgeVariant] = [
             .text("Text"),
             .dot,
             .icon(.xPlaceholder)
         ]
         
-        var previewName: String {
+        internal var previewName: String {
             switch self {
             case .text:
                 return "(Def) Text"

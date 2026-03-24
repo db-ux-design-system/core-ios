@@ -18,7 +18,7 @@ enum DBSize: CaseIterable {
     case small
     case medium
     
-    var previewName: String {
+    internal var previewName: String {
         switch self {
         case .small:
             return "(Def) Small"
@@ -32,7 +32,7 @@ enum DBEmphasis: CaseIterable {
     case weak
     case strong
     
-    var previewName: String {
+    internal var previewName: String {
         switch self {
         case .weak:
             return "(Def) Weak"
@@ -50,7 +50,7 @@ enum DBSemantic: CaseIterable {
     case successful
     case warning
     
-    var previewName: String {
+    internal var previewName: String {
         switch self {
         case .adaptive:
             return "(Def) Adaptive"

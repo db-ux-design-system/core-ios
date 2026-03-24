@@ -17,17 +17,17 @@
 import SwiftUI
 import DBUXFoundation
 
-struct PreviewPropertiesSection {
+internal struct PreviewPropertiesSection {
     var name: String
     var content: [PreviewPropertiesElement]
 }
 
-struct PreviewPropertiesElement {
+internal struct PreviewPropertiesElement {
     var description: String
     var content: () -> any View
 }
 
-struct PreviewTemplate: View {
+internal struct PreviewTemplate: View {
     
     @Environment(\.theme) var theme: any DSTheme
     
@@ -131,7 +131,7 @@ struct PreviewTemplate: View {
     }
 }
 
-struct PreviewPropertiesElementView: View {
+internal struct PreviewPropertiesElementView: View {
     @Environment(\.theme) var theme
     
     var element: PreviewPropertiesElement
