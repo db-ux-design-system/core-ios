@@ -1,12 +1,12 @@
 //
 //  Copyright 2026 by DB Systel GmbH
-//  
+//
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
 //  You may obtain a copy of the License at
-//  
+//
 //          http://www.apache.org/licenses/LICENSE-2.0
-//  
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS,
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,7 +38,7 @@ struct PreviewTemplate: View {
     
     var lightTheme: DSTheme = DeutscheBahnTheme(.light)
     var darkTheme: DSTheme = DeutscheBahnTheme(.dark)
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -87,7 +87,7 @@ struct PreviewTemplate: View {
                             VStack {
                                 HStack(spacing: 32) {
                                     ForEach(section.content.indices, id: \.self) { j in
-                                        previewPropertiesElementView(element: section.content[j])
+                                        PreviewPropertiesElementView(element: section.content[j])
                                     }
                                     Spacer()
                                 }
@@ -101,7 +101,7 @@ struct PreviewTemplate: View {
                         
                     }
                 }
-
+                
                 if !previewSemantics.isEmpty {
                     VStack(alignment: .leading) {
                         Text("Semantic")
@@ -113,7 +113,7 @@ struct PreviewTemplate: View {
                                 ],
                                 content: {
                                     ForEach(Array(previewSemantics.indices), id: \.self) { i in
-                                        previewPropertiesElementView(element: previewSemantics[i])
+                                        PreviewPropertiesElementView(element: previewSemantics[i])
                                     }
                                 }
                             )
@@ -131,7 +131,7 @@ struct PreviewTemplate: View {
     }
 }
 
-struct previewPropertiesElementView: View {
+struct PreviewPropertiesElementView: View {
     @Environment(\.theme) var theme
     
     var element: PreviewPropertiesElement

@@ -30,7 +30,7 @@ struct DBBadge: View {
     var content: DBBadgeVariant
     var emphasis: DBEmphasis = .weak
     var semantic: DBSemantic = .adaptive
-
+    
     private var iconSize: CGFloat { size == .small ? 14 : 20 }
     
     private var iconPadding: CGFloat {
@@ -186,6 +186,5 @@ struct DBBadge: View {
                 content: AnyView(HStack { DBBadge(content: .text("Text"), emphasis: .weak, semantic: .warning); DBBadge(content: .text("Text"), emphasis: .strong, semantic: .warning) })
             )
         ]
-        
     )
 }

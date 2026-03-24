@@ -1,5 +1,5 @@
 import SwiftUI
-  
+
 let DeutscheBahnTypography: [String: CGFloat] = [
     "bodyLineHeightRegularMobileLg": 28,
     "bodyFontSizeRegularMobileLg": 20,

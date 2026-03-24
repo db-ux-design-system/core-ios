@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ThemeModifier: ViewModifier {
@@ -88,4 +87,3 @@ public protocol DSTheme {
     var fonts: DesignSystemTextStyles { get set }
     var dimensions: DesignSystemDimensions { get set }
 }
-

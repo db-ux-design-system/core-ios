@@ -68,113 +68,57 @@ public struct DSColorVariant {
     public let onBgVibrantDefault: Color
     public let onBgVibrantHovered: Color
     public let onBgVibrantPressed: Color
-
+    
     init(_ scheme: DSColorScheme, colorName: String, colors: [String: Color]) {
-      switch scheme {
-        case .dark:
-          self.bgBasicLevel1Default = colors["\(colorName)3", default: .clear]
-          self.bgBasicLevel1Hovered = colors["\(colorName)4", default: .clear]
-          self.bgBasicLevel1Pressed = colors["\(colorName)5", default: .clear]
-          self.bgBasicLevel2Default = colors["\(colorName)2", default: .clear]
-          self.bgBasicLevel2Hovered = colors["\(colorName)3", default: .clear]
-          self.bgBasicLevel2Pressed = colors["\(colorName)4", default: .clear]
-          self.bgBasicLevel3Default = colors["\(colorName)1", default: .clear]
-          self.bgBasicLevel3Hovered = colors["\(colorName)2", default: .clear]
-          self.bgBasicLevel3Pressed = colors["\(colorName)3", default: .clear]
-          self.bgBasicTransparentFullDefault = colors["\(colorName)9", default: .clear].opacity(1)
-          self.bgBasicTransparentSemiDefault = colors["\(colorName)9", default: .clear].opacity(0.84)
-          self.bgBasicTransparentHovered = colors["\(colorName)9", default: .clear].opacity(0.76)
-          self.bgBasicTransparentPressed = colors["\(colorName)9", default: .clear].opacity(0.68)
-          self.onBgBasicEmphasis100Default = colors["\(colorName)12", default: .clear]
-          self.onBgBasicEmphasis100Hovered = colors["\(colorName)11", default: .clear]
-          self.onBgBasicEmphasis100Pressed = colors["\(colorName)10", default: .clear]
-          self.onBgBasicEmphasis90Default = colors["\(colorName)10", default: .clear]
-          self.onBgBasicEmphasis90Hovered = colors["\(colorName)9", default: .clear]
-          self.onBgBasicEmphasis90Pressed = colors["\(colorName)8", default: .clear]
-          self.onBgBasicEmphasis80Default = colors["\(colorName)9", default: .clear]
-          self.onBgBasicEmphasis80Hovered = colors["\(colorName)8", default: .clear]
-          self.onBgBasicEmphasis80Pressed = colors["\(colorName)7", default: .clear]
-          self.onBgBasicEmphasis70Default = colors["\(colorName)8", default: .clear]
-          self.onBgBasicEmphasis70Hovered = colors["\(colorName)7", default: .clear]
-          self.onBgBasicEmphasis70Pressed = colors["\(colorName)6", default: .clear]
-          self.onBgBasicEmphasis60Default = colors["\(colorName)6", default: .clear]
-          self.onBgBasicEmphasis60Hovered = colors["\(colorName)5", default: .clear]
-          self.onBgBasicEmphasis60Pressed = colors["\(colorName)4", default: .clear]
-          self.onBgBasicEmphasis50Default = colors["\(colorName)5", default: .clear]
-          self.onBgBasicEmphasis50Hovered = colors["\(colorName)4", default: .clear]
-          self.onBgBasicEmphasis50Pressed = colors["\(colorName)3", default: .clear]
-          self.bgInvertedContrastMaxDefault = colors["\(colorName)12", default: .clear]
-          self.bgInvertedContrastMaxHovered = colors["\(colorName)11", default: .clear]
-          self.bgInvertedContrastMaxPressed = colors["\(colorName)10", default: .clear]
-          self.bgInvertedContrastHighDefault = colors["\(colorName)9", default: .clear]
-          self.bgInvertedContrastHighHovered = colors["\(colorName)8", default: .clear]
-          self.bgInvertedContrastHighPressed = colors["\(colorName)7", default: .clear]
-          self.bgInvertedContrastLowDefault = colors["\(colorName)8", default: .clear]
-          self.bgInvertedContrastLowHovered = colors["\(colorName)7", default: .clear]
-          self.bgInvertedContrastLowPressed = colors["\(colorName)6", default: .clear]
-          self.onBgInvertedDefault = colors["\(colorName)3", default: .clear]
-          self.onBgInvertedHovered = colors["\(colorName)4", default: .clear]
-          self.onBgInvertedPressed = colors["\(colorName)5", default: .clear]
-          self.onOriginDefault = colors["\(colorName)Dark", default: .clear]
-          self.onOriginHovered = colors["\(colorName)OnOriginHoveredDark", default: .clear]
-          self.onOriginPressed = colors["\(colorName)OnOriginPressedDark", default: .clear]
-          self.originDefault = colors["\(colorName)OriginDefaultDark", default: .clear]
-          self.originHovered = colors["\(colorName)OriginHoveredDark", default: .clear]
-          self.originPressed = colors["\(colorName)OriginPressedDark", default: .clear]
-
-        case .light:
-          self.bgBasicLevel1Default = colors["\(colorName)14", default: .clear]
-          self.bgBasicLevel1Hovered = colors["\(colorName)13", default: .clear]
-          self.bgBasicLevel1Pressed = colors["\(colorName)12", default: .clear]
-          self.bgBasicLevel2Default = colors["\(colorName)13", default: .clear]
-          self.bgBasicLevel2Hovered = colors["\(colorName)12", default: .clear]
-          self.bgBasicLevel2Pressed = colors["\(colorName)11", default: .clear]
-          self.bgBasicLevel3Default = colors["\(colorName)12", default: .clear]
-          self.bgBasicLevel3Hovered = colors["\(colorName)11", default: .clear]
-          self.bgBasicLevel3Pressed = colors["\(colorName)10", default: .clear]
-          self.bgBasicTransparentFullDefault = colors["\(colorName)6", default: .clear].opacity(1)
-          self.bgBasicTransparentSemiDefault = colors["\(colorName)6", default: .clear].opacity(0.84)
-          self.bgBasicTransparentHovered = colors["\(colorName)6", default: .clear].opacity(0.76)
-          self.bgBasicTransparentPressed = colors["\(colorName)6", default: .clear].opacity(0.68)
-          self.onBgBasicEmphasis100Default = colors["\(colorName)3", default: .clear]
-          self.onBgBasicEmphasis100Hovered = colors["\(colorName)4", default: .clear]
-          self.onBgBasicEmphasis100Pressed = colors["\(colorName)5", default: .clear]
-          self.onBgBasicEmphasis90Default = colors["\(colorName)5", default: .clear]
-          self.onBgBasicEmphasis90Hovered = colors["\(colorName)6", default: .clear]
-          self.onBgBasicEmphasis90Pressed = colors["\(colorName)7", default: .clear]
-          self.onBgBasicEmphasis80Default = colors["\(colorName)6", default: .clear]
-          self.onBgBasicEmphasis80Hovered = colors["\(colorName)5", default: .clear]
-          self.onBgBasicEmphasis80Pressed = colors["\(colorName)4", default: .clear]
-          self.onBgBasicEmphasis70Default = colors["\(colorName)7", default: .clear]
-          self.onBgBasicEmphasis70Hovered = colors["\(colorName)6", default: .clear]
-          self.onBgBasicEmphasis70Pressed = colors["\(colorName)5", default: .clear]
-          self.onBgBasicEmphasis60Default = colors["\(colorName)10", default: .clear]
-          self.onBgBasicEmphasis60Hovered = colors["\(colorName)9", default: .clear]
-          self.onBgBasicEmphasis60Pressed = colors["\(colorName)8", default: .clear]
-          self.onBgBasicEmphasis50Default = colors["\(colorName)9", default: .clear]
-          self.onBgBasicEmphasis50Hovered = colors["\(colorName)8", default: .clear]
-          self.onBgBasicEmphasis50Pressed = colors["\(colorName)7", default: .clear]
-          self.bgInvertedContrastMaxDefault = colors["\(colorName)3", default: .clear]
-          self.bgInvertedContrastMaxHovered = colors["\(colorName)4", default: .clear]
-          self.bgInvertedContrastMaxPressed = colors["\(colorName)5", default: .clear]
-          self.bgInvertedContrastHighDefault = colors["\(colorName)6", default: .clear]
-          self.bgInvertedContrastHighHovered = colors["\(colorName)5", default: .clear]
-          self.bgInvertedContrastHighPressed = colors["\(colorName)4", default: .clear]
-          self.bgInvertedContrastLowDefault = colors["\(colorName)7", default: .clear]
-          self.bgInvertedContrastLowHovered = colors["\(colorName)6", default: .clear]
-          self.bgInvertedContrastLowPressed = colors["\(colorName)5", default: .clear]
-          self.onBgInvertedDefault = colors["\(colorName)14", default: .clear]
-          self.onBgInvertedHovered = colors["\(colorName)13", default: .clear]
-          self.onBgInvertedPressed = colors["\(colorName)12", default: .clear]
-          self.onOriginDefault = colors["\(colorName)Light", default: .clear]
-          self.onOriginHovered = colors["\(colorName)OnOriginHoveredLight", default: .clear]
-          self.onOriginPressed = colors["\(colorName)OnOriginPressedLight", default: .clear]
-          self.originDefault = colors["\(colorName)OriginDefaultLight", default: .clear]
-          self.originHovered = colors["\(colorName)OriginHoveredLight", default: .clear]
-          self.originPressed = colors["\(colorName)OriginPressedLight", default: .clear]
-        }
-
-        // These colors are the same for light and dark mode
+        self.bgBasicLevel1Default = colors["\(colorName)\(scheme == .dark ? "3" : "14")", default: .clear]
+        self.bgBasicLevel1Hovered = colors["\(colorName)\(scheme == .dark ? "4" : "13")", default: .clear]
+        self.bgBasicLevel1Pressed = colors["\(colorName)\(scheme == .dark ? "5" : "12")", default: .clear]
+        self.bgBasicLevel2Default = colors["\(colorName)\(scheme == .dark ? "2" : "13")", default: .clear]
+        self.bgBasicLevel2Hovered = colors["\(colorName)\(scheme == .dark ? "3" : "12")", default: .clear]
+        self.bgBasicLevel2Pressed = colors["\(colorName)\(scheme == .dark ? "4" : "11")", default: .clear]
+        self.bgBasicLevel3Default = colors["\(colorName)\(scheme == .dark ? "1" : "12")", default: .clear]
+        self.bgBasicLevel3Hovered = colors["\(colorName)\(scheme == .dark ? "2" : "11")", default: .clear]
+        self.bgBasicLevel3Pressed = colors["\(colorName)\(scheme == .dark ? "3" : "10")", default: .clear]
+        self.bgBasicTransparentFullDefault = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(1)
+        self.bgBasicTransparentSemiDefault = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0.84)
+        self.bgBasicTransparentHovered = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0.76)
+        self.bgBasicTransparentPressed = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0.68)
+        self.onBgBasicEmphasis100Default = colors["\(colorName)\(scheme == .dark ? "12" : "3")", default: .clear]
+        self.onBgBasicEmphasis100Hovered = colors["\(colorName)\(scheme == .dark ? "11" : "4")", default: .clear]
+        self.onBgBasicEmphasis100Pressed = colors["\(colorName)\(scheme == .dark ? "10" : "5")", default: .clear]
+        self.onBgBasicEmphasis90Default = colors["\(colorName)\(scheme == .dark ? "10" : "5")", default: .clear]
+        self.onBgBasicEmphasis90Hovered = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear]
+        self.onBgBasicEmphasis90Pressed = colors["\(colorName)\(scheme == .dark ? "8" : "7")", default: .clear]
+        self.onBgBasicEmphasis80Default = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear]
+        self.onBgBasicEmphasis80Hovered = colors["\(colorName)\(scheme == .dark ? "8" : "5")", default: .clear]
+        self.onBgBasicEmphasis80Pressed = colors["\(colorName)\(scheme == .dark ? "7" : "4")", default: .clear]
+        self.onBgBasicEmphasis70Default = colors["\(colorName)\(scheme == .dark ? "8" : "7")", default: .clear]
+        self.onBgBasicEmphasis70Hovered = colors["\(colorName)\(scheme == .dark ? "7" : "6")", default: .clear]
+        self.onBgBasicEmphasis70Pressed = colors["\(colorName)\(scheme == .dark ? "6" : "5")", default: .clear]
+        self.onBgBasicEmphasis60Default = colors["\(colorName)\(scheme == .dark ? "6" : "10")", default: .clear]
+        self.onBgBasicEmphasis60Hovered = colors["\(colorName)\(scheme == .dark ? "5" : "9")", default: .clear]
+        self.onBgBasicEmphasis60Pressed = colors["\(colorName)\(scheme == .dark ? "4" : "8")", default: .clear]
+        self.onBgBasicEmphasis50Default = colors["\(colorName)\(scheme == .dark ? "5" : "9")", default: .clear]
+        self.onBgBasicEmphasis50Hovered = colors["\(colorName)\(scheme == .dark ? "4" : "8")", default: .clear]
+        self.onBgBasicEmphasis50Pressed = colors["\(colorName)\(scheme == .dark ? "3" : "7")", default: .clear]
+        self.bgInvertedContrastMaxDefault = colors["\(colorName)\(scheme == .dark ? "12" : "3")", default: .clear]
+        self.bgInvertedContrastMaxHovered = colors["\(colorName)\(scheme == .dark ? "11" : "4")", default: .clear]
+        self.bgInvertedContrastMaxPressed = colors["\(colorName)\(scheme == .dark ? "10" : "5")", default: .clear]
+        self.bgInvertedContrastHighDefault = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear]
+        self.bgInvertedContrastHighHovered = colors["\(colorName)\(scheme == .dark ? "8" : "5")", default: .clear]
+        self.bgInvertedContrastHighPressed = colors["\(colorName)\(scheme == .dark ? "7" : "4")", default: .clear]
+        self.bgInvertedContrastLowDefault = colors["\(colorName)\(scheme == .dark ? "8" : "7")", default: .clear]
+        self.bgInvertedContrastLowHovered = colors["\(colorName)\(scheme == .dark ? "7" : "6")", default: .clear]
+        self.bgInvertedContrastLowPressed = colors["\(colorName)\(scheme == .dark ? "6" : "5")", default: .clear]
+        self.onBgInvertedDefault = colors["\(colorName)\(scheme == .dark ? "3" : "14")", default: .clear]
+        self.onBgInvertedHovered = colors["\(colorName)\(scheme == .dark ? "4" : "13")", default: .clear]
+        self.onBgInvertedPressed = colors["\(colorName)\(scheme == .dark ? "5" : "12")", default: .clear]
+        self.onOriginDefault = colors["\(colorName)\(scheme == .dark ? "Dark" : "Light")", default: .clear]
+        self.onOriginHovered = colors["\(colorName)OnOriginHovered\(scheme == .dark ? "Dark" : "Light")", default: .clear]
+        self.onOriginPressed = colors["\(colorName)OnOriginPressed\(scheme == .dark ? "Dark" : "Light")", default: .clear]
+        self.originDefault = colors["\(colorName)OriginDefault\(scheme == .dark ? "Dark" : "Light")", default: .clear]
+        self.originHovered = colors["\(colorName)OriginHovered\(scheme == .dark ? "Dark" : "Light")", default: .clear]
+        self.originPressed = colors["\(colorName)OriginPressed\(scheme == .dark ? "Dark" : "Light")", default: .clear]
         self.bgVibrantDefault = colors["\(colorName)9", default: .clear]
         self.bgVibrantHovered = colors["\(colorName)12", default: .clear]
         self.bgVibrantPressed = colors["\(colorName)10", default: .clear]
@@ -345,7 +289,6 @@ public struct DesignSystemColorScheme {
             .init(.light, colorName: "green", colors: colors)
         }
 
-
         return .init(
             neutral: neutralColorsLight,
             brand: brandColorsLight,
@@ -364,12 +307,9 @@ public struct DesignSystemColorScheme {
             green: greenColorsLight
         )
     }
-
 }
-
 
 enum DSColorScheme {
     case light
     case dark
 }
-

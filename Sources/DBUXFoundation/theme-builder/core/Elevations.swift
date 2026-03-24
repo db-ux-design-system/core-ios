@@ -34,7 +34,7 @@ struct DSElevationShadowConfig {
     let spread: CGFloat
     let color: Color
 }
-  
+
 public struct DSElevation {
     static let sm = DSSubElevation(
         first: .init(
@@ -106,6 +106,3 @@ public struct DSElevation {
         )
     )
 }
-
-
-  

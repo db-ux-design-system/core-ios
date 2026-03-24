@@ -29,7 +29,7 @@ struct Elevation1ViewModifier: ViewModifier {
             .background(theme.activeColor.basic.background.level1.default)
     }
 }
-    
+
 struct Elevation2ViewModifier: ViewModifier {
     @Environment(\.theme) var theme: any DSTheme
     
@@ -46,7 +46,7 @@ struct Elevation2ViewModifier: ViewModifier {
             )
     }
 }
-    
+
 struct Elevation3ViewModifier: ViewModifier {
     @Environment(\.theme) var theme: any DSTheme
     

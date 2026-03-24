@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 protocol DSDimensions {
@@ -188,16 +187,16 @@ public struct DSBorderDimensions {
 
 public struct DesignSystemDimensions {
     public var spacing: DSSpacingDimensions
-
+    
     public var sizing: DSSizingDimensions
-
+    
     public var border: DSBorderDimensions
-
+    
     enum DeviceType {
         case mobile
         case tablet
     }
-
+    
     init(spacing: DSSpacingDimensions, sizing: DSSizingDimensions, border: DSBorderDimensions) {
         self.spacing = spacing
         self.sizing = sizing
