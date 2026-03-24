@@ -252,7 +252,6 @@ public struct DesignSystemTextStyles{
     public let body2xs: DSTextStyle
     public let body3xs: DSTextStyle
     
-    
     static func getFonts(typo: DesignSystemTypography) -> DesignSystemTextStyles {
         .init(
             h1: .init(font: DSFont.dbNeoScreenFlex.font(size: typo.headline.fontSizeXl), uiFont: DSFont.dbNeoScreenFlex.uiFont(size: typo.headline.fontSizeXl), lineHeight: typo.headline.lineHeightXl, fontWeight: .black),

@@ -207,7 +207,6 @@ public struct DesignSystemColorScheme {
             .init(.dark, colorName: "green", colors: colors)
         }
 
-
         return .init(
             neutral: neutralColorsDark,
             brand: brandColorsDark,

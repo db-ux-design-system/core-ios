@@ -92,13 +92,11 @@ struct PreviewTemplate: View {
                                     Spacer()
                                 }
                                 .padding(10)
-                                
                             }
                             .frame(maxWidth: .infinity)
                             .overlay(RoundedRectangle(cornerRadius: 4).stroke(.gray, lineWidth: 2))
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                         }
-                        
                     }
                 }
                 
@@ -118,7 +116,6 @@ struct PreviewTemplate: View {
                                 }
                             )
                             .padding(10)
-                            
                         }
                         .frame(maxWidth: .infinity)
                         .overlay(RoundedRectangle(cornerRadius: 4).stroke(.gray, lineWidth: 2))
