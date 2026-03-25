@@ -15,16 +15,20 @@
 //
 
 enum DBSize: CaseIterable {
-    case small
     case medium
+    case small
     
-    internal var previewName: String {
+    internal func previewName(def: DBSize = .medium) -> String {
+        var name = "\(def == self ? "(Def) " : "")"
+        
         switch self {
-        case .small:
-            return "(Def) Small"
         case .medium:
-            return "Medium"
+            name.append("Medium")
+        case .small:
+            name.append("Small")
         }
+        
+        return name
     }
 }
 
@@ -32,13 +36,17 @@ enum DBEmphasis: CaseIterable {
     case weak
     case strong
     
-    internal var previewName: String {
+    internal func previewName(def: DBEmphasis = .weak) -> String {
+        var name = "\(def == self ? "(Def) " : "")"
+        
         switch self {
         case .weak:
-            return "(Def) Weak"
+            name.append("Weak")
         case .strong:
-            return "Strong"
+            name.append("Strong")
         }
+        
+        return name
     }
 }
 
@@ -50,20 +58,24 @@ enum DBSemantic: CaseIterable {
     case successful
     case warning
     
-    internal var previewName: String {
+    internal func previewName(def: DBSemantic = .adaptive) -> String {
+        var name = "\(def == self ? "(Def) " : "")"
+
         switch self {
         case .adaptive:
-            return "(Def) Adaptive"
+            name.append("Adaptive")
         case .critical:
-            return "Critical"
+            name.append("Critical")
         case .informational:
-            return "Informational"
+            name.append("Informational")
         case .neutral:
-            return "Neutral"
+            name.append("Neutral")
         case .successful:
-            return "Successful"
+            name.append("Successful")
         case .warning:
-            return "Warning"
+            name.append("Warning")
         }
+        
+        return name
     }
 }

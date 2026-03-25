@@ -128,6 +128,7 @@ internal struct PreviewTemplate: View {
             }
             .padding(10)
         }
+        .dsTheme(lightTheme)
     }
 }
 
