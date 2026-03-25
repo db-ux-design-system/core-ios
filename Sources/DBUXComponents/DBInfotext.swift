@@ -25,20 +25,7 @@ struct DBInfotext: View {
     var size: DBSize = .medium
     var showIcon: Bool = true
     
-    private var iconSize: CGFloat { size == .small ? 16 : 20 }
-    
-    private var icon: Image {
-        switch semantic {
-        case .adaptive, .informational, .neutral:
-            return Image(.dbInformationCircle)
-        case .critical:
-            return Image(.dbExclamationMarkCircle)
-        case .successful:
-            return Image(.dbCheckCircle)
-        case .warning:
-            return Image(.dbExclamationMarkTriangle)
-        }
-    }
+    private var iconSize: CGFloat { size == .medium ? 20 : 16 }
     
     private var font: DSTextStyle {
         if size == .medium {
@@ -51,7 +38,7 @@ struct DBInfotext: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: theme.dimensions.spacing.fixed2xs) {
             if showIcon {
-                icon
+                semantic.image
                     .resizable()
                     .frame(width: iconSize, height: iconSize)
                     .foregroundColor(semantic.iconColor70(theme: theme))
@@ -86,7 +73,7 @@ struct DBInfotext: View {
                 content: DBSize.allCases.map({ size in
                     PreviewPropertiesElement(
                         description: size.previewName(),
-                        content: { DBInfotext(text: "Infotext", size: size) }
+                        content: { DBInfotext(text: "Text", size: size) }
                     )
                 })
             ),
@@ -95,7 +82,16 @@ struct DBInfotext: View {
                 content: [true, false].map({ showIcon in
                     PreviewPropertiesElement(
                         description: "\(showIcon ? "(Def) " : "")\(showIcon.description.capitalized)",
-                        content: { DBInfotext(text: "Infotext", showIcon: showIcon) }
+                        content: { DBInfotext(text: "Text", showIcon: showIcon) }
+                    )
+                })
+            ),
+            PreviewPropertiesSection(
+                name: "Width",
+                content: ["Single line", "Multiline"].map({ name in
+                    PreviewPropertiesElement(
+                        description: name,
+                        content: { DBInfotext(text: name == "Multiline" ? "Text with Multiline showing linebreaks" : "Text") }
                     )
                 })
             ),
@@ -105,7 +101,7 @@ struct DBInfotext: View {
                 PreviewPropertiesElement(
                     description: semantic.previewName(),
                     content: {
-                        DBInfotext(text: "Infotext", semantic: semantic)
+                        DBInfotext(text: "Text", semantic: semantic)
                     }
                 )
             })

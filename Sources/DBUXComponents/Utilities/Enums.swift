@@ -14,6 +14,8 @@
 //  limitations under the License.
 //
 
+import SwiftUI
+
 enum DBSize: CaseIterable {
     case medium
     case small
@@ -78,4 +80,19 @@ enum DBSemantic: CaseIterable {
         
         return name
     }
+    
+    internal var image: Image {
+        switch self {
+        case .adaptive, .informational, .neutral:
+            return Image(.dbInformationCircle)
+        case .critical:
+            return Image(.dbExclamationMarkCircle)
+        case .successful:
+            return Image(.dbCheckCircle)
+        case .warning:
+            return Image(.dbExclamationMarkTriangle)
+        }
+    }
+    
+
 }
