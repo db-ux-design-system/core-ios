@@ -120,9 +120,9 @@ struct DBBadge: View {
         previewProperties: [
             PreviewPropertiesSection(
                 name: "Size",
-                content: DBSize.allCases.map({ size in
+                content: DBSize.allCases.reversed().map({ size in
                     PreviewPropertiesElement(
-                        description: size.previewName,
+                        description: size.previewName(def: .small),
                         content: { DBBadge(size: size, content: .text("Text")) }
                     )
                 })
@@ -140,7 +140,7 @@ struct DBBadge: View {
                 name: "Emphasis",
                 content: DBEmphasis.allCases.map({ emphasis in
                     PreviewPropertiesElement(
-                        description: emphasis.previewName,
+                        description: emphasis.previewName(),
                         content: { DBBadge(content: .text("Text"), emphasis: emphasis) }
                     )
                 })
@@ -149,7 +149,7 @@ struct DBBadge: View {
         previewSemantics:
             DBSemantic.allCases.map({ semantic in
                 PreviewPropertiesElement(
-                    description: semantic.previewName,
+                    description: semantic.previewName(),
                     content: {
                         HStack {
                             DBBadge(content: .text("Text"), emphasis: .weak, semantic: semantic)
