@@ -96,3 +96,9 @@ enum DBSemantic: CaseIterable {
     
 
 }
+
+enum DBValidation: Equatable {
+    case noValidation
+    case invalid(_ content: String)
+    case valid(_ content: String)
+}

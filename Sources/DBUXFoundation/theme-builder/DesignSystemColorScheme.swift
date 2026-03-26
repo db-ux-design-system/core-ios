@@ -77,10 +77,10 @@ public struct DSColorVariant {
         self.bgBasicLevel3Default = colors["\(colorName)\(scheme == .dark ? "1" : "12")", default: .clear]
         self.bgBasicLevel3Hovered = colors["\(colorName)\(scheme == .dark ? "2" : "11")", default: .clear]
         self.bgBasicLevel3Pressed = colors["\(colorName)\(scheme == .dark ? "3" : "10")", default: .clear]
-        self.bgBasicTransparentFullDefault = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(1)
-        self.bgBasicTransparentSemiDefault = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0.84)
-        self.bgBasicTransparentHovered = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0.76)
-        self.bgBasicTransparentPressed = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0.68)
+        self.bgBasicTransparentFullDefault = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0)
+        self.bgBasicTransparentSemiDefault = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0.16)
+        self.bgBasicTransparentHovered = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0.24)
+        self.bgBasicTransparentPressed = colors["\(colorName)\(scheme == .dark ? "9" : "6")", default: .clear].opacity(0.32)
         self.onBgBasicEmphasis100Default = colors["\(colorName)\(scheme == .dark ? "12" : "3")", default: .clear]
         self.onBgBasicEmphasis100Hovered = colors["\(colorName)\(scheme == .dark ? "11" : "4")", default: .clear]
         self.onBgBasicEmphasis100Pressed = colors["\(colorName)\(scheme == .dark ? "10" : "5")", default: .clear]
