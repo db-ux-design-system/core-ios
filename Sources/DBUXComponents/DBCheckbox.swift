@@ -45,92 +45,53 @@ struct DBCheckbox: View {
     
     private var spacing: CGFloat { size == .medium ? theme.dimensions.spacing.fixedXs : theme.dimensions.spacing.fixed2xs }
     
+    private var colorVariant: DSColorVariant {
+        switch validation {
+        case .noValidation:
+            return theme.activeColor
+        case .invalid:
+            return theme.colorScheme.critical
+        case .valid:
+            return theme.colorScheme.successful
+        }
+    }
+        
     private var textColor: Color {
-        switch (validation, pressed) {
-        case (.noValidation, false):
-            return theme.activeColor.basic.text.emphasis100.default
-        case (.noValidation, true):
-            return theme.activeColor.basic.text.emphasis100.pressed
-        case (.invalid, false):
-            return theme.colorScheme.critical.basic.text.emphasis80.default
-        case (.invalid, true):
-            return theme.colorScheme.critical.basic.text.emphasis80.pressed
-        case (.valid, false):
-            return theme.colorScheme.successful.basic.text.emphasis80.default
-        case (.valid, true):
-            return theme.colorScheme.successful.basic.text.emphasis80.pressed
+        switch validation {
+        case .noValidation:
+            return colorVariant.basic.text.emphasis100.pressedState(pressed)
+        case .invalid, .valid:
+            return colorVariant.basic.text.emphasis80.pressedState(pressed)
         }
     }
     
     private var iconColor: Color {
-        switch (validation, checked) {
-        case (.noValidation, false):
-            return theme.activeColor.basic.icon.emphasis100.default
-        case (.noValidation, true):
-            return theme.activeColor.inverted.onBackground.default
-        case (.invalid, false):
-            return theme.colorScheme.critical.basic.icon.emphasis70.default
-        case (.invalid, true):
-            return theme.colorScheme.critical.inverted.onBackground.default
-        case (.valid, false):
-            return theme.colorScheme.successful.basic.icon.emphasis70.default
-        case (.valid, true):
-            return theme.colorScheme.successful.inverted.onBackground.default
-        }
+        return checked && !indeterminate
+        ? colorVariant.inverted.onBackground.default
+        : validation == .noValidation
+        ? colorVariant.basic.icon.emphasis100.default
+        : colorVariant.basic.icon.emphasis70.default
     }
     
     private var borderColor: Color {
-        switch (validation, checked, pressed) {
-        case (.noValidation, false, _):
-            return theme.activeColor.basic.border.emphasis100.default
-        case (.noValidation, true, false):
-            return theme.activeColor.inverted.background.contrastMax.default
-        case (.noValidation, true, true):
-            return theme.activeColor.inverted.background.contrastMax.pressed
-        case (.invalid, false, _):
-            return theme.colorScheme.critical.basic.border.emphasis70.default
-        case (.invalid, true, false):
-            return theme.colorScheme.critical.inverted.background.contrastLow.default
-        case (.invalid, true, true):
-            return theme.colorScheme.critical.inverted.background.contrastLow.pressed
-        case (.valid, false, _):
-            return theme.colorScheme.successful.basic.border.emphasis70.default
-        case (.valid, true, false):
-            return theme.colorScheme.successful.inverted.background.contrastLow.default
-        case (.valid, true, true):
-            return theme.colorScheme.successful.inverted.background.contrastLow.pressed
+        switch validation {
+        case .noValidation:
+            return checked
+            ? colorVariant.inverted.background.contrastMax.pressedState(pressed)
+            : colorVariant.basic.border.emphasis100.default
+        case .invalid, .valid:
+            return checked
+            ? colorVariant.inverted.background.contrastLow.pressedState(pressed)
+            : colorVariant.basic.border.emphasis70.default
         }
     }
     
     private var backgroundColor: Color {
-        switch (validation, checked, pressed) {
-        case (.noValidation, false, false):
-            return theme.activeColor.basic.background.transparent.full
-        case (.noValidation, false, true):
-            return theme.activeColor.basic.background.transparent.pressed
-        case (.noValidation, true, false):
-            return borderColor
-        case (.noValidation, true, true):
-            return borderColor
-            
-        case (.invalid, false, false):
-            return theme.colorScheme.critical.basic.background.transparent.full
-        case (.invalid, false, true):
-            return theme.colorScheme.critical.basic.background.transparent.pressed
-        case (.invalid, true, false):
-            return borderColor
-        case (.invalid, true, true):
-            return borderColor
-            
-        case (.valid, false, false):
-            return theme.colorScheme.successful.basic.background.transparent.full
-        case (.valid, false, true):
-            return theme.colorScheme.successful.basic.background.transparent.pressed
-        case (.valid, true, false):
-            return borderColor
-        case (.valid, true, true):
-            return borderColor
-        }
+        return checked && !indeterminate
+        ? borderColor
+        : pressed
+        ? colorVariant.basic.background.transparent.pressed
+        : colorVariant.basic.background.transparent.full
     }
     
     var body: some View {
