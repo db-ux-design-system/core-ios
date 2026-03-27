@@ -15,6 +15,7 @@
 //
 
 import SwiftUI
+import DBUXFoundation
 
 enum DBSize: CaseIterable {
     case medium
@@ -115,5 +116,16 @@ enum DBValidation: Equatable {
         }
         
         return name
+    }
+    
+    internal func baseColor(for theme: DSTheme) -> DSColorVariant {
+        switch self {
+        case .noValidation:
+            return theme.activeColor
+        case .invalid:
+            return theme.colorScheme.critical
+        case .valid:
+            return theme.colorScheme.successful
+        }
     }
 }

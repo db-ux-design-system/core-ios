@@ -67,7 +67,7 @@ public struct StateColor {
 }
 
 extension StateColor {
-    public func pressedState(_ pressed: Bool) -> Color {
+    public func colorForPressed(_ pressed: Bool) -> Color {
         if pressed {
             return self.pressed
         } else {

@@ -45,44 +45,33 @@ struct DBCheckbox: View {
     
     private var spacing: CGFloat { size == .medium ? theme.dimensions.spacing.fixedXs : theme.dimensions.spacing.fixed2xs }
     
-    private var colorVariant: DSColorVariant {
-        switch validation {
-        case .noValidation:
-            return theme.activeColor
-        case .invalid:
-            return theme.colorScheme.critical
-        case .valid:
-            return theme.colorScheme.successful
-        }
-    }
-        
     private var textColor: Color {
         switch validation {
         case .noValidation:
-            return colorVariant.basic.text.emphasis100.pressedState(pressed)
+            return validation.baseColor(for: theme).basic.text.emphasis100.colorForPressed(pressed)
         case .invalid, .valid:
-            return colorVariant.basic.text.emphasis80.pressedState(pressed)
+            return validation.baseColor(for: theme).basic.text.emphasis80.colorForPressed(pressed)
         }
     }
     
     private var iconColor: Color {
         return checked && !indeterminate
-        ? colorVariant.inverted.onBackground.default
+        ? validation.baseColor(for: theme).inverted.onBackground.default
         : validation == .noValidation
-        ? colorVariant.basic.icon.emphasis100.default
-        : colorVariant.basic.icon.emphasis70.default
+        ? validation.baseColor(for: theme).basic.icon.emphasis100.default
+        : validation.baseColor(for: theme).basic.icon.emphasis70.default
     }
     
     private var borderColor: Color {
         switch validation {
         case .noValidation:
             return checked
-            ? colorVariant.inverted.background.contrastMax.pressedState(pressed)
-            : colorVariant.basic.border.emphasis100.default
+            ? validation.baseColor(for: theme).inverted.background.contrastMax.colorForPressed(pressed)
+            : validation.baseColor(for: theme).basic.border.emphasis100.default
         case .invalid, .valid:
             return checked
-            ? colorVariant.inverted.background.contrastLow.pressedState(pressed)
-            : colorVariant.basic.border.emphasis70.default
+            ? validation.baseColor(for: theme).inverted.background.contrastLow.colorForPressed(pressed)
+            : validation.baseColor(for: theme).basic.border.emphasis70.default
         }
     }
     
@@ -90,8 +79,8 @@ struct DBCheckbox: View {
         return checked && !indeterminate
         ? borderColor
         : pressed
-        ? colorVariant.basic.background.transparent.pressed
-        : colorVariant.basic.background.transparent.full
+        ? validation.baseColor(for: theme).basic.background.transparent.pressed
+        : validation.baseColor(for: theme).basic.background.transparent.full
     }
     
     var body: some View {
