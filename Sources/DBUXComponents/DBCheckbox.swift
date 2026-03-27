@@ -110,27 +110,27 @@ struct DBCheckbox: View {
         case (.noValidation, false, true):
             return theme.activeColor.basic.background.transparent.pressed
         case (.noValidation, true, false):
-            return theme.activeColor.inverted.background.contrastMax.default
+            return borderColor
         case (.noValidation, true, true):
-            return theme.activeColor.inverted.background.contrastMax.pressed
+            return borderColor
             
         case (.invalid, false, false):
             return theme.colorScheme.critical.basic.background.transparent.full
         case (.invalid, false, true):
             return theme.colorScheme.critical.basic.background.transparent.pressed
         case (.invalid, true, false):
-            return theme.colorScheme.critical.inverted.background.contrastLow.default
+            return borderColor
         case (.invalid, true, true):
-            return theme.colorScheme.critical.inverted.background.contrastLow.pressed
+            return borderColor
             
         case (.valid, false, false):
             return theme.colorScheme.successful.basic.background.transparent.full
         case (.valid, false, true):
             return theme.colorScheme.successful.basic.background.transparent.pressed
         case (.valid, true, false):
-            return theme.colorScheme.successful.inverted.background.contrastLow.default
+            return borderColor
         case (.valid, true, true):
-            return theme.colorScheme.successful.inverted.background.contrastLow.pressed
+            return borderColor
         }
     }
     
