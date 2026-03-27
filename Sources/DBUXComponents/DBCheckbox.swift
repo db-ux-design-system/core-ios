@@ -155,27 +155,23 @@ struct DBCheckbox: View {
             HStack(alignment: .firstTextBaseline, spacing: spacing) {
                 ZStack {
                     RoundedRectangle(cornerRadius: theme.dimensions.border.radius2xs)
-                        .fill(backgroundColor)
-
-                    RoundedRectangle(cornerRadius: theme.dimensions.border.radius2xs)
                         .stroke(borderColor, lineWidth: theme.dimensions.border.height2xs)
                     
-                    if indeterminate {
-                        Image(.minus)
+                    Rectangle()
+                        .padding(theme.dimensions.border.radius2xs / 2)
+                        .blendMode(.destinationOut)
+
+                    Rectangle()
+                        .fill(backgroundColor)
+
+                    if let imageSource: ImageResource = indeterminate ? .minus : checked ? .check : nil {
+                        Image(imageSource)
                             .resizable()
-                            .foregroundColor(iconColor)
                             .frame(width: checkboxSize, height: checkboxSize)
-                    } else if checked {
-                        Image(.check)
-                            .resizable()
-                            .foregroundColor(iconColor)
-                            .frame(width: checkboxSize, height: checkboxSize)
-                            .opacity(1)
                     }
-                    
-                    
                 }
                 .compositingGroup()
+                .foregroundColor(iconColor)
                 .frame(width: checkboxSize, height: checkboxSize)
                 .alignmentGuide(.firstTextBaseline) { context in
                     context[VerticalAlignment.center]
