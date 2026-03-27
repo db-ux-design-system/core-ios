@@ -66,6 +66,16 @@ public struct StateColor {
     public var pressed: Color
 }
 
+extension StateColor {
+    public func colorForPressed(_ pressed: Bool) -> Color {
+        if pressed {
+            return self.pressed
+        } else {
+            return self.default
+        }
+    }
+}
+
 extension DSColorVariant {
     
     public var basic: BasicColor {

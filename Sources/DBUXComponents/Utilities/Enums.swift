@@ -15,6 +15,7 @@
 //
 
 import SwiftUI
+import DBUXFoundation
 
 enum DBSize: CaseIterable {
     case medium
@@ -95,4 +96,36 @@ enum DBSemantic: CaseIterable {
     }
     
 
+}
+
+enum DBValidation: Equatable {
+    case noValidation
+    case invalid(_ content: String)
+    case valid(_ content: String)
+    
+    internal func previewName(def: DBValidation = .noValidation) -> String {
+        var name = "\(def == self ? "(Def) " : "")"
+
+        switch self {
+        case .noValidation:
+            name.append("No Validation")
+        case .invalid(_):
+            name.append("Invalid")
+        case .valid(_):
+            name.append("Valid")
+        }
+        
+        return name
+    }
+    
+    internal func baseColor(for theme: DSTheme) -> DSColorVariant {
+        switch self {
+        case .noValidation:
+            return theme.activeColor
+        case .invalid:
+            return theme.colorScheme.critical
+        case .valid:
+            return theme.colorScheme.successful
+        }
+    }
 }

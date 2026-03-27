@@ -34,7 +34,6 @@ internal struct PreviewTemplate: View {
     var title: String
     var previewVariants: [[AnyView]] = []
     var previewProperties: [PreviewPropertiesSection] = []
-    var previewSemantics: [PreviewPropertiesElement] = []
     
     var lightTheme: DSTheme = DeutscheBahnTheme(.light)
     var darkTheme: DSTheme = DeutscheBahnTheme(.dark)
@@ -76,53 +75,33 @@ internal struct PreviewTemplate: View {
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
                 
-                if !previewProperties.isEmpty || !previewSemantics.isEmpty {
+                if !previewProperties.isEmpty {
                     Text("🛠️ Properties")
                         .dsTextStyle(theme.fonts.h3)
-                }
-                
-                if !previewProperties.isEmpty {
                     ForEach(previewProperties.indices, id: \.self) { i in
                         let section = previewProperties[i]
                         VStack(alignment: .leading) {
                             Text(section.name)
                                 .dsTextStyle(theme.fonts.bodySm)
                             VStack {
-                                HStack(spacing: 32) {
-                                    ForEach(section.content.indices, id: \.self) { j in
-                                        PreviewPropertiesElementView(element: section.content[j])
+                                LazyVGrid(
+                                    columns: [
+                                        GridItem(.adaptive(minimum: 100))
+                                    ],
+                                    alignment: .leading,
+                                    content: {
+                                        ForEach(section.content.indices, id: \.self) { j in
+                                            PreviewPropertiesElementView(element: section.content[j])
+                                        }
+                                        Spacer()
                                     }
-                                    Spacer()
-                                }
+                                )
                                 .padding(10)
                             }
                             .frame(maxWidth: .infinity)
                             .overlay(RoundedRectangle(cornerRadius: 4).stroke(.gray, lineWidth: 2))
                             .clipShape(RoundedRectangle(cornerRadius: 4))
                         }
-                    }
-                }
-                
-                if !previewSemantics.isEmpty {
-                    VStack(alignment: .leading) {
-                        Text("Semantic")
-                            .dsTextStyle(theme.fonts.bodySm)
-                        VStack {
-                            LazyVGrid(
-                                columns: [
-                                    GridItem(.adaptive(minimum: 100, maximum: 120))
-                                ],
-                                content: {
-                                    ForEach(Array(previewSemantics.indices), id: \.self) { i in
-                                        PreviewPropertiesElementView(element: previewSemantics[i])
-                                    }
-                                }
-                            )
-                            .padding(10)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .overlay(RoundedRectangle(cornerRadius: 4).stroke(.gray, lineWidth: 2))
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
                     }
                 }
             }
@@ -165,12 +144,6 @@ internal struct PreviewPropertiesElementView: View {
                     content: { Text("Element") }
                 )
             ])
-        ],
-        previewSemantics: [
-            PreviewPropertiesElement(
-                description: ("Description"),
-                content: { Text("Element") }
-            )
         ]
     )
 }
