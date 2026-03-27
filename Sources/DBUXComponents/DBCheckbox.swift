@@ -154,30 +154,28 @@ struct DBCheckbox: View {
         VStack(alignment: .leading, spacing: theme.dimensions.spacing.fixed2xs) {
             HStack(alignment: .firstTextBaseline, spacing: spacing) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 5)
+                    RoundedRectangle(cornerRadius: theme.dimensions.border.radius2xs)
                         .fill(backgroundColor)
-                        .padding(-1)
-                        .opacity(disabled ? 0.4 : 1)
 
-                    RoundedRectangle(cornerRadius: 4)
+                    RoundedRectangle(cornerRadius: theme.dimensions.border.radius2xs)
                         .stroke(borderColor, lineWidth: theme.dimensions.border.height2xs)
-                        .opacity(disabled ? checked ? 0 : 0.4 : 1)
                     
                     if indeterminate {
                         Image(.minus)
                             .resizable()
                             .foregroundColor(iconColor)
                             .frame(width: checkboxSize, height: checkboxSize)
-                            .opacity(disabled ? 0.4 : 1)
                     } else if checked {
                         Image(.check)
                             .resizable()
                             .foregroundColor(iconColor)
                             .frame(width: checkboxSize, height: checkboxSize)
+                            .opacity(1)
                     }
                     
                     
                 }
+                .compositingGroup()
                 .frame(width: checkboxSize, height: checkboxSize)
                 .alignmentGuide(.firstTextBaseline) { context in
                     context[VerticalAlignment.center]
@@ -193,7 +191,6 @@ struct DBCheckbox: View {
                             let lineCenter = lineHeight / 2
                             return lineCenter
                         }
-                        .opacity(disabled ? 0.4 : 1)
 
                 }
             }
@@ -204,17 +201,15 @@ struct DBCheckbox: View {
                 case .noValidation:
                     if let message = message, !message.isEmpty && showMessage {
                         DBInfotext(text: message, semantic: .neutral, size: .small)
-                            .opacity(disabled ? 0.4 : 1)
                     }
                 case .invalid(let text):
                     DBInfotext(text: text, semantic: .critical, size: .small)
-                        .opacity(disabled ? 0.4 : 1)
                 case .valid(let text):
                     DBInfotext(text: text, semantic: .successful, size: .small)
-                        .opacity(disabled ? 0.4 : 1)
                 }
             }
         }
+        .opacity(disabled ? 0.4 : 1)
     }
 }
 
