@@ -144,19 +144,21 @@ struct DBBadge: View {
                         content: { DBBadge(content: .text("Text"), emphasis: emphasis) }
                     )
                 })
-            )
-        ],
-        previewSemantics:
-            DBSemantic.allCases.map({ semantic in
-                PreviewPropertiesElement(
-                    description: semantic.previewName(),
-                    content: {
-                        HStack {
-                            DBBadge(content: .text("Text"), emphasis: .weak, semantic: semantic)
-                            DBBadge(content: .text("Text"), emphasis: .strong, semantic: semantic)
+            ),
+            PreviewPropertiesSection(
+                name: "Semantic",
+                content: DBSemantic.allCases.map({ semantic in
+                    PreviewPropertiesElement(
+                        description: semantic.previewName(),
+                        content: {
+                            HStack {
+                                DBBadge(content: .text("Text"), emphasis: .weak, semantic: semantic)
+                                DBBadge(content: .text("Text"), emphasis: .strong, semantic: semantic)
+                            }
                         }
-                    }
-                )
-            })
+                    )
+                })
+            )
+        ]
     )
 }

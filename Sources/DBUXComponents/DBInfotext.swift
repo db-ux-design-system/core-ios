@@ -95,15 +95,17 @@ struct DBInfotext: View {
                     )
                 })
             ),
+            PreviewPropertiesSection(
+                name: "Semantic",
+                content: DBSemantic.allCases.map({ semantic in
+                    PreviewPropertiesElement(
+                        description: semantic.previewName(),
+                        content: {
+                            DBInfotext(text: "Text", semantic: semantic)
+                        }
+                    )
+                })
+            ),
         ],
-        previewSemantics:
-            DBSemantic.allCases.map({ semantic in
-                PreviewPropertiesElement(
-                    description: semantic.previewName(),
-                    content: {
-                        DBInfotext(text: "Text", semantic: semantic)
-                    }
-                )
-            })
     )
 }

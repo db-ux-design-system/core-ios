@@ -204,20 +204,18 @@ struct DBCheckbox: View {
             }
             .gesture(pressGesture)
             
-            if validation != .noValidation || (showMessage && message != nil && message?.isEmpty == false) {
-                if validation != .noValidation {
-                    switch validation {
-                    case .noValidation:
-                        Color.clear.frame(width: 0, height: 0)
-                    case .invalid(let text):
-                        DBInfotext(text: text, semantic: .critical, size: .small)
-                            .opacity(disabled ? 0.4 : 1)
-                    case .valid(let text):
-                        DBInfotext(text: text, semantic: .successful, size: .small)
+            if validation != .noValidation || (message != nil && !message!.isEmpty && showMessage) {
+                switch validation {
+                case .noValidation:
+                    if let message = message, !message.isEmpty && showMessage {
+                        DBInfotext(text: message, semantic: .neutral, size: .small)
                             .opacity(disabled ? 0.4 : 1)
                     }
-                } else {
-                    DBInfotext(text: message ?? "", semantic: .neutral, size: .small)
+                case .invalid(let text):
+                    DBInfotext(text: text, semantic: .critical, size: .small)
+                        .opacity(disabled ? 0.4 : 1)
+                case .valid(let text):
+                    DBInfotext(text: text, semantic: .successful, size: .small)
                         .opacity(disabled ? 0.4 : 1)
                 }
             }
@@ -244,6 +242,33 @@ struct DBCheckbox: View {
         ],
         previewProperties: [
             PreviewPropertiesSection(
+                name: "Disabled",
+                content: [false, true].map({ value in
+                    PreviewPropertiesElement(
+                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", disabled: value) }
+                    )
+                })
+            ),
+            PreviewPropertiesSection(
+                name: "Checked",
+                content: [false, true].map({ value in
+                    PreviewPropertiesElement(
+                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(value), label: "Label") }
+                    )
+                })
+            ),
+            PreviewPropertiesSection(
+                name: "Indeterminate",
+                content: [false, true].map({ value in
+                    PreviewPropertiesElement(
+                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), indeterminate: value, label: "Label") }
+                    )
+                })
+            ),
+            PreviewPropertiesSection(
                 name: "Size",
                 content: DBSize.allCases.map({ size in
                     PreviewPropertiesElement(
@@ -251,7 +276,60 @@ struct DBCheckbox: View {
                         content: { DBCheckbox(checked: .constant(false), label: "Label", size: size) }
                     )
                 })
-            )
+            ),
+            PreviewPropertiesSection(
+                name: "Required",
+                content: [false, true].map({ value in
+                    PreviewPropertiesElement(
+                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", showRequiredAsterisk: value) }
+                    )
+                })
+            ),
+            PreviewPropertiesSection(
+                name: "Validation",
+                content: [
+                    PreviewPropertiesElement(
+                        description: DBValidation.noValidation.previewName(),
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", validation: .noValidation) }
+                    ),
+                    PreviewPropertiesElement(
+                        description: "\(DBValidation.invalid("").previewName()) - Unchecked",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", validation: .invalid("Invalid Message")) }
+                    ),
+                    PreviewPropertiesElement(
+                        description: "\(DBValidation.invalid("").previewName()) - Checked",
+                        content: { DBCheckbox(checked: .constant(true), label: "Label", validation: .invalid("Invalid Message")) }
+                    ),
+                    PreviewPropertiesElement(
+                        description: "\(DBValidation.valid("").previewName()) - Unchecked",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", validation: .valid("Valid Message")) }
+                    ),
+                    PreviewPropertiesElement(
+                        description: "\(DBValidation.valid("").previewName()) - Checked",
+                        content: { DBCheckbox(checked: .constant(true), label: "Label", validation: .valid("Valid Message")) }
+                    ),
+                ]
+            ),
+            PreviewPropertiesSection(
+                name: "Show Message",
+                content: [false, true].map({ value in
+                    PreviewPropertiesElement(
+                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", message: "Message", showMessage: value) }
+                    )
+                })
+            ),
+            PreviewPropertiesSection(
+                name: "Show Label",
+                content: [true, false].map({ value in
+                    PreviewPropertiesElement(
+                        description: "\(value ? "(Def) " : "")\(value.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", showLabel: value) }
+                    )
+                })
+            ),
+
         ]
     )
 }
