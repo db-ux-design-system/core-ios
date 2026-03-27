@@ -31,8 +31,7 @@ struct DBCheckbox: View {
     var message: String?
     var showMessage: Bool = false
     var disabled: Bool = false
-    @State var pressed: Bool = false
-    @GestureState private var isPressed: Bool = false
+    @GestureState private var pressed: Bool = false
     
     private var checkboxSize: CGFloat { size == .medium ? 24 : 20 }
     
@@ -136,22 +135,18 @@ struct DBCheckbox: View {
     
     var body: some View {
         let pressGesture = DragGesture(minimumDistance: 0)
-            .updating($isPressed) { _, state, _ in
+            .updating($pressed) { _, state, _ in
                 if !disabled {
                     state = true
-                    pressed = true
                 }
             }
             .onEnded { _ in
                 if !disabled {
-                    withAnimation(.snappy) {
-                        if indeterminate {
-                            indeterminate = false
-                            checked = true
-                        } else {
-                            checked.toggle()
-                        }
-                        pressed = false
+                    if indeterminate {
+                        indeterminate = false
+                        checked = true
+                    } else {
+                        checked.toggle()
                     }
                 }
             }
