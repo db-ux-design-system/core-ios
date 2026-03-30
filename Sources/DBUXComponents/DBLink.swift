@@ -131,7 +131,7 @@ struct DBLinkStyle: ButtonStyle {
 
 #Preview(traits: .sizeThatFitsLayout) {
     PreviewTemplate(
-        title: "DB Infotext",
+        title: "DBLink",
         previewVariants: [
             [
                 AnyView(DBLink(text: "Text", content: .internal, variant: .adaptive, size: .small) {}),

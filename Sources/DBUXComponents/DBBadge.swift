@@ -111,7 +111,7 @@ struct DBBadge: View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     PreviewTemplate(
-        title: "DB Badge",
+        title: "DBBadge",
         previewVariants: DBSemantic.allCases.map({ semantic in
             DBEmphasis.allCases.map({ emphasis in
                 AnyView(DBBadge(content: .text("Badge"), emphasis: emphasis, semantic: semantic))

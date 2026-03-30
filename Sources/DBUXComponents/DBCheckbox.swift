@@ -161,7 +161,7 @@ struct DBCheckbox: View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     PreviewTemplate(
-        title: "DB Checkbox",
+        title: "DBCheckbox",
         previewVariants: [
             [
                 AnyView(DBCheckbox(checked: .constant(false), label: "Checkbox", validation: .noValidation))

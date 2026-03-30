@@ -200,7 +200,7 @@ struct DBButtonStyle: ButtonStyle {
 
 #Preview {
     PreviewTemplate(
-        title: "DB Button",
+        title: "DBButton",
         previewVariants: [
             [
                 AnyView(DBButton(text: "Button", variant: .outlined) {}),

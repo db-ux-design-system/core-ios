@@ -61,7 +61,7 @@ struct DBInfotext: View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     PreviewTemplate(
-        title: "DB Infotext",
+        title: "DBInfotext",
         previewVariants: DBSemantic.allCases.map({ semantic in
             [
                 AnyView(DBInfotext(text: "Infotext", semantic: semantic)),
