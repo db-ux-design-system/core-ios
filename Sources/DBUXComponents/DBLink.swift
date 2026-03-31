@@ -167,10 +167,10 @@ struct DBLinkStyle: ButtonStyle {
             ),
             PreviewPropertiesSection(
                 name: "Disabled",
-                content: [false, true].map({ disabled in
+                content: [false, true].map({ linkDisabled in
                     PreviewPropertiesElement(
-                        description: "\(!disabled ? "(Def) " : "")\(disabled.description.capitalized)",
-                        content: { DBLink(text: "Text", disabled: disabled) {} }
+                        description: "\(!linkDisabled ? "(Def) " : "")\(linkDisabled.description.capitalized)",
+                        content: { DBLink(text: "Text", disabled: linkDisabled) {} }
                     )
                 })
             ),
@@ -185,10 +185,10 @@ struct DBLinkStyle: ButtonStyle {
             ),
             PreviewPropertiesSection(
                 name: "Show Icon",
-                content: [true, false].map({ showIcon in
+                content: [true, false].map({ showLinkIcon in
                     PreviewPropertiesElement(
-                        description: "\(showIcon ? "(Def) " : "")\(showIcon.description.capitalized)",
-                        content: { DBLink(text: "Text", showIcon: showIcon) {}}
+                        description: "\(showLinkIcon ? "(Def) " : "")\(showLinkIcon.description.capitalized)",
+                        content: { DBLink(text: "Text", showIcon: showLinkIcon) {}}
                     )
                 })
             )
