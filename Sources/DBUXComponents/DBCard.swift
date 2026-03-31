@@ -75,13 +75,33 @@ enum DBCardSpacing: CaseIterable {
     }
 }
 
+enum DBCardBehavior: CaseIterable {
+    case `static`
+    case interactive
+    
+    internal func previewName(def: DBCardBehavior = .static) -> String {
+        var name = "\(def == self ? "(Def) " : "")"
+
+        switch self {
+        case .static:
+            name.append("Static")
+        case .interactive:
+            name.append("Interactive")
+        }
+        
+        return name
+    }
+}
+
 struct DBCard<Content: View>: View {
     @Environment(\.theme) var theme
     
     var elevation: DBCardElevation = .level1
     var spacing: DBCardSpacing = .small
+    var behavior: DBCardBehavior = .static
     @ViewBuilder let content: () -> Content
-    
+    var action: (() -> Void)?
+
     private var padding: CGFloat {
         switch spacing {
         case .small:
@@ -107,16 +127,52 @@ struct DBCard<Content: View>: View {
     }
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: theme.dimensions.border.radiusSm)
-                .fill(backgroundColor)
-                .stroke(theme.activeColor.onBgBasicEmphasis60Default, lineWidth: theme.dimensions.border.height3xs)
-                .padding(0.5)
-            
-            content()
-                .padding(padding)
+        Button {
+            if behavior == .interactive {
+                action?()
+            }
+        } label: {
+            VStack {
+                content()
+            }
+            .padding(padding)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .clipShape(RoundedRectangle(cornerRadius: theme.dimensions.border.radiusSm))
+        .disabled(behavior == .static)
+        .buttonStyle(DBCardStyle(elevation: elevation))
+
+    }
+}
+
+struct DBCardStyle: ButtonStyle {
+    
+    @Environment(\.theme) var theme
+    
+    var elevation: DBCardElevation
+
+    private func backgroundColor(_ pressed: Bool) -> Color {
+        switch elevation {
+        case .level1:
+            return theme.activeColor.basic.background.level1.colorForPressed(pressed)
+        case .level2:
+            return theme.activeColor.basic.background.level2.colorForPressed(pressed)
+        case .level3:
+            return theme.activeColor.basic.background.level3.colorForPressed(pressed)
+        }
+    }
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .background(
+                RoundedRectangle(cornerRadius: theme.dimensions.border.radiusSm)
+                    .fill(backgroundColor(configuration.isPressed))
+                    .stroke(theme.activeColor.onBgBasicEmphasis60Default, lineWidth: theme.dimensions.border.height3xs)
+                    .padding(0.5)
+            )
+            .cornerRadius(theme.dimensions.border.radiusSm)
+            .contentShape(
+                RoundedRectangle(cornerRadius: theme.dimensions.border.radiusSm)
+            )
     }
 }
 
@@ -148,13 +204,27 @@ struct DBCard<Content: View>: View {
                         description: spacing.previewName(),
                         content: {
                             DBCard(spacing: spacing) {
-                                Color(red: 231/255, green: 0, blue: 235/255)
-                                    .opacity(0.32)
-                                     
-                                Text(spacing.shortPreviewName)
-                                    .foregroundColor(Color(red: 214/255, green: 0, blue: 214/255))
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                ZStack {
+                                    Color(red: 231/255, green: 0, blue: 235/255)
+                                        .opacity(0.32)
+                                    
+                                    Text(spacing.shortPreviewName)
+                                        .foregroundColor(Color(red: 214/255, green: 0, blue: 214/255))
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                }
                             }
+                                .frame(width: 100, height: 100)
+                        }
+                    )
+                })
+            ),
+            PreviewPropertiesSection(
+                name: "Behavior",
+                content: DBCardBehavior.allCases.map({ behavior in
+                    PreviewPropertiesElement(
+                        description: behavior.previewName(),
+                        content: {
+                            DBCard(behavior: behavior, content: {}, action: {})
                                 .frame(width: 100, height: 100)
                         }
                     )
