@@ -90,13 +90,8 @@ struct DBSwitch: View {
             HStack(alignment: .firstTextBaseline, spacing: theme.dimensions.spacing.fixedXs) {
                 if variant == .leading, showLabel, let label = label {
                     Text("\(label)\(showRequiredAsterisk ? "*" : "")")
-                        .dsTextStyle(font)
-                        .foregroundColor(textColor)
                         .alignmentGuide(.firstTextBaseline) { context in
-                            let remainingLine = (context.height - context[.lastTextBaseline])
-                            let lineHeight = context[.firstTextBaseline] + remainingLine
-                            let lineCenter = lineHeight / 2
-                            return lineCenter
+                            return (context[.firstTextBaseline] + context.height - context[.lastTextBaseline]) / 2
                         }
                 }
 
@@ -118,16 +113,13 @@ struct DBSwitch: View {
                 
                 if variant == .trailing, showLabel, let label = label {
                     Text("\(label)\(showRequiredAsterisk ? "*" : "")")
-                        .dsTextStyle(font)
-                        .foregroundColor(textColor)
                         .alignmentGuide(.firstTextBaseline) { context in
-                            let remainingLine = (context.height - context[.lastTextBaseline])
-                            let lineHeight = context[.firstTextBaseline] + remainingLine
-                            let lineCenter = lineHeight / 2
-                            return lineCenter
+                            return (context[.firstTextBaseline] + context.height - context[.lastTextBaseline]) / 2
                         }
                 }
             }
+            .dsTextStyle(font)
+            .foregroundColor(textColor)
             .gesture(pressGesture)
             
             if validation != .noValidation || (message != nil && !message!.isEmpty && showMessage) {
@@ -159,13 +151,13 @@ struct DBSwitchStyle: ToggleStyle {
     var iconLeading: Image
     var iconTrailing: Image
 
-    private var switchBorderColor: Color {
+    private var borderColor: Color {
         return validation == .noValidation
         ? validation.baseColor(for: theme).basic.icon.emphasis100.colorForPressed(checked && pressed)
         : validation.baseColor(for: theme).basic.icon.emphasis70.colorForPressed(checked && pressed)
     }
 
-    private var switchBackgroundColor: Color {
+    private var backgroundColor: Color {
         return checked
         ? validation == .noValidation
         ? validation.baseColor(for: theme).inverted.background.contrastMax.colorForPressed(pressed)
@@ -175,16 +167,8 @@ struct DBSwitchStyle: ToggleStyle {
         : validation.baseColor(for: theme).basic.background.transparent.full
     }
 
-    private var switchColor: Color {
-        return checked
-        ? validation.baseColor(for: theme).inverted.onBackground.default
-        : validation == .noValidation
-        ? validation.baseColor(for: theme).basic.icon.emphasis100.default
-        : validation.baseColor(for: theme).basic.icon.emphasis70.default
-    }
-    
-    private func iconColor(leading: Bool) -> Color {
-        return leading
+    private func foregroundColor(inverted: Bool) -> Color {
+        return inverted
         ? validation.baseColor(for: theme).inverted.onBackground.default
         : validation == .noValidation
         ? validation.baseColor(for: theme).basic.icon.emphasis100.default
@@ -210,23 +194,23 @@ struct DBSwitchStyle: ToggleStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         RoundedRectangle(cornerRadius: switchHeight / 2)
-            .fill(switchBackgroundColor)
-            .strokeBorder(switchBorderColor, lineWidth: borderWidth)
+            .fill(backgroundColor)
+            .strokeBorder(borderColor, lineWidth: borderWidth)
             .overlay {
                 if visualAid {
                     iconLeading
                         .resizable()
-                        .foregroundColor(iconColor(leading: true))
+                        .foregroundColor(foregroundColor(inverted: true))
                         .frame(width: iconSize, height: iconSize)
                         .offset(x: offset(false))
                     iconTrailing
                         .resizable()
-                        .foregroundColor(iconColor(leading: false))
+                        .foregroundColor(foregroundColor(inverted: false))
                         .frame(width: iconSize, height: iconSize)
                         .offset(x: offset(true))
                 }
                 Circle()
-                    .fill(switchColor)
+                    .fill(foregroundColor(inverted: checked))
                     .frame(width: circleSize(checked), height: circleSize(checked))
                     .offset(x: offset(checked))
             }

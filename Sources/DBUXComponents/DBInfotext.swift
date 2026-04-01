@@ -50,10 +50,7 @@ struct DBInfotext: View {
                 .dsTextStyle(font)
                 .foregroundColor(semantic.textColor(theme: theme, emphasis: .weak))
                 .alignmentGuide(.firstTextBaseline) { context in
-                    let remainingLine = (context.height - context[.lastTextBaseline])
-                    let lineHeight = context[.firstTextBaseline] + remainingLine
-                    let lineCenter = lineHeight / 2
-                    return lineCenter
+                    return (context[.firstTextBaseline] + context.height - context[.lastTextBaseline]) / 2
                 }
         }
     }
