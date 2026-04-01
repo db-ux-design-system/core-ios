@@ -208,7 +208,7 @@ struct DBCheckbox: View {
                 name: "Size",
                 content: DBSize.allCases.map({ size in
                     PreviewPropertiesElement(
-                        description: size.previewName(def: .medium),
+                        description: size.previewName(),
                         content: { DBCheckbox(checked: .constant(false), label: "Label", size: size) }
                     )
                 })
