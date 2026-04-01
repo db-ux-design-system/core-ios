@@ -62,15 +62,6 @@ struct DBSwitch: View {
         }
     }
     
-    private var textColor: Color {
-        switch validation {
-        case .noValidation:
-            return validation.baseColor(for: theme).basic.text.emphasis100.colorForPressed(pressed)
-        case .invalid, .valid:
-            return validation.baseColor(for: theme).basic.text.emphasis80.colorForPressed(pressed)
-        }
-    }
-    
     fileprivate func switchLabel(_ label: String) -> some View {
         return Text("\(label)\(showRequiredAsterisk ? "*" : "")")
             .alignmentGuide(.firstTextBaseline) { context in
@@ -120,7 +111,7 @@ struct DBSwitch: View {
                 }
             }
             .dsTextStyle(font)
-            .foregroundColor(textColor)
+            .foregroundColor(SharedColors.textColor(for: theme, validation: validation, pressed: pressed))
             .gesture(pressGesture)
             
             DBValidationMessage(validation: validation, message: message, showMessage: showMessage)
@@ -157,14 +148,6 @@ struct DBSwitchStyle: ToggleStyle {
         : validation.baseColor(for: theme).basic.background.transparent.full
     }
 
-    private func foregroundColor(inverted: Bool) -> Color {
-        return inverted
-        ? validation.baseColor(for: theme).inverted.onBackground.default
-        : validation == .noValidation
-        ? validation.baseColor(for: theme).basic.icon.emphasis100.default
-        : validation.baseColor(for: theme).basic.icon.emphasis70.default
-    }
-    
     private var switchWidth: CGFloat { return size == .medium ? 46 : 38 }
     private var switchHeight: CGFloat { return size == .medium ? 24 : 20 }
     private var borderWidth: CGFloat { return theme.dimensions.border.height2xs }
@@ -190,19 +173,19 @@ struct DBSwitchStyle: ToggleStyle {
                 if visualAid {
                     iconLeading
                         .resizable()
-                        .foregroundColor(foregroundColor(inverted: true))
+                        .foregroundColor(SharedColors.foregroundColor(for: theme, validation: validation, inverted: true))
                         .frame(width: iconSize, height: iconSize)
                         .offset(x: offset(false))
                         .opacity(checked ? 1 : 0)
                     iconTrailing
                         .resizable()
-                        .foregroundColor(foregroundColor(inverted: false))
+                        .foregroundColor(SharedColors.foregroundColor(for: theme, validation: validation, inverted: false))
                         .frame(width: iconSize, height: iconSize)
                         .offset(x: offset(true))
                         .opacity(checked ? 0 : 1)
                 }
                 Circle()
-                    .fill(foregroundColor(inverted: checked))
+                    .fill(SharedColors.foregroundColor(for: theme, validation: validation, inverted: checked))
                     .frame(width: circleSize(checked), height: circleSize(checked))
                     .offset(x: offset(checked))
             }

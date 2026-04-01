@@ -45,23 +45,6 @@ struct DBCheckbox: View {
     
     private var spacing: CGFloat { size == .medium ? theme.dimensions.spacing.fixedXs : theme.dimensions.spacing.fixed2xs }
     
-    private var textColor: Color {
-        switch validation {
-        case .noValidation:
-            return validation.baseColor(for: theme).basic.text.emphasis100.colorForPressed(pressed)
-        case .invalid, .valid:
-            return validation.baseColor(for: theme).basic.text.emphasis80.colorForPressed(pressed)
-        }
-    }
-    
-    private var iconColor: Color {
-        return checked && !indeterminate
-        ? validation.baseColor(for: theme).inverted.onBackground.default
-        : validation == .noValidation
-        ? validation.baseColor(for: theme).basic.icon.emphasis100.default
-        : validation.baseColor(for: theme).basic.icon.emphasis70.default
-    }
-    
     private var borderColor: Color {
         switch validation {
         case .noValidation:
@@ -121,7 +104,7 @@ struct DBCheckbox: View {
                     }
                 }
                 .compositingGroup()
-                .foregroundColor(iconColor)
+                .foregroundColor(SharedColors.foregroundColor(for: theme, validation: validation, inverted: checked && !indeterminate))
                 .frame(width: checkboxSize, height: checkboxSize)
                 .alignmentGuide(.firstTextBaseline) { context in
                     context[VerticalAlignment.center]
@@ -130,7 +113,7 @@ struct DBCheckbox: View {
                 if showLabel, let label = label {
                     Text("\(label)\(showRequiredAsterisk ? "*" : "")")
                         .dsTextStyle(font)
-                        .foregroundColor(textColor)
+                        .foregroundColor(SharedColors.textColor(for: theme, validation: validation, pressed: pressed))
                         .alignmentGuide(.firstTextBaseline) { context in
                             let remainingLine = (context.height - context[.lastTextBaseline])
                             let lineHeight = context[.firstTextBaseline] + remainingLine
