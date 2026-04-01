@@ -179,19 +179,19 @@ struct DBCardStyle: ButtonStyle {
 #Preview(traits: .sizeThatFitsLayout) {
     PreviewTemplate(
         title: "DBCard",
-        previewVariants: DBCardElevation.allCases.map({ elevation in
+        previewVariants: DBCardElevation.allCases.map({ cardElevation in
             [
-                AnyView(DBCard(elevation: elevation) {})
+                AnyView(DBCard(elevation: cardElevation) {})
             ]
         }),
         previewProperties: [
             PreviewPropertiesSection(
                 name: "Elevation Level",
-                content: DBCardElevation.allCases.map({ elevation in
+                content: DBCardElevation.allCases.map({ cardElevation in
                     PreviewPropertiesElement(
-                        description: elevation.previewName(),
+                        description: cardElevation.previewName(),
                         content: {
-                            DBCard(elevation: elevation) {}
+                            DBCard(elevation: cardElevation) {}
                                 .frame(width: 100, height: 100)
                         }
                     )
@@ -199,16 +199,16 @@ struct DBCardStyle: ButtonStyle {
             ),
             PreviewPropertiesSection(
                 name: "Spacing",
-                content: DBCardSpacing.allCases.map({ spacing in
+                content: DBCardSpacing.allCases.map({ cardSpacing in
                     PreviewPropertiesElement(
-                        description: spacing.previewName(),
+                        description: cardSpacing.previewName(),
                         content: {
-                            DBCard(spacing: spacing) {
+                            DBCard(spacing: cardSpacing) {
                                 ZStack {
                                     Color(red: 231/255, green: 0, blue: 235/255)
                                         .opacity(0.32)
                                     
-                                    Text(spacing.shortPreviewName)
+                                    Text(cardSpacing.shortPreviewName)
                                         .foregroundColor(Color(red: 214/255, green: 0, blue: 214/255))
                                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 }
@@ -220,11 +220,11 @@ struct DBCardStyle: ButtonStyle {
             ),
             PreviewPropertiesSection(
                 name: "Behavior",
-                content: DBCardBehavior.allCases.map({ behavior in
+                content: DBCardBehavior.allCases.map({ cardBehavior in
                     PreviewPropertiesElement(
-                        description: behavior.previewName(),
+                        description: cardBehavior.previewName(),
                         content: {
-                            DBCard(behavior: behavior, content: {}, action: {})
+                            DBCard(behavior: cardBehavior, content: {}, action: {})
                                 .frame(width: 100, height: 100)
                         }
                     )

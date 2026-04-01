@@ -218,64 +218,64 @@ struct DBButtonStyle: ButtonStyle {
         previewProperties: [
             PreviewPropertiesSection(
                 name: "Variant",
-                content: DBButtonVariant.allCases.map({ variant in
+                content: DBButtonVariant.allCases.map({ buttonVariant in
                     PreviewPropertiesElement(
-                        description: variant.previewName(),
-                        content: { DBButton(text: "Text", variant: variant) {} }
+                        description: buttonVariant.previewName(),
+                        content: { DBButton(text: "Text", variant: buttonVariant) {} }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Disabled",
-                content: [false, true].map({ disabled in
+                content: [false, true].map({ buttonDisabled in
                     PreviewPropertiesElement(
-                        description: "\(!disabled ? "(Def) " : "")\(disabled.description.capitalized)",
-                        content: { DBButton(text: "Text", disabled: disabled) {} }
+                        description: "\(!buttonDisabled ? "(Def) " : "")\(buttonDisabled.description.capitalized)",
+                        content: { DBButton(text: "Text", disabled: buttonDisabled) {} }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Size",
-                content: DBSize.allCases.map({ size in
+                content: DBSize.allCases.map({ buttonSize in
                     PreviewPropertiesElement(
-                        description: size.previewName(),
-                        content: { DBButton(text: "Text", size: size) {} }
+                        description: buttonSize.previewName(),
+                        content: { DBButton(text: "Text", size: buttonSize) {} }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Show Icon Leading",
-                content: [false, true].map({ showIcon in
+                content: [false, true].map({ showButtonIcon in
                     PreviewPropertiesElement(
-                        description: "\(!showIcon ? "(Def) " : "")\(showIcon.description.capitalized)",
-                        content: { DBButton(text: "Text", icon: Image(.xPlaceholder), showIcon: showIcon, iconPosition: .leading ) {} }
+                        description: "\(!showButtonIcon ? "(Def) " : "")\(showButtonIcon.description.capitalized)",
+                        content: { DBButton(text: "Text", icon: Image(.xPlaceholder), showIcon: showButtonIcon, iconPosition: .leading ) {} }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Show Icon Trailing",
-                content: [false, true].map({ showIcon in
+                content: [false, true].map({ showButtonIcon in
                     PreviewPropertiesElement(
-                        description: "\(!showIcon ? "(Def) " : "")\(showIcon.description.capitalized)",
-                        content: { DBButton(text: "Text", icon: Image(.xPlaceholder), showIcon: showIcon, iconPosition: .trailing ) {} }
+                        description: "\(!showButtonIcon ? "(Def) " : "")\(showButtonIcon.description.capitalized)",
+                        content: { DBButton(text: "Text", icon: Image(.xPlaceholder), showIcon: showButtonIcon, iconPosition: .trailing ) {} }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "No Text",
-                content: [false, true].map({ noText in
+                content: [false, true].map({ noButtonText in
                     PreviewPropertiesElement(
-                        description: "\(!noText ? "(Def) " : "")\(noText.description.capitalized)",
-                        content: { DBButton(text: "Text", noText: noText, icon: Image(.xPlaceholder), showIcon: noText ) {} }
+                        description: "\(!noButtonText ? "(Def) " : "")\(noButtonText.description.capitalized)",
+                        content: { DBButton(text: "Text", noText: noButtonText, icon: Image(.xPlaceholder), showIcon: noButtonText ) {} }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Width",
-                content: [false, true].map({ maxWidth in
+                content: [false, true].map({ maxButtonWidth in
                     PreviewPropertiesElement(
-                        description: "\(maxWidth ? "Full" : "(Def) False")",
-                        content: { DBButton(text: "Text", maxWidth: maxWidth ) {} }
+                        description: "\(maxButtonWidth ? "Full" : "(Def) False")",
+                        content: { DBButton(text: "Text", maxWidth: maxButtonWidth ) {} }
                     )
                 })
             ),

@@ -182,36 +182,36 @@ struct DBAccordionSection: View {
     ]
     PreviewTemplate(
         title: "DBAccordion",
-        previewVariants: DBAccordionVariant.allCases.map({ variant in
+        previewVariants: DBAccordionVariant.allCases.map({ accordionVariant in
             [
-                AnyView(DBAccordion(items: itemsVariants, variant: variant))
+                AnyView(DBAccordion(items: itemsVariants, variant: accordionVariant))
             ]
         }),
         previewProperties: [
             PreviewPropertiesSection(
                 name: "Variant",
-                content: DBAccordionVariant.allCases.map({ variant in
+                content: DBAccordionVariant.allCases.map({ accordionVariant in
                     PreviewPropertiesElement(
-                        description: variant.previewName(),
-                        content: { DBAccordion(items: itemsProperties, variant: variant) }
+                        description: accordionVariant.previewName(),
+                        content: { DBAccordion(items: itemsProperties, variant: accordionVariant) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Disabled",
-                content: [false, true].map({ disabled in
+                content: [false, true].map({ accordionDisabled in
                     PreviewPropertiesElement(
-                        description: "\(disabled ? "(Def) " : "")\(disabled.description.capitalized)",
-                        content: { DBAccordion(items: itemsProperties, disabled: disabled) }
+                        description: "\(accordionDisabled ? "(Def) " : "")\(accordionDisabled.description.capitalized)",
+                        content: { DBAccordion(items: itemsProperties, disabled: accordionDisabled) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Behavior",
-                content: DBAccordionBehavior.allCases.map({ behavior in
+                content: DBAccordionBehavior.allCases.map({ accordionBehavior in
                     PreviewPropertiesElement(
-                        description: behavior.previewName(),
-                        content: { DBAccordion(items: itemsProperties, behavior: behavior) }
+                        description: accordionBehavior.previewName(),
+                        content: { DBAccordion(items: itemsProperties, behavior: accordionBehavior) }
                     )
                 })
             ),

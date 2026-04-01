@@ -71,6 +71,13 @@ struct DBSwitch: View {
         }
     }
     
+    fileprivate func switchLabel(_ label: String) -> some View {
+        return Text("\(label)\(showRequiredAsterisk ? "*" : "")")
+            .alignmentGuide(.firstTextBaseline) { context in
+                return (context[.firstTextBaseline] + context.height - context[.lastTextBaseline]) / 2
+            }
+    }
+    
     var body: some View {
         let pressGesture = DragGesture(minimumDistance: 0)
             .updating($pressed) { _, state, _ in
@@ -89,10 +96,7 @@ struct DBSwitch: View {
         VStack(alignment: .leading, spacing: theme.dimensions.spacing.fixed2xs) {
             HStack(alignment: .firstTextBaseline, spacing: theme.dimensions.spacing.fixedXs) {
                 if variant == .leading, showLabel, let label = label {
-                    Text("\(label)\(showRequiredAsterisk ? "*" : "")")
-                        .alignmentGuide(.firstTextBaseline) { context in
-                            return (context[.firstTextBaseline] + context.height - context[.lastTextBaseline]) / 2
-                        }
+                    switchLabel(label)
                 }
 
                 Toggle(isOn: $checked) {}
@@ -112,10 +116,7 @@ struct DBSwitch: View {
                     }
                 
                 if variant == .trailing, showLabel, let label = label {
-                    Text("\(label)\(showRequiredAsterisk ? "*" : "")")
-                        .alignmentGuide(.firstTextBaseline) { context in
-                            return (context[.firstTextBaseline] + context.height - context[.lastTextBaseline]) / 2
-                        }
+                    switchLabel(label)
                 }
             }
             .dsTextStyle(font)
@@ -123,16 +124,7 @@ struct DBSwitch: View {
             .gesture(pressGesture)
             
             if validation != .noValidation || (message != nil && !message!.isEmpty && showMessage) {
-                switch validation {
-                case .noValidation:
-                    if let message = message, !message.isEmpty && showMessage {
-                        DBInfotext(text: message, semantic: .neutral, size: .small)
-                    }
-                case .invalid(let text):
-                    DBInfotext(text: text, semantic: .critical, size: .small)
-                case .valid(let text):
-                    DBInfotext(text: text, semantic: .successful, size: .small)
-                }
+                DBValidationMessage(validation: validation, message: message, showMessage: showMessage)
             }
         }
         .opacity(disabled ? 0.4 : 1)
@@ -203,11 +195,13 @@ struct DBSwitchStyle: ToggleStyle {
                         .foregroundColor(foregroundColor(inverted: true))
                         .frame(width: iconSize, height: iconSize)
                         .offset(x: offset(false))
+                        .opacity(checked ? 1 : 0)
                     iconTrailing
                         .resizable()
                         .foregroundColor(foregroundColor(inverted: false))
                         .frame(width: iconSize, height: iconSize)
                         .offset(x: offset(true))
+                        .opacity(checked ? 0 : 1)
                 }
                 Circle()
                     .fill(foregroundColor(inverted: checked))
@@ -239,28 +233,28 @@ struct DBSwitchStyle: ToggleStyle {
         previewProperties: [
             PreviewPropertiesSection(
                 name: "Variant",
-                content: DBSwitchVariant.allCases.map({ variant in
+                content: DBSwitchVariant.allCases.map({ switchVariant in
                     PreviewPropertiesElement(
-                        description: variant.previewName(),
-                        content: { DBSwitch(checked: .constant(false), label: "Label", variant: variant) }
+                        description: switchVariant.previewName(),
+                        content: { DBSwitch(checked: .constant(false), label: "Label", variant: switchVariant) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Disabled",
-                content: [false, true].map({ value in
+                content: [false, true].map({ switchDisabled in
                     PreviewPropertiesElement(
-                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
-                        content: { DBSwitch(checked: .constant(false), label: "Label", disabled: value) }
+                        description: "\(!switchDisabled ? "(Def) " : "")\(switchDisabled.description.capitalized)",
+                        content: { DBSwitch(checked: .constant(false), label: "Label", disabled: switchDisabled) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Checked",
-                content: [false, true].map({ value in
+                content: [false, true].map({ switchChecked in
                     PreviewPropertiesElement(
-                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
-                        content: { DBSwitch(checked: .constant(value), label: "Label") }
+                        description: "\(!switchChecked ? "(Def) " : "")\(switchChecked.description.capitalized)",
+                        content: { DBSwitch(checked: .constant(switchChecked), label: "Label") }
                     )
                 })
             ),
@@ -291,55 +285,55 @@ struct DBSwitchStyle: ToggleStyle {
             ),
             PreviewPropertiesSection(
                 name: "Visual Aid",
-                content: [false, true].map({ aid in
+                content: [false, true].map({ switchAid in
                     PreviewPropertiesElement(
-                        description: "\(!aid ? "(Def) " : "")\(aid.description.capitalized)",
-                        content: { DBSwitch(checked: .constant(false), label: "Label", visualAid: aid) }
+                        description: "\(!switchAid ? "(Def) " : "")\(switchAid.description.capitalized)",
+                        content: { DBSwitch(checked: .constant(false), label: "Label", visualAid: switchAid) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Size",
-                content: DBSize.allCases.map({ size in
+                content: DBSize.allCases.map({ switchSize in
                     PreviewPropertiesElement(
-                        description: size.previewName(),
-                        content: { DBSwitch(checked: .constant(false), label: "Label", size: size) }
+                        description: switchSize.previewName(),
+                        content: { DBSwitch(checked: .constant(false), label: "Label", size: switchSize) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Required",
-                content: [false, true].map({ showAsterisk in
+                content: [false, true].map({ showSwitchAsterisk in
                     PreviewPropertiesElement(
-                        description: "\(!showAsterisk ? "(Def) " : "")\(showAsterisk.description.capitalized)",
-                        content: { DBSwitch(checked: .constant(false), label: "Label", showRequiredAsterisk: showAsterisk) }
+                        description: "\(!showSwitchAsterisk ? "(Def) " : "")\(showSwitchAsterisk.description.capitalized)",
+                        content: { DBSwitch(checked: .constant(false), label: "Label", showRequiredAsterisk: showSwitchAsterisk) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Show Label",
-                content: [true, false].map({ showLabel in
+                content: [true, false].map({ showSwitchLabel in
                     PreviewPropertiesElement(
-                        description: "\(showLabel ? "(Def) " : "")\(showLabel.description.capitalized)",
-                        content: { DBSwitch(checked: .constant(false), label: "Label", showLabel: showLabel) }
+                        description: "\(showSwitchLabel ? "(Def) " : "")\(showSwitchLabel.description.capitalized)",
+                        content: { DBSwitch(checked: .constant(false), label: "Label", showLabel: showSwitchLabel) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Show Message",
-                content: [false, true].map({ showMessage in
+                content: [false, true].map({ showSwitchMessage in
                     PreviewPropertiesElement(
-                        description: "\(!showMessage ? "(Def) " : "")\(showMessage.description.capitalized)",
-                        content: { DBSwitch(checked: .constant(false), label: "Label", message: "Message", showMessage: showMessage) }
+                        description: "\(!showSwitchMessage ? "(Def) " : "")\(showSwitchMessage.description.capitalized)",
+                        content: { DBSwitch(checked: .constant(false), label: "Label", message: "Message", showMessage: showSwitchMessage) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Custom Icons",
-                content: [false, true].map({ checked in
+                content: [false, true].map({ switchChecked in
                     PreviewPropertiesElement(
-                        description: "\(!checked ? "(Def) " : "")\(checked.description.capitalized)",
-                        content: { DBSwitch(checked: .constant(checked), label: "Label", visualAid: true, iconLeading: Image(.sun), iconTrailing: Image(.moon)) }
+                        description: "\(switchChecked ? "Sun" : "Moon")",
+                        content: { DBSwitch(checked: .constant(switchChecked), label: "Label", visualAid: true, iconLeading: Image(.sun), iconTrailing: Image(.moon)) }
                     )
                 })
             ),

@@ -149,19 +149,19 @@ struct DBLinkStyle: ButtonStyle {
         previewProperties: [
             PreviewPropertiesSection(
                 name: "Content",
-                content: DBLinkContent.allCases.map({ content in
+                content: DBLinkContent.allCases.map({ linkContent in
                     PreviewPropertiesElement(
-                        description: content.previewName(),
-                        content: { DBLink(text: "Text", content: content) {} }
+                        description: linkContent.previewName(),
+                        content: { DBLink(text: "Text", content: linkContent) {} }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Variant",
-                content: DBLinkVariant.allCases.map({ variant in
+                content: DBLinkVariant.allCases.map({ linkVariant in
                     PreviewPropertiesElement(
-                        description: variant.previewName(),
-                        content: { DBLink(text: "Text", variant: variant) {} }
+                        description: linkVariant.previewName(),
+                        content: { DBLink(text: "Text", variant: linkVariant) {} }
                     )
                 })
             ),
@@ -176,10 +176,10 @@ struct DBLinkStyle: ButtonStyle {
             ),
             PreviewPropertiesSection(
                 name: "Size",
-                content: DBSize.allCases.map({ size in
+                content: DBSize.allCases.map({ linkSize in
                     PreviewPropertiesElement(
-                        description: size.previewName(),
-                        content: { DBLink(text: "Text", size: size) {} }
+                        description: linkSize.previewName(),
+                        content: { DBLink(text: "Text", size: linkSize) {} }
                     )
                 })
             ),

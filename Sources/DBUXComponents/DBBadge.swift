@@ -112,48 +112,48 @@ struct DBBadge: View {
 #Preview(traits: .sizeThatFitsLayout) {
     PreviewTemplate(
         title: "DBBadge",
-        previewVariants: DBSemantic.allCases.map({ semantic in
-            DBEmphasis.allCases.map({ emphasis in
-                AnyView(DBBadge(content: .text("Badge"), emphasis: emphasis, semantic: semantic))
+        previewVariants: DBSemantic.allCases.map({ badgeSemantic in
+            DBEmphasis.allCases.map({ badgeEmphasis in
+                AnyView(DBBadge(content: .text("Badge"), emphasis: badgeEmphasis, semantic: badgeSemantic))
             })
         }),
         previewProperties: [
             PreviewPropertiesSection(
                 name: "Size",
-                content: DBSize.allCases.reversed().map({ size in
+                content: DBSize.allCases.reversed().map({ badgeSize in
                     PreviewPropertiesElement(
-                        description: size.previewName(def: .small),
-                        content: { DBBadge(size: size, content: .text("Text")) }
+                        description: badgeSize.previewName(def: .small),
+                        content: { DBBadge(size: badgeSize, content: .text("Text")) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Content",
-                content: DBBadge.DBBadgeVariant.previewCases.map({ variant in
+                content: DBBadge.DBBadgeVariant.previewCases.map({ badgeVariant in
                     PreviewPropertiesElement(
-                        description: variant.previewName,
-                        content: { DBBadge(content: variant) }
+                        description: badgeVariant.previewName,
+                        content: { DBBadge(content: badgeVariant) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Emphasis",
-                content: DBEmphasis.allCases.map({ emphasis in
+                content: DBEmphasis.allCases.map({ badgeEmphasis in
                     PreviewPropertiesElement(
-                        description: emphasis.previewName(),
-                        content: { DBBadge(content: .text("Text"), emphasis: emphasis) }
+                        description: badgeEmphasis.previewName(),
+                        content: { DBBadge(content: .text("Text"), emphasis: badgeEmphasis) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Semantic",
-                content: DBSemantic.allCases.map({ semantic in
+                content: DBSemantic.allCases.map({ badgeSemantic in
                     PreviewPropertiesElement(
-                        description: semantic.previewName(),
+                        description: badgeSemantic.previewName(),
                         content: {
                             HStack {
-                                DBBadge(content: .text("Text"), emphasis: .weak, semantic: semantic)
-                                DBBadge(content: .text("Text"), emphasis: .strong, semantic: semantic)
+                                DBBadge(content: .text("Text"), emphasis: .weak, semantic: badgeSemantic)
+                                DBBadge(content: .text("Text"), emphasis: .strong, semantic: badgeSemantic)
                             }
                         }
                     )
