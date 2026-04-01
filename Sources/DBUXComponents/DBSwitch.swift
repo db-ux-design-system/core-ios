@@ -123,9 +123,7 @@ struct DBSwitch: View {
             .foregroundColor(textColor)
             .gesture(pressGesture)
             
-            if validation != .noValidation || (message != nil && !message!.isEmpty && showMessage) {
-                DBValidationMessage(validation: validation, message: message, showMessage: showMessage)
-            }
+            DBValidationMessage(validation: validation, message: message, showMessage: showMessage)
         }
         .opacity(disabled ? 0.4 : 1)
     }

@@ -22,15 +22,17 @@ struct DBValidationMessage: View {
     var showMessage: Bool = false
     
     var body: some View {
-        switch validation {
-        case .noValidation:
-            if let message = message, !message.isEmpty && showMessage {
-                DBInfotext(text: message, semantic: .neutral, size: .small)
+        if validation != .noValidation || (message != nil && !message!.isEmpty && showMessage) {
+            switch validation {
+            case .noValidation:
+                if let message = message, !message.isEmpty && showMessage {
+                    DBInfotext(text: message, semantic: .neutral, size: .small)
+                }
+            case .invalid(let text):
+                DBInfotext(text: text, semantic: .critical, size: .small)
+            case .valid(let text):
+                DBInfotext(text: text, semantic: .successful, size: .small)
             }
-        case .invalid(let text):
-            DBInfotext(text: text, semantic: .critical, size: .small)
-        case .valid(let text):
-            DBInfotext(text: text, semantic: .successful, size: .small)
         }
     }
 }
