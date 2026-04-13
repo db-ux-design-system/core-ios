@@ -89,7 +89,7 @@ struct DBAccordion: View {
 
                 if variant == .divider && item != items.last {
                     theme.activeColor.onBgBasicEmphasis60Default
-                        .frame(height: theme.dimensions.border.height3xs)
+                        .frame(height: 1)
                         .padding(.vertical, theme.dimensions.spacing.fixedSm)
                 }
             }
@@ -163,7 +163,9 @@ struct DBAccordionSection: View {
 
             if expanded {
                 AnyView(item.content())
-                    .padding(theme.dimensions.spacing.fixedMd)
+                    .padding(.horizontal, theme.dimensions.spacing.fixedMd)
+                    .padding(.top, theme.dimensions.spacing.fixedMd)
+                    .padding(.bottom, theme.dimensions.spacing.fixedLg)
             }
         }
     }

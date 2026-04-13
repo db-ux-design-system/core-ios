@@ -34,4 +34,19 @@ struct SharedColors {
             return validation.baseColor(for: theme).basic.text.emphasis80.colorForPressed(pressed)
         }
     }
+    
+    static func borderColor(for theme: DSTheme, validation: DBValidation, checked: Bool, pressed: Bool) -> Color {
+        switch validation {
+        case .noValidation:
+            return checked
+            ? validation.baseColor(for: theme).inverted.background.contrastMax.colorForPressed(pressed)
+            : validation.baseColor(for: theme).basic.border.emphasis100.default
+        case .invalid, .valid:
+            return checked
+            ? validation.baseColor(for: theme).inverted.background.contrastLow.colorForPressed(pressed)
+            : validation.baseColor(for: theme).basic.border.emphasis70.default
+        }
+    }
+    
+
 }

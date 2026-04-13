@@ -45,8 +45,8 @@ struct DBSwitch: View {
     var showRequiredAsterisk: Bool = false
     var showLabel: Bool = true
     var visualAid: Bool = false
-    var iconLeading: Image = Image(.check)
-    var iconTrailing: Image = Image(.cross)
+    var iconLeading: Image = Image(.cross)
+    var iconTrailing: Image = Image(.check)
     var size: DBSize = .medium
     var validation: DBValidation = .noValidation
     var message: String?
@@ -114,7 +114,7 @@ struct DBSwitch: View {
             .foregroundColor(SharedColors.textColor(for: theme, validation: validation, pressed: pressed))
             .gesture(pressGesture)
             
-            DBValidationMessage(validation: validation, message: message, showMessage: showMessage)
+            DBMessageBlock(validation: validation, message: message, showMessage: showMessage)
         }
         .opacity(disabled ? 0.4 : 1)
     }
@@ -131,12 +131,6 @@ struct DBSwitchStyle: ToggleStyle {
     var visualAid: Bool
     var iconLeading: Image
     var iconTrailing: Image
-
-    private var borderColor: Color {
-        return validation == .noValidation
-        ? validation.baseColor(for: theme).basic.icon.emphasis100.colorForPressed(checked && pressed)
-        : validation.baseColor(for: theme).basic.icon.emphasis70.colorForPressed(checked && pressed)
-    }
 
     private var backgroundColor: Color {
         return checked
@@ -168,16 +162,16 @@ struct DBSwitchStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         RoundedRectangle(cornerRadius: switchHeight / 2)
             .fill(backgroundColor)
-            .strokeBorder(borderColor, lineWidth: borderWidth)
+            .strokeBorder(SharedColors.borderColor(for: theme, validation: validation, checked: checked, pressed: pressed), lineWidth: borderWidth)
             .overlay {
                 if visualAid {
-                    iconLeading
+                    iconTrailing
                         .resizable()
                         .foregroundColor(SharedColors.foregroundColor(for: theme, validation: validation, inverted: true))
                         .frame(width: iconSize, height: iconSize)
                         .offset(x: offset(false))
                         .opacity(checked ? 1 : 0)
-                    iconTrailing
+                    iconLeading
                         .resizable()
                         .foregroundColor(SharedColors.foregroundColor(for: theme, validation: validation, inverted: false))
                         .frame(width: iconSize, height: iconSize)
@@ -314,7 +308,7 @@ struct DBSwitchStyle: ToggleStyle {
                 content: [false, true].map({ switchChecked in
                     PreviewPropertiesElement(
                         description: "\(switchChecked ? "Sun" : "Moon")",
-                        content: { DBSwitch(checked: .constant(switchChecked), label: "Label", visualAid: true, iconLeading: Image(.sun), iconTrailing: Image(.moon)) }
+                        content: { DBSwitch(checked: .constant(switchChecked), label: "Label", visualAid: true, iconLeading: Image(.moon), iconTrailing: Image(.sun)) }
                     )
                 })
             ),

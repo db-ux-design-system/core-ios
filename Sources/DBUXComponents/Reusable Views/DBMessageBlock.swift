@@ -16,17 +16,17 @@
 
 import SwiftUI
 
-struct DBValidationMessage: View {
+struct DBMessageBlock: View {
     var validation: DBValidation
     var message: String?
-    var showMessage: Bool = false
+    var showMessage: Bool
     
     var body: some View {
         if validation != .noValidation || (message != nil && !message!.isEmpty && showMessage) {
             switch validation {
             case .noValidation:
                 if let message = message, !message.isEmpty && showMessage {
-                    DBInfotext(text: message, semantic: .neutral, size: .small)
+                    DBInfotext(text: message, semantic: .adaptive, size: .small)
                 }
             case .invalid(let text):
                 DBInfotext(text: text, semantic: .critical, size: .small)

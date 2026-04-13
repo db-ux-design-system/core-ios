@@ -45,22 +45,9 @@ struct DBCheckbox: View {
     
     private var spacing: CGFloat { size == .medium ? theme.dimensions.spacing.fixedXs : theme.dimensions.spacing.fixed2xs }
     
-    private var borderColor: Color {
-        switch validation {
-        case .noValidation:
-            return checked
-            ? validation.baseColor(for: theme).inverted.background.contrastMax.colorForPressed(pressed)
-            : validation.baseColor(for: theme).basic.border.emphasis100.default
-        case .invalid, .valid:
-            return checked
-            ? validation.baseColor(for: theme).inverted.background.contrastLow.colorForPressed(pressed)
-            : validation.baseColor(for: theme).basic.border.emphasis70.default
-        }
-    }
-    
     private var backgroundColor: Color {
         return checked && !indeterminate
-        ? borderColor
+        ? SharedColors.borderColor(for: theme, validation: validation, checked: checked, pressed: pressed)
         : pressed
         ? validation.baseColor(for: theme).basic.background.transparent.pressed
         : validation.baseColor(for: theme).basic.background.transparent.full
@@ -88,7 +75,7 @@ struct DBCheckbox: View {
             HStack(alignment: .firstTextBaseline, spacing: spacing) {
                 ZStack {
                     RoundedRectangle(cornerRadius: theme.dimensions.border.radius2xs)
-                        .stroke(borderColor, lineWidth: theme.dimensions.border.height2xs)
+                        .stroke(SharedColors.borderColor(for: theme, validation: validation, checked: checked, pressed: pressed), lineWidth: theme.dimensions.border.height2xs)
                     
                     Rectangle()
                         .padding(theme.dimensions.border.radius2xs / 2)
@@ -125,7 +112,7 @@ struct DBCheckbox: View {
             }
             .gesture(pressGesture)
             
-            DBValidationMessage(validation: validation, message: message, showMessage: showMessage)
+            DBMessageBlock(validation: validation, message: message, showMessage: showMessage)
         }
         .opacity(disabled ? 0.4 : 1)
     }

@@ -138,6 +138,7 @@ struct DBCard<Content: View>: View {
             .padding(padding)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .accessibilityRemoveTraits(behavior == .interactive ? [] : .isButton)
         .disabled(behavior == .static)
         .buttonStyle(DBCardStyle(elevation: elevation))
 
