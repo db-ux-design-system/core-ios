@@ -45,39 +45,9 @@ struct DBCheckbox: View {
     
     private var spacing: CGFloat { size == .medium ? theme.dimensions.spacing.fixedXs : theme.dimensions.spacing.fixed2xs }
     
-    private var textColor: Color {
-        switch validation {
-        case .noValidation:
-            return validation.baseColor(for: theme).basic.text.emphasis100.colorForPressed(pressed)
-        case .invalid, .valid:
-            return validation.baseColor(for: theme).basic.text.emphasis80.colorForPressed(pressed)
-        }
-    }
-    
-    private var iconColor: Color {
-        return checked && !indeterminate
-        ? validation.baseColor(for: theme).inverted.onBackground.default
-        : validation == .noValidation
-        ? validation.baseColor(for: theme).basic.icon.emphasis100.default
-        : validation.baseColor(for: theme).basic.icon.emphasis70.default
-    }
-    
-    private var borderColor: Color {
-        switch validation {
-        case .noValidation:
-            return checked
-            ? validation.baseColor(for: theme).inverted.background.contrastMax.colorForPressed(pressed)
-            : validation.baseColor(for: theme).basic.border.emphasis100.default
-        case .invalid, .valid:
-            return checked
-            ? validation.baseColor(for: theme).inverted.background.contrastLow.colorForPressed(pressed)
-            : validation.baseColor(for: theme).basic.border.emphasis70.default
-        }
-    }
-    
     private var backgroundColor: Color {
         return checked && !indeterminate
-        ? borderColor
+        ? SharedColors.borderColor(for: theme, validation: validation, checked: checked, pressed: pressed)
         : pressed
         ? validation.baseColor(for: theme).basic.background.transparent.pressed
         : validation.baseColor(for: theme).basic.background.transparent.full
@@ -105,7 +75,7 @@ struct DBCheckbox: View {
             HStack(alignment: .firstTextBaseline, spacing: spacing) {
                 ZStack {
                     RoundedRectangle(cornerRadius: theme.dimensions.border.radius2xs)
-                        .stroke(borderColor, lineWidth: theme.dimensions.border.height2xs)
+                        .stroke(SharedColors.borderColor(for: theme, validation: validation, checked: checked, pressed: pressed), lineWidth: theme.dimensions.border.height2xs)
                     
                     Rectangle()
                         .padding(theme.dimensions.border.radius2xs / 2)
@@ -121,7 +91,7 @@ struct DBCheckbox: View {
                     }
                 }
                 .compositingGroup()
-                .foregroundColor(iconColor)
+                .foregroundColor(SharedColors.foregroundColor(for: theme, validation: validation, inverted: checked && !indeterminate))
                 .frame(width: checkboxSize, height: checkboxSize)
                 .alignmentGuide(.firstTextBaseline) { context in
                     context[VerticalAlignment.center]
@@ -130,7 +100,7 @@ struct DBCheckbox: View {
                 if showLabel, let label = label {
                     Text("\(label)\(showRequiredAsterisk ? "*" : "")")
                         .dsTextStyle(font)
-                        .foregroundColor(textColor)
+                        .foregroundColor(SharedColors.textColor(for: theme, validation: validation, pressed: pressed))
                         .alignmentGuide(.firstTextBaseline) { context in
                             let remainingLine = (context.height - context[.lastTextBaseline])
                             let lineHeight = context[.firstTextBaseline] + remainingLine
@@ -142,18 +112,7 @@ struct DBCheckbox: View {
             }
             .gesture(pressGesture)
             
-            if validation != .noValidation || (message != nil && !message!.isEmpty && showMessage) {
-                switch validation {
-                case .noValidation:
-                    if let message = message, !message.isEmpty && showMessage {
-                        DBInfotext(text: message, semantic: .neutral, size: .small)
-                    }
-                case .invalid(let text):
-                    DBInfotext(text: text, semantic: .critical, size: .small)
-                case .valid(let text):
-                    DBInfotext(text: text, semantic: .successful, size: .small)
-                }
-            }
+            DBMessageBlock(validation: validation, message: message, showMessage: showMessage)
         }
         .opacity(disabled ? 0.4 : 1)
     }
@@ -161,7 +120,7 @@ struct DBCheckbox: View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     PreviewTemplate(
-        title: "DB Checkbox",
+        title: "DBCheckbox",
         previewVariants: [
             [
                 AnyView(DBCheckbox(checked: .constant(false), label: "Checkbox", validation: .noValidation))
@@ -179,46 +138,46 @@ struct DBCheckbox: View {
         previewProperties: [
             PreviewPropertiesSection(
                 name: "Disabled",
-                content: [false, true].map({ value in
+                content: [false, true].map({ checkboxDisabled in
                     PreviewPropertiesElement(
-                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
-                        content: { DBCheckbox(checked: .constant(false), label: "Label", disabled: value) }
+                        description: "\(!checkboxDisabled ? "(Def) " : "")\(checkboxDisabled.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", disabled: checkboxDisabled) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Checked",
-                content: [false, true].map({ value in
+                content: [false, true].map({ checkboxChecked in
                     PreviewPropertiesElement(
-                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
-                        content: { DBCheckbox(checked: .constant(value), label: "Label") }
+                        description: "\(!checkboxChecked ? "(Def) " : "")\(checkboxChecked.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(checkboxChecked), label: "Label") }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Indeterminate",
-                content: [false, true].map({ value in
+                content: [false, true].map({ checkboxIndeterminate in
                     PreviewPropertiesElement(
-                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
-                        content: { DBCheckbox(checked: .constant(false), indeterminate: value, label: "Label") }
+                        description: "\(!checkboxIndeterminate ? "(Def) " : "")\(checkboxIndeterminate.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), indeterminate: checkboxIndeterminate, label: "Label") }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Size",
-                content: DBSize.allCases.map({ size in
+                content: DBSize.allCases.map({ checkboxSize in
                     PreviewPropertiesElement(
-                        description: size.previewName(def: .medium),
-                        content: { DBCheckbox(checked: .constant(false), label: "Label", size: size) }
+                        description: checkboxSize.previewName(),
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", size: checkboxSize) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Required",
-                content: [false, true].map({ value in
+                content: [false, true].map({ showCheckboxAsterisk in
                     PreviewPropertiesElement(
-                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
-                        content: { DBCheckbox(checked: .constant(false), label: "Label", showRequiredAsterisk: value) }
+                        description: "\(!showCheckboxAsterisk ? "(Def) " : "")\(showCheckboxAsterisk.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", showRequiredAsterisk: showCheckboxAsterisk) }
                     )
                 })
             ),
@@ -249,19 +208,19 @@ struct DBCheckbox: View {
             ),
             PreviewPropertiesSection(
                 name: "Show Message",
-                content: [false, true].map({ value in
+                content: [false, true].map({ showCheckboxMessage in
                     PreviewPropertiesElement(
-                        description: "\(!value ? "(Def) " : "")\(value.description.capitalized)",
-                        content: { DBCheckbox(checked: .constant(false), label: "Label", message: "Message", showMessage: value) }
+                        description: "\(!showCheckboxMessage ? "(Def) " : "")\(showCheckboxMessage.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", message: "Message", showMessage: showCheckboxMessage) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Show Label",
-                content: [true, false].map({ value in
+                content: [true, false].map({ showCheckboxLabel in
                     PreviewPropertiesElement(
-                        description: "\(value ? "(Def) " : "")\(value.description.capitalized)",
-                        content: { DBCheckbox(checked: .constant(false), label: "Label", showLabel: value) }
+                        description: "\(showCheckboxLabel ? "(Def) " : "")\(showCheckboxLabel.description.capitalized)",
+                        content: { DBCheckbox(checked: .constant(false), label: "Label", showLabel: showCheckboxLabel) }
                     )
                 })
             ),

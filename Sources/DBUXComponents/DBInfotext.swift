@@ -50,10 +50,7 @@ struct DBInfotext: View {
                 .dsTextStyle(font)
                 .foregroundColor(semantic.textColor(theme: theme, emphasis: .weak))
                 .alignmentGuide(.firstTextBaseline) { context in
-                    let remainingLine = (context.height - context[.lastTextBaseline])
-                    let lineHeight = context[.firstTextBaseline] + remainingLine
-                    let lineCenter = lineHeight / 2
-                    return lineCenter
+                    return (context[.firstTextBaseline] + context.height - context[.lastTextBaseline]) / 2
                 }
         }
     }
@@ -61,47 +58,47 @@ struct DBInfotext: View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     PreviewTemplate(
-        title: "DB Infotext",
-        previewVariants: DBSemantic.allCases.map({ semantic in
+        title: "DBInfotext",
+        previewVariants: DBSemantic.allCases.map({ infotextSemantic in
             [
-                AnyView(DBInfotext(text: "Infotext", semantic: semantic)),
+                AnyView(DBInfotext(text: "Infotext", semantic: infotextSemantic)),
             ]
         }),
         previewProperties: [
             PreviewPropertiesSection(
                 name: "Size",
-                content: DBSize.allCases.map({ size in
+                content: DBSize.allCases.map({ infotextSize in
                     PreviewPropertiesElement(
-                        description: size.previewName(),
-                        content: { DBInfotext(text: "Text", size: size) }
+                        description: infotextSize.previewName(),
+                        content: { DBInfotext(text: "Text", size: infotextSize) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Show Icon",
-                content: [true, false].map({ showIcon in
+                content: [true, false].map({ showInfotextIcon in
                     PreviewPropertiesElement(
-                        description: "\(showIcon ? "(Def) " : "")\(showIcon.description.capitalized)",
-                        content: { DBInfotext(text: "Text", showIcon: showIcon) }
+                        description: "\(showInfotextIcon ? "(Def) " : "")\(showInfotextIcon.description.capitalized)",
+                        content: { DBInfotext(text: "Text", showIcon: showInfotextIcon) }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Width",
-                content: ["Single line", "Multiline"].map({ name in
+                content: ["Single line", "Multiline"].map({ infotextName in
                     PreviewPropertiesElement(
-                        description: name,
-                        content: { DBInfotext(text: name == "Multiline" ? "Text with Multiline showing linebreaks" : "Text") }
+                        description: infotextName,
+                        content: { DBInfotext(text: infotextName == "Multiline" ? "Text with Multiline showing linebreaks" : "Text") }
                     )
                 })
             ),
             PreviewPropertiesSection(
                 name: "Semantic",
-                content: DBSemantic.allCases.map({ semantic in
+                content: DBSemantic.allCases.map({ infotextSemantic in
                     PreviewPropertiesElement(
-                        description: semantic.previewName(),
+                        description: infotextSemantic.previewName(),
                         content: {
-                            DBInfotext(text: "Text", semantic: semantic)
+                            DBInfotext(text: "Text", semantic: infotextSemantic)
                         }
                     )
                 })
