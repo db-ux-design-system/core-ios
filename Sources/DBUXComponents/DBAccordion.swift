@@ -157,7 +157,7 @@ struct DBAccordionSection: View {
             }
             .contentShape(Rectangle())
             .foregroundColor(theme.activeColor.onBgBasicEmphasis100Default)
-            .background(pressed ? theme.activeColor.basic.background.transparent.pressed : Color.clear)
+            .background(theme.activeColor.basic.background.transparent.full.colorForPressed(pressed))
             .cornerRadius(theme.dimensions.border.radiusSm)
             .gesture(pressGesture)
 

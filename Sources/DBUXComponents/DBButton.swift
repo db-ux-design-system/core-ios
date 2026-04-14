@@ -156,11 +156,11 @@ struct DBButtonStyle: ButtonStyle {
         case (.brand, true):
             return theme.colorScheme.brand.originPressed
         case (_, true):
-            return theme.activeColor.basic.background.transparent.pressed
+            return theme.activeColor.basic.background.transparent.full.pressed
         case (.outlined, false), (.ghost, false):
-            return theme.activeColor.basic.background.transparent.full
+            return theme.activeColor.basic.background.transparent.full.default
         case (.filled, false):
-            return theme.activeColor.basic.background.transparent.semi
+            return theme.activeColor.basic.background.transparent.semi.default
         }
     }
 

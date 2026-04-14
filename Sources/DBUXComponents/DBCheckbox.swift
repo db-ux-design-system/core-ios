@@ -48,9 +48,7 @@ struct DBCheckbox: View {
     private var backgroundColor: Color {
         return checked && !indeterminate
         ? SharedColors.borderColor(for: theme, validation: validation, checked: checked, pressed: pressed)
-        : pressed
-        ? validation.baseColor(for: theme).basic.background.transparent.pressed
-        : validation.baseColor(for: theme).basic.background.transparent.full
+        : validation.baseColor(for: theme).basic.background.transparent.full.colorForPressed(pressed)
     }
     
     var body: some View {

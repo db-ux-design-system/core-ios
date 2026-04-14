@@ -137,9 +137,7 @@ struct DBSwitchStyle: ToggleStyle {
         ? validation == .noValidation
         ? validation.baseColor(for: theme).inverted.background.contrastMax.colorForPressed(pressed)
         : validation.baseColor(for: theme).inverted.background.contrastLow.colorForPressed(pressed)
-        : pressed
-        ? validation.baseColor(for: theme).basic.background.transparent.pressed
-        : validation.baseColor(for: theme).basic.background.transparent.full
+        : validation.baseColor(for: theme).basic.background.transparent.full.colorForPressed(pressed)
     }
 
     private var switchWidth: CGFloat { return size == .medium ? 46 : 38 }
