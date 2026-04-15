@@ -201,7 +201,7 @@ struct DBCheckbox: View {
                     PreviewPropertiesElement(
                         description: "\(DBValidation.valid("").previewName()) - Checked",
                         content: { DBCheckbox(checked: .constant(true), label: "Label", validation: .valid("Valid Message")) }
-                    ),
+                    )
                 ]
             ),
             PreviewPropertiesSection(

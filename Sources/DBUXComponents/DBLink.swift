@@ -86,7 +86,7 @@ struct DBLink: View {
     }
     
     var body: some View {
-        Button() {
+        Button {
             action()
         } label: {
             HStack(alignment: .center, spacing: spacing) {
