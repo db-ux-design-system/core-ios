@@ -124,14 +124,14 @@ struct DBCheckbox: View {
                 AnyView(DBCheckbox(checked: .constant(false), label: "Checkbox", validation: .noValidation))
             ],
             [
-                AnyView(DBCheckbox(checked: .constant(true), label: "Checkbox", validation: .noValidation)),
+                AnyView(DBCheckbox(checked: .constant(true), label: "Checkbox", validation: .noValidation))
             ],
             [
-                AnyView(DBCheckbox(checked: .constant(false), label: "Checkbox", validation: .invalid("Invalid Message"))),
+                AnyView(DBCheckbox(checked: .constant(false), label: "Checkbox", validation: .invalid("Invalid Message")))
             ],
             [
-                AnyView(DBCheckbox(checked: .constant(true), label: "Checkbox", validation: .valid("Valid Message"))),
-            ],
+                AnyView(DBCheckbox(checked: .constant(true), label: "Checkbox", validation: .valid("Valid Message")))
+            ]
         ],
         previewProperties: [
             PreviewPropertiesSection(
@@ -221,8 +221,7 @@ struct DBCheckbox: View {
                         content: { DBCheckbox(checked: .constant(false), label: "Label", showLabel: showCheckboxLabel) }
                     )
                 })
-            ),
-
+            )
         ]
     )
 }

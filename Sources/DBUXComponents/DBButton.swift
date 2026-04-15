@@ -203,17 +203,17 @@ struct DBButtonStyle: ButtonStyle {
         title: "DBButton",
         previewVariants: [
             [
-                AnyView(DBButton(text: "Button", variant: .outlined) {}),
+                AnyView(DBButton(text: "Button", variant: .outlined) {})
             ],
             [
-                AnyView(DBButton(text: "Button", variant: .filled) {}),
+                AnyView(DBButton(text: "Button", variant: .filled) {})
             ],
             [
-                AnyView(DBButton(text: "Button", variant: .ghost) {}),
+                AnyView(DBButton(text: "Button", variant: .ghost) {})
             ],
             [
-                AnyView(DBButton(text: "Button", variant: .brand) {}),
-            ],
+                AnyView(DBButton(text: "Button", variant: .brand) {})
+            ]
         ],
         previewProperties: [
             PreviewPropertiesSection(
@@ -278,7 +278,7 @@ struct DBButtonStyle: ButtonStyle {
                         content: { DBButton(text: "Text", maxWidth: maxButtonWidth ) {} }
                     )
                 })
-            ),
-        ],
+            )
+        ]
     )
 }

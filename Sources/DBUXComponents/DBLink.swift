@@ -134,17 +134,17 @@ struct DBLinkStyle: ButtonStyle {
         title: "DBLink",
         previewVariants: [
             [
-                AnyView(DBLink(text: "Text", content: .internal, variant: .adaptive, size: .small) {}),
+                AnyView(DBLink(text: "Text", content: .internal, variant: .adaptive, size: .small) {})
             ],
             [
-                AnyView(DBLink(text: "Text", content: .external, variant: .adaptive, size: .small) {}),
+                AnyView(DBLink(text: "Text", content: .external, variant: .adaptive, size: .small) {})
             ],
             [
-                AnyView(DBLink(text: "Text", content: .internal, variant: .brand, size: .small) {}),
+                AnyView(DBLink(text: "Text", content: .internal, variant: .brand, size: .small) {})
             ],
             [
-                AnyView(DBLink(text: "Text", content: .external, variant: .brand, size: .small) {}),
-            ],
+                AnyView(DBLink(text: "Text", content: .external, variant: .brand, size: .small) {})
+            ]
         ],
         previewProperties: [
             PreviewPropertiesSection(
@@ -192,6 +192,6 @@ struct DBLinkStyle: ButtonStyle {
                     )
                 })
             )
-        ],
+        ]
     )
 }

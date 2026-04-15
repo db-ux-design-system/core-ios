@@ -58,7 +58,7 @@ struct DBAccordionItem: Equatable {
     var content: () -> any View
     let uuid = UUID()
     
-    static func ==(lhs: DBAccordionItem, rhs: DBAccordionItem) -> Bool {
+    static func == (lhs: DBAccordionItem, rhs: DBAccordionItem) -> Bool {
         return lhs.uuid == rhs.uuid
     }
 }
@@ -216,7 +216,7 @@ struct DBAccordionSection: View {
                         content: { DBAccordion(items: itemsProperties, behavior: accordionBehavior) }
                     )
                 })
-            ),
-        ],
+            )
+        ]
     )
 }
