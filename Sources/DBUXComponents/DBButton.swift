@@ -156,11 +156,11 @@ struct DBButtonStyle: ButtonStyle {
         case (.brand, true):
             return theme.colorScheme.brand.originPressed
         case (_, true):
-            return theme.activeColor.basic.background.transparent.pressed
+            return theme.activeColor.basic.background.transparent.full.pressed
         case (.outlined, false), (.ghost, false):
-            return theme.activeColor.basic.background.transparent.full
+            return theme.activeColor.basic.background.transparent.full.default
         case (.filled, false):
-            return theme.activeColor.basic.background.transparent.semi
+            return theme.activeColor.basic.background.transparent.semi.default
         }
     }
 
@@ -203,17 +203,17 @@ struct DBButtonStyle: ButtonStyle {
         title: "DBButton",
         previewVariants: [
             [
-                AnyView(DBButton(text: "Button", variant: .outlined) {}),
+                AnyView(DBButton(text: "Button", variant: .outlined) {})
             ],
             [
-                AnyView(DBButton(text: "Button", variant: .filled) {}),
+                AnyView(DBButton(text: "Button", variant: .filled) {})
             ],
             [
-                AnyView(DBButton(text: "Button", variant: .ghost) {}),
+                AnyView(DBButton(text: "Button", variant: .ghost) {})
             ],
             [
-                AnyView(DBButton(text: "Button", variant: .brand) {}),
-            ],
+                AnyView(DBButton(text: "Button", variant: .brand) {})
+            ]
         ],
         previewProperties: [
             PreviewPropertiesSection(
@@ -278,7 +278,7 @@ struct DBButtonStyle: ButtonStyle {
                         content: { DBButton(text: "Text", maxWidth: maxButtonWidth ) {} }
                     )
                 })
-            ),
-        ],
+            )
+        ]
     )
 }

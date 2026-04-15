@@ -230,7 +230,7 @@ struct DBCardStyle: ButtonStyle {
                         }
                     )
                 })
-            ),
-        ],
+            )
+        ]
     )
 }

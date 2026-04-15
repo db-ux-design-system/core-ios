@@ -58,7 +58,7 @@ struct DBAccordionItem: Equatable {
     var content: () -> any View
     let uuid = UUID()
     
-    static func ==(lhs: DBAccordionItem, rhs: DBAccordionItem) -> Bool {
+    static func == (lhs: DBAccordionItem, rhs: DBAccordionItem) -> Bool {
         return lhs.uuid == rhs.uuid
     }
 }
@@ -157,7 +157,7 @@ struct DBAccordionSection: View {
             }
             .contentShape(Rectangle())
             .foregroundColor(theme.activeColor.onBgBasicEmphasis100Default)
-            .background(pressed ? theme.activeColor.basic.background.transparent.pressed : Color.clear)
+            .background(theme.activeColor.basic.background.transparent.full.colorForPressed(pressed))
             .cornerRadius(theme.dimensions.border.radiusSm)
             .gesture(pressGesture)
 
@@ -216,7 +216,7 @@ struct DBAccordionSection: View {
                         content: { DBAccordion(items: itemsProperties, behavior: accordionBehavior) }
                     )
                 })
-            ),
-        ],
+            )
+        ]
     )
 }

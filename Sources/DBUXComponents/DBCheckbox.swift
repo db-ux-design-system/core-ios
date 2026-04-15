@@ -48,9 +48,7 @@ struct DBCheckbox: View {
     private var backgroundColor: Color {
         return checked && !indeterminate
         ? SharedColors.borderColor(for: theme, validation: validation, checked: checked, pressed: pressed)
-        : pressed
-        ? validation.baseColor(for: theme).basic.background.transparent.pressed
-        : validation.baseColor(for: theme).basic.background.transparent.full
+        : validation.baseColor(for: theme).basic.background.transparent.full.colorForPressed(pressed)
     }
     
     var body: some View {
@@ -126,14 +124,14 @@ struct DBCheckbox: View {
                 AnyView(DBCheckbox(checked: .constant(false), label: "Checkbox", validation: .noValidation))
             ],
             [
-                AnyView(DBCheckbox(checked: .constant(true), label: "Checkbox", validation: .noValidation)),
+                AnyView(DBCheckbox(checked: .constant(true), label: "Checkbox", validation: .noValidation))
             ],
             [
-                AnyView(DBCheckbox(checked: .constant(false), label: "Checkbox", validation: .invalid("Invalid Message"))),
+                AnyView(DBCheckbox(checked: .constant(false), label: "Checkbox", validation: .invalid("Invalid Message")))
             ],
             [
-                AnyView(DBCheckbox(checked: .constant(true), label: "Checkbox", validation: .valid("Valid Message"))),
-            ],
+                AnyView(DBCheckbox(checked: .constant(true), label: "Checkbox", validation: .valid("Valid Message")))
+            ]
         ],
         previewProperties: [
             PreviewPropertiesSection(
@@ -203,7 +201,7 @@ struct DBCheckbox: View {
                     PreviewPropertiesElement(
                         description: "\(DBValidation.valid("").previewName()) - Checked",
                         content: { DBCheckbox(checked: .constant(true), label: "Label", validation: .valid("Valid Message")) }
-                    ),
+                    )
                 ]
             ),
             PreviewPropertiesSection(
@@ -223,8 +221,7 @@ struct DBCheckbox: View {
                         content: { DBCheckbox(checked: .constant(false), label: "Label", showLabel: showCheckboxLabel) }
                     )
                 })
-            ),
-
+            )
         ]
     )
 }

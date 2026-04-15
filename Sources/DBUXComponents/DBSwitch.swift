@@ -137,9 +137,7 @@ struct DBSwitchStyle: ToggleStyle {
         ? validation == .noValidation
         ? validation.baseColor(for: theme).inverted.background.contrastMax.colorForPressed(pressed)
         : validation.baseColor(for: theme).inverted.background.contrastLow.colorForPressed(pressed)
-        : pressed
-        ? validation.baseColor(for: theme).basic.background.transparent.pressed
-        : validation.baseColor(for: theme).basic.background.transparent.full
+        : validation.baseColor(for: theme).basic.background.transparent.full.colorForPressed(pressed)
     }
 
     private var switchWidth: CGFloat { return size == .medium ? 46 : 38 }
@@ -203,7 +201,7 @@ struct DBSwitchStyle: ToggleStyle {
             [
                 AnyView(DBSwitch(checked: .constant(false), label: "Switch", validation: .valid("Valid Message"))),
                 AnyView(DBSwitch(checked: .constant(true), label: "Switch", validation: .valid("Valid Message")))
-            ],
+            ]
         ],
         previewProperties: [
             PreviewPropertiesSection(
@@ -255,7 +253,7 @@ struct DBSwitchStyle: ToggleStyle {
                     PreviewPropertiesElement(
                         description: "\(DBValidation.valid("").previewName()) - Checked",
                         content: { DBSwitch(checked: .constant(true), label: "Label", validation: .valid("Valid Message")) }
-                    ),
+                    )
                 ]
             ),
             PreviewPropertiesSection(
@@ -311,7 +309,7 @@ struct DBSwitchStyle: ToggleStyle {
                         content: { DBSwitch(checked: .constant(switchChecked), label: "Label", visualAid: true, iconLeading: Image(.moon), iconTrailing: Image(.sun)) }
                     )
                 })
-            ),
+            )
         ]
     )
 }

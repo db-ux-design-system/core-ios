@@ -42,8 +42,8 @@ public struct BorderColor {
     public var `default`: StateColor
     public var emphasis100: StateColor
     public var emphasis70: StateColor
-    public var emphasis60: StateColor
-    public var emphasis50: StateColor
+    public var emphasis60: Color
+    public var emphasis50: Color
 }
 
 public struct BackgroundColor {
@@ -54,10 +54,8 @@ public struct BackgroundColor {
 }
 
 public struct TransparentColor {
-    public var full: Color
-    public var semi: Color
-    public var hovered: Color
-    public var pressed: Color
+    public var full: StateColor
+    public var semi: StateColor
 }
 
 public struct StateColor {
@@ -132,8 +130,8 @@ extension DSColorVariant {
             border: .init(
                 default: .init(
                     default: onBgBasicEmphasis60Default,
-                    hovered: onBgBasicEmphasis60Hovered,
-                    pressed: onBgBasicEmphasis60Pressed
+                    hovered: onBgBasicEmphasis60Default,
+                    pressed: onBgBasicEmphasis60Default
                 ),
                 emphasis100: .init(
                     default: onBgBasicEmphasis100Default,
@@ -145,23 +143,21 @@ extension DSColorVariant {
                     hovered: onBgBasicEmphasis70Hovered,
                     pressed: onBgBasicEmphasis70Pressed
                 ),
-                emphasis60: .init(
-                    default: onBgBasicEmphasis60Default,
-                    hovered: onBgBasicEmphasis60Hovered,
-                    pressed: onBgBasicEmphasis60Pressed
-                ),
-                emphasis50: .init(
-                    default: onBgBasicEmphasis50Default,
-                    hovered: onBgBasicEmphasis50Hovered,
-                    pressed: onBgBasicEmphasis50Pressed
-                )
+                emphasis60: onBgBasicEmphasis60Default,
+                emphasis50: onBgBasicEmphasis50Default
             ),
             background: .init(
                 transparent: .init(
-                    full: bgBasicTransparentFullDefault,
-                    semi: bgBasicTransparentSemiDefault,
-                    hovered: bgBasicTransparentHovered,
-                    pressed: bgBasicTransparentPressed
+                    full: .init(
+                        default: bgBasicTransparentFullDefault,
+                        hovered: bgBasicTransparentFullHovered,
+                        pressed: bgBasicTransparentFullPressed
+                    ),
+                    semi: .init(
+                        default: bgBasicTransparentSemiDefault,
+                        hovered: bgBasicTransparentSemiHovered,
+                        pressed: bgBasicTransparentSemiPressed
+                    )
                 ),
                 level1: .init(
                     default: bgBasicLevel1Default,

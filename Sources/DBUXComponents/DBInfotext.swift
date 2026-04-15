@@ -61,7 +61,7 @@ struct DBInfotext: View {
         title: "DBInfotext",
         previewVariants: DBSemantic.allCases.map({ infotextSemantic in
             [
-                AnyView(DBInfotext(text: "Infotext", semantic: infotextSemantic)),
+                AnyView(DBInfotext(text: "Infotext", semantic: infotextSemantic))
             ]
         }),
         previewProperties: [
@@ -102,7 +102,7 @@ struct DBInfotext: View {
                         }
                     )
                 })
-            ),
-        ],
+            )
+        ]
     )
 }
